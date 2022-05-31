@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../redux/hooks";
 import RegisterFormStyles from "./RegisterFormStyles";
 
 const RegisterForm = (): JSX.Element => {
@@ -15,8 +16,14 @@ const RegisterForm = (): JSX.Element => {
     setUserData({ ...userData, [event.target.id]: event.target.value });
   };
 
+  const submitForm = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
+    setUserData(initialFormValue);
+  };
+
   return (
-    <RegisterFormStyles noValidate autoComplete="off">
+    <RegisterFormStyles noValidate autoComplete="off" onSubmit={submitForm}>
       <label htmlFor="name">Nombre</label>
       <input
         type="text"
