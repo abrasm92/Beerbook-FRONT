@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 interface User {
   name: string;
@@ -9,5 +9,31 @@ interface User {
 }
 
 export const userRegisterThunk = (user: User) => async (dispatch: Dispatch) => {
-  await axios.post(`${process.env.REACT_APP_LOCAL}user/register`, user);
+  try {
+    const { status } = await axios.post(
+      `${process.env.REACT_APP_API_URL}user/register`,
+      user
+    );
+    debugger;
+    if (status === 201) {
+      return "Usuario creado";
+    }
+  } catch (error: AxiosError | any) {
+    debugger;
+    const {
+      response: {
+        status,
+        data: { message },
+      },
+    } = error;
+    if (status === 400) {
+      return message;
+    }
+    if (status === 409) {
+      return message;
+    }
+    if (status === 500) {
+      return message;
+    }
+  }
 };
