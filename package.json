@@ -55,5 +55,8 @@
       "!src/reportWebVitals.js",
       "!src/setupTests.js"
     ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.25"
   }
 }

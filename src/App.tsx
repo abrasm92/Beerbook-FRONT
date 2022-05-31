@@ -1,5 +1,11 @@
+import RegisterFormPage from "./pages/RegisterFormPage";
+
 function App() {
-  return <p>Hola</p>;
+  return (
+    <>
+      <RegisterFormPage />
+    </>
+  );
 }
 
 export default App;
