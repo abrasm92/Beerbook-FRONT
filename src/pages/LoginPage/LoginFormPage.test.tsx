@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store/store";
-import LoginFormPage from "./LoginFormPage";
+import LoginFormPage from "./LoginPage";
 
 describe("Given a LoginFormPage component", () => {
   describe("When it's rendered", () => {
