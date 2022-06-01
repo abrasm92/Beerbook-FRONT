@@ -39,9 +39,7 @@ export const userLoginThunk =
 
       return message;
     } catch (error: AxiosError | any) {
-      if (AxiosError) {
-        const message = customErrorApi(error);
-        return message;
-      }
+      const message = customErrorApi(error);
+      return message;
     }
   };
