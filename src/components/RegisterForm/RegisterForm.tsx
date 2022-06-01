@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisterFormStyles from "./RegisterFormStyles";
 
 const RegisterForm = (): JSX.Element => {
-  const dispatch = useAppDispatch();
   const initialFormValue = {
     name: "",
     username: "",
@@ -18,10 +16,11 @@ const RegisterForm = (): JSX.Element => {
     setUserData({ ...userData, [event.target.id]: event.target.value });
   };
 
-  const submitForm = (event: React.SyntheticEvent) => {
+  const submitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    dispatch(userRegisterThunk(userData));
+    const message = await userRegisterThunk(userData);
     setUserData(initialFormValue);
+    return message;
   };
 
   return (
