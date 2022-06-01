@@ -31,6 +31,7 @@ const RegisterForm = (): JSX.Element => {
         id="name"
         value={userData.name}
         onChange={changeUserData}
+        placeholder="Nombre"
       />
       <label htmlFor="username">Usuario</label>
       <input
@@ -38,6 +39,7 @@ const RegisterForm = (): JSX.Element => {
         id="username"
         value={userData.username}
         onChange={changeUserData}
+        placeholder="Usuario"
       />
       <label htmlFor="email">E-mail</label>
       <input
@@ -45,6 +47,7 @@ const RegisterForm = (): JSX.Element => {
         id="email"
         value={userData.email}
         onChange={changeUserData}
+        placeholder="E-mail"
       />
       <label htmlFor="password">Contraseña</label>
       <input
@@ -52,9 +55,12 @@ const RegisterForm = (): JSX.Element => {
         id="password"
         value={userData.password}
         onChange={changeUserData}
+        placeholder="Contraseña"
       />
       <button>Registrarse</button>
-      <p>Ya tienes cuenta? Inicia sesión aquí</p>
+      <p className="registerForm-linkLogin">
+        Ya tienes cuenta? Inicia sesión aquí
+      </p>
     </RegisterFormStyles>
   );
 };
