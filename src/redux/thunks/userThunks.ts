@@ -1,5 +1,5 @@
-import { Dispatch } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
+import { customErrorApi } from "../../utils/customerrorApi";
 
 interface User {
   name: string;
@@ -8,31 +8,19 @@ interface User {
   password: string;
 }
 
-export const userRegisterThunk = (user: User) => async (dispatch: Dispatch) => {
+export const userRegisterThunk = async (user: User) => {
   try {
     const { status } = await axios.post(
       `${process.env.REACT_APP_API_URL}user/register`,
       user
     );
-    debugger;
     if (status === 201) {
-      return "Usuario creado";
+      const message: string = "Usuario creado";
+      return message;
     }
   } catch (error: AxiosError | any) {
-    debugger;
-    const {
-      response: {
-        status,
-        data: { message },
-      },
-    } = error;
-    if (status === 400) {
-      return message;
-    }
-    if (status === 409) {
-      return message;
-    }
-    if (status === 500) {
+    if (AxiosError) {
+      const message = customErrorApi(error);
       return message;
     }
   }
