@@ -16,5 +16,8 @@ export const customErrorApi = (error: CustomError): string => {
   if (status === 500) {
     return message;
   }
+  if (status === 401) {
+    return message;
+  }
   return "";
 };
