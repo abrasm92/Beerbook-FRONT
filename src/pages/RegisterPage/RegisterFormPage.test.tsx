@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { store } from "../redux/store/store";
+import { store } from "../../redux/store/store";
 import RegisterFormPage from "./RegisterFormPage";
 
 describe("Given a ListPageRobots page", () => {
