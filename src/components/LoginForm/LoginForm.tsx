@@ -32,6 +32,7 @@ const LoginForm = (): JSX.Element => {
         id="username"
         value={userData.username}
         onChange={changeUserData}
+        placeholder="Usuario"
       />
       <label htmlFor="password">Contraseña</label>
       <input
@@ -39,9 +40,12 @@ const LoginForm = (): JSX.Element => {
         id="password"
         value={userData.password}
         onChange={changeUserData}
+        placeholder="Contraseña"
       />
       <button>Iniciar sesión</button>
-      <p>No tienes cuenta? Registrate aquí</p>
+      <p className="loginForm-linkRegister">
+        No tienes cuenta? <span>Registrate aquí</span>
+      </p>
     </LoginFormStyles>
   );
 };
