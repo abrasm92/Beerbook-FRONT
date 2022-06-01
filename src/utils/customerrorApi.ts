@@ -1,11 +1,11 @@
-import { customError } from "../types/interfaces";
+import { CustomError } from "../types/interfaces";
 
 export const customErrorApi = ({
   response: {
     status,
     data: { message },
   },
-}: customError): string => {
+}: CustomError): string => {
   if (status === 400) {
     return message;
   }

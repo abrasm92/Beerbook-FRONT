@@ -1,10 +1,10 @@
-import { customError } from "../types/interfaces";
+import { CustomError } from "../types/interfaces";
 import { customErrorApi } from "./customerrorApi";
 
 describe("Given a customErrorApi function", () => {
   describe("When it's invoked with response status 400 and message 'Invalid username'", () => {
     test("Then it should return 'Invalid username'", () => {
-      const error: customError = {
+      const error: CustomError = {
         response: {
           status: 400,
           data: { message: "Invalid username" },
@@ -20,7 +20,7 @@ describe("Given a customErrorApi function", () => {
 
   describe("When it's invoked with response status 409 and message 'Invalid email'", () => {
     test("Then it should return 'Invalid username'", () => {
-      const error: customError = {
+      const error: CustomError = {
         response: {
           status: 409,
           data: { message: "Invalid email" },
@@ -36,7 +36,7 @@ describe("Given a customErrorApi function", () => {
 
   describe("When it's invoked with response status 500 and message 'Server error'", () => {
     test("Then it should return 'Invalid username'", () => {
-      const error: customError = {
+      const error: CustomError = {
         response: {
           status: 500,
           data: { message: "Server error" },
@@ -52,7 +52,7 @@ describe("Given a customErrorApi function", () => {
 
   describe("When it's invoked with response status not covered in function ex:300 and message ''", () => {
     test("Then it should return 'Invalid username'", () => {
-      const error: customError = {
+      const error: CustomError = {
         response: {
           status: 300,
           data: { message: "" },
