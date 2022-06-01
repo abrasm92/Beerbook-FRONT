@@ -1,9 +1,9 @@
-import LoginFormPage from "./pages/LoginPage/LoginPage";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <>
-      <LoginFormPage />
+      <Header />
     </>
   );
 }
