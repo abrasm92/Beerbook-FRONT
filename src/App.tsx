@@ -1,4 +1,4 @@
-import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
+import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 
 function App() {
   return (

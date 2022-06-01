@@ -36,6 +36,7 @@ export const userLoginThunk =
         status,
         data: { token },
       } = await axios.post(`${process.env.REACT_APP_API_URL}user/login`, user);
+      debugger;
       if (status === 200) {
         const message: string = "Has iniciado sessión";
         const { username, id }: ApiToken = jwt_decode(token);
