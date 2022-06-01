@@ -6,7 +6,6 @@ export const customErrorApi = ({
     data: { message },
   },
 }: CustomError): string => {
-  debugger;
   if (status === 400) {
     return message;
   }
