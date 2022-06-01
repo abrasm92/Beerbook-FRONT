@@ -18,7 +18,7 @@ const LoginForm = (): JSX.Element => {
     setUserData({ ...userData, [event.target.id]: event.target.value });
   };
 
-  const submitForm = async (event: React.SyntheticEvent) => {
+  const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
     dispatch(userLoginThunk(userData));
     setUserData(initialFormValue);
