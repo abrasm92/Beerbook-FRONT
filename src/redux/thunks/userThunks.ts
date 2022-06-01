@@ -23,6 +23,7 @@ export const userRegisterThunk = async (user: User) => {
 
 export const userLoginThunk =
   (user: LoginUser) => async (dispatch: Dispatch) => {
+    debugger;
     try {
       const { status } = await axios.post(
         `${process.env.REACT_APP_API_URL}user/login`,
