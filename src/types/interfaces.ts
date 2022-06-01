@@ -5,6 +5,11 @@ export interface User {
   password: string;
 }
 
+export interface LoginUser {
+  username: string;
+  password: string;
+}
+
 export interface customError {
   response: { status: number; data: { message: string } };
 }

@@ -1,12 +1,7 @@
 import axios, { AxiosError } from "axios";
+import { Dispatch } from "redux";
+import { LoginUser, User } from "../../types/interfaces";
 import { customErrorApi } from "../../utils/customerrorApi";
-
-interface User {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-}
 
 export const userRegisterThunk = async (user: User) => {
   try {
@@ -25,3 +20,22 @@ export const userRegisterThunk = async (user: User) => {
     }
   }
 };
+
+export const userLoginThunk =
+  (user: LoginUser) => async (dispatch: Dispatch) => {
+    try {
+      const { status } = await axios.post(
+        `${process.env.REACT_APP_API_URL}user/login`,
+        user
+      );
+      if (status === 200) {
+        const message: string = "Has iniciado sessión";
+        return message;
+      }
+    } catch (error: AxiosError | any) {
+      if (AxiosError) {
+        const message = customErrorApi(error);
+        return message;
+      }
+    }
+  };
