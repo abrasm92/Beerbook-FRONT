@@ -24,3 +24,9 @@ export interface BasicUser {
 export interface CustomError {
   response: { status: number; data: { message: string } };
 }
+
+export interface UserResponseApi {
+  iat: number;
+  id: string;
+  username: string;
+}
