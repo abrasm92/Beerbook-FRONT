@@ -5,6 +5,22 @@ export interface User {
   password: string;
 }
 
-export interface customError {
+export interface LoginUser {
+  username: string;
+  password: string;
+}
+
+export interface UserState {
+  name: string;
+  id: string;
+  logged: boolean;
+}
+
+export interface BasicUser {
+  name: string;
+  id: string;
+}
+
+export interface CustomError {
   response: { status: number; data: { message: string } };
 }
