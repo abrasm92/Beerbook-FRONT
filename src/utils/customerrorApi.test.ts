@@ -65,4 +65,20 @@ describe("Given a customErrorApi function", () => {
       expect(message).toEqual(expectedMessage);
     });
   });
+
+  describe("When it's invoked with response status 401 and message 'Incorrect username or password'", () => {
+    test("Then it should return 'Incorrect username or password'", () => {
+      const error: CustomError = {
+        response: {
+          status: 401,
+          data: { message: "Incorrect username or password" },
+        },
+      };
+      const expectedMessage = "Incorrect username or password";
+
+      const message = customErrorApi(error);
+
+      expect(message).toEqual(expectedMessage);
+    });
+  });
 });

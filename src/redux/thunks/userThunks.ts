@@ -30,7 +30,6 @@ export const userLoginThunk =
         `${process.env.REACT_APP_API_URL}user/login`,
         user
       );
-
       const message: string = "Has iniciado sessión";
       const token = data.token;
       const { username, id }: UserResponseApi = jwt_decode(token);
