@@ -10,6 +10,17 @@ export interface LoginUser {
   password: string;
 }
 
-export interface customError {
+export interface UserState {
+  name: string;
+  id: string;
+  logged: boolean;
+}
+
+export interface BasicUser {
+  name: string;
+  id: string;
+}
+
+export interface CustomError {
   response: { status: number; data: { message: string } };
 }
