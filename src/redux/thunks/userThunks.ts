@@ -34,7 +34,6 @@ export const userLoginThunk =
       const message: string = "Has iniciado sessión";
       const token = data.token;
       const { username, id }: UserResponseApi = jwt_decode(token);
-      localStorage.setItem("token", token);
       dispatch(userLoginActionCreator({ name: username, id }));
 
       return message;
