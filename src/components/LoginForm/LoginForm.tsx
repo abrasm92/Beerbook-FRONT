@@ -55,6 +55,7 @@ const LoginForm = (): JSX.Element => {
         <span
           className="loginForm-linkRegister--link"
           onClick={redirectToRegister}
+          data-testid="link-register"
         >
           Registrate aquí
         </span>

@@ -5,6 +5,13 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import RegisterForm from "./RegisterForm";
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe("Given a RegisterForm component", () => {
   describe("When it's rendered and user write at all the inputs", () => {
     test("Then it shuold show the user text on input box", () => {
@@ -66,6 +73,23 @@ describe("Given a RegisterForm component", () => {
       expect(inputUser).toHaveAttribute("value", expectTextUser);
       expect(inputEmail).toHaveAttribute("value", expectTextEmail);
       expect(inputPassword).toHaveAttribute("value", expectTextPassword);
+    });
+  });
+
+  describe("When it's rendered and user clicks on text to redirect login", () => {
+    test("Then it shuold call navigate hook", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const linkToLogin = screen.getByTestId("link-login");
+      userEvent.click(linkToLogin);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });
