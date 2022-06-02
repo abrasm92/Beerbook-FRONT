@@ -46,6 +46,7 @@ const LoginForm = (): JSX.Element => {
         id="password"
         value={userData.password}
         onChange={changeUserData}
+        autoComplete="on"
         placeholder="Contraseña"
       />
       <button>Iniciar sesión</button>
