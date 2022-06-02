@@ -25,6 +25,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   const redirectToLogin = () => {
+    debugger;
     navigate("/iniciar-sesion");
   };
 
@@ -69,6 +70,7 @@ const RegisterForm = (): JSX.Element => {
         <span
           className="registerForm-linkLogin--link"
           onClick={redirectToLogin}
+          data-testid="link-login"
         >
           Inicia sesión aquí
         </span>
