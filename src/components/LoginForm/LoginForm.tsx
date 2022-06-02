@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { userLoginThunk } from "../../redux/thunks/userThunks";
 import { LoginUser } from "../../types/interfaces";
@@ -6,6 +7,7 @@ import LoginFormStyles from "./LoginFormStyles";
 
 const LoginForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const initialFormValue: LoginUser = {
     username: "",
@@ -22,6 +24,10 @@ const LoginForm = (): JSX.Element => {
     event.preventDefault();
     dispatch(userLoginThunk(userData));
     setUserData(initialFormValue);
+  };
+
+  const redirectToRegister = () => {
+    navigate("/registro");
   };
 
   return (
@@ -44,7 +50,13 @@ const LoginForm = (): JSX.Element => {
       />
       <button>Iniciar sesión</button>
       <p className="loginForm-linkRegister">
-        No tienes cuenta? <span>Registrate aquí</span>
+        No tienes cuenta?{" "}
+        <span
+          className="loginForm-linkRegister--link"
+          onClick={redirectToRegister}
+        >
+          Registrate aquí
+        </span>
       </p>
     </LoginFormStyles>
   );

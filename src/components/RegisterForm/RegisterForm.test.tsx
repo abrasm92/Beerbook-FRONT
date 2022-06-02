@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import RegisterForm from "./RegisterForm";
 
@@ -13,9 +14,11 @@ describe("Given a RegisterForm component", () => {
       const expectTextEmail = "abra@abra.com";
 
       render(
-        <Provider store={store}>
-          <RegisterForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
       );
       const inputName = screen.getByLabelText("Nombre");
       const inputUser = screen.getByLabelText("Usuario");
@@ -42,9 +45,11 @@ describe("Given a RegisterForm component", () => {
       const buttonName = "Registrarse";
 
       render(
-        <Provider store={store}>
-          <RegisterForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm />
+          </Provider>
+        </BrowserRouter>
       );
       const inputName = screen.getByLabelText("Nombre");
       const inputUser = screen.getByLabelText("Usuario");

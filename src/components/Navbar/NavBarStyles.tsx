@@ -6,8 +6,8 @@ const NavbarStyles = styled.nav`
   background-color: #0d47a1;
   display: flex;
   justify-content: space-around;
-  position: static;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
 
   .navbar-button {
     display: flex;
@@ -16,6 +16,7 @@ const NavbarStyles = styled.nav`
     align-items: center;
     color: #fff;
     font-size: small;
+    cursor: pointer;
     img {
       width: 30px;
       height: 30px;

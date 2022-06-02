@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import RegisterFormPage from "./RegisterFormPage";
 
@@ -9,9 +10,11 @@ describe("Given a RegisterFormPage component", () => {
       const expectedInputs = 4;
 
       render(
-        <Provider store={store}>
-          <RegisterFormPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterFormPage />
+          </Provider>
+        </BrowserRouter>
       );
       const numberTextsInputs = screen.getAllByRole("textbox");
       const passwordInput = screen.getAllByLabelText("Contraseña");
