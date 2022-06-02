@@ -1,4 +1,4 @@
-import { LoginUser, User } from "../types/interfaces";
+import { BasicUser, LoginUser, User } from "../types/interfaces";
 
 export const singleUser: User = {
   name: "admin",
@@ -10,4 +10,9 @@ export const singleUser: User = {
 export const loginUser: LoginUser = {
   username: "admin",
   password: "beerbook",
+};
+
+export const userLogged: BasicUser = {
+  id: "1234",
+  name: "admin",
 };
