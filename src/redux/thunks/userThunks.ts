@@ -33,6 +33,7 @@ export const userLoginThunk =
       const token: string = data.token;
       const { username, id }: UserResponseApi = jwt_decode(token);
       dispatch(userLoginActionCreator({ name: username, id }));
+
       localStorage.setItem("token", token);
     } catch (error: AxiosError | any) {
       if (AxiosError) {

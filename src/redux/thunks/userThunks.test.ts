@@ -1,5 +1,5 @@
-import { loginUser, singleUser } from "../../mocks/userMocks";
-import { userLoginThunk, userRegisterThunk } from "./userThunks";
+import { singleUser } from "../../mocks/userMocks";
+import { userRegisterThunk } from "./userThunks";
 
 describe("Given a userRegisterThunk function", () => {
   describe("When it's invoked and do right", () => {
