@@ -30,3 +30,22 @@ export interface UserResponseApi {
   id: string;
   username: string;
 }
+
+export interface beerDataApi {
+  name: string;
+  brewery: string;
+  style: string;
+  degrees: number;
+  IBU: number | null;
+  country: string;
+  description: string | null;
+  image: string | null;
+  owner: string | null;
+  id: string;
+}
+
+export interface beerState {
+  listOfBeers: beerDataApi[];
+  page: number;
+  singleBeer: beerDataApi;
+}
