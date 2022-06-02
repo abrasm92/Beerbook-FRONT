@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { Dispatch } from "redux";
 import { LoginUser, User, UserResponseApi } from "../../types/interfaces";
 import { customErrorApi } from "../../utils/customerrorApi";
@@ -15,11 +15,9 @@ export const userRegisterThunk = async (user: User) => {
       const message: string = "Usuario creado";
       return message;
     }
-  } catch (error: AxiosError | any) {
-    if (AxiosError) {
-      const message = customErrorApi(error);
-      return message;
-    }
+  } catch (error: any) {
+    const message = customErrorApi(error);
+    return message;
   }
 };
 
@@ -35,10 +33,8 @@ export const userLoginThunk =
       dispatch(userLoginActionCreator({ name: username, id }));
 
       localStorage.setItem("token", token);
-    } catch (error: AxiosError | any) {
-      if (AxiosError) {
-        const message = customErrorApi(error);
-        return message;
-      }
+    } catch (error: any) {
+      const message = customErrorApi(error);
+      return message;
     }
   };

@@ -1,23 +1,22 @@
 import { CustomError } from "../types/interfaces";
 
 export const customErrorApi = (error: CustomError): string => {
-  const {
-    response: {
-      status,
-      data: { message },
-    },
-  }: CustomError = error;
-  if (status === 400) {
-    return message;
-  }
-  if (status === 409) {
-    return message;
-  }
-  if (status === 500) {
-    return message;
-  }
-  if (status === 401) {
-    return message;
+  if (error.response) {
+    if (error.response.status) {
+      switch (error.response.status) {
+        case 400:
+          return error.response.data.message;
+        case 409:
+          return error.response.data.message;
+        case 500:
+          return error.response.data.message;
+        case 401:
+          return error.response.data.message;
+        default:
+          return "";
+      }
+    }
+    return "";
   }
   return "";
 };
