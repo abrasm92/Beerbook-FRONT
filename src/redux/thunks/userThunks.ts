@@ -31,13 +31,14 @@ export const userLoginThunk =
         user
       );
       const message: string = "Has iniciado sessión";
-      const token = data.token;
+      const token: string = data.token;
       const { username, id }: UserResponseApi = jwt_decode(token);
       dispatch(userLoginActionCreator({ name: username, id }));
-
       return message;
     } catch (error: AxiosError | any) {
-      const message = customErrorApi(error);
-      return message;
+      if (AxiosError) {
+        const message = customErrorApi(error);
+        return message;
+      }
     }
   };

@@ -14,6 +14,7 @@ const RegisterFormStyles = styled.form`
     color: #fff;
     padding: 10px;
     margin: 40px;
+    cursor: pointer;
   }
   input {
     border: none;
@@ -27,6 +28,10 @@ const RegisterFormStyles = styled.form`
   }
   .registerForm-linkLogin {
     font-size: 0.7rem;
+  }
+  .registerForm-linkLogin--link {
+    color: #0d47a1;
+    cursor: pointer;
   }
 `;
 

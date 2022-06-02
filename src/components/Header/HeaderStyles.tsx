@@ -4,6 +4,8 @@ const HeaderStyles = styled.header`
   width: 100vw;
   height: 100px;
   background-color: #0d47a1;
+  position: sticky;
+  top: 0px;
 
   .header-content {
     padding: 20px;
@@ -21,6 +23,7 @@ const HeaderStyles = styled.header`
       border-radius: 10px;
       color: #fff;
       padding: 5px;
+      cursor: pointer;
     }
   }
 `;

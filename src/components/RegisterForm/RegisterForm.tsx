@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisterFormStyles from "./RegisterFormStyles";
 
 const RegisterForm = (): JSX.Element => {
+  const navigate = useNavigate();
   const initialFormValue = {
     name: "",
     username: "",
@@ -16,11 +18,14 @@ const RegisterForm = (): JSX.Element => {
     setUserData({ ...userData, [event.target.id]: event.target.value });
   };
 
-  const submitForm = async (event: React.SyntheticEvent) => {
+  const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const message = await userRegisterThunk(userData);
+    userRegisterThunk(userData);
     setUserData(initialFormValue);
-    return message;
+  };
+
+  const redirectToLogin = () => {
+    navigate("/iniciar-sesion");
   };
 
   return (
@@ -55,11 +60,18 @@ const RegisterForm = (): JSX.Element => {
         id="password"
         value={userData.password}
         onChange={changeUserData}
+        autoComplete="on"
         placeholder="Contraseña"
       />
       <button>Registrarse</button>
       <p className="registerForm-linkLogin">
-        Ya tienes cuenta? Inicia sesión aquí
+        Ya tienes cuenta?
+        <span
+          className="registerForm-linkLogin--link"
+          onClick={redirectToLogin}
+        >
+          Inicia sesión aquí
+        </span>
       </p>
     </RegisterFormStyles>
   );

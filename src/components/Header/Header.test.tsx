@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import Header from "./Header";
 
@@ -9,9 +10,11 @@ describe("Given a Header component", () => {
       const imageAltText = "Beerbook logo";
 
       render(
-        <Provider store={store}>
-          <Header />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <Header />
+          </Provider>
+        </BrowserRouter>
       );
       const image = screen.getByAltText(imageAltText);
 

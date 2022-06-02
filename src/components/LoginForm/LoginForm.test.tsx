@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import LoginForm from "./LoginForm";
 
@@ -11,9 +12,11 @@ describe("Given a LoginForm component", () => {
       const expectTextPassword = "1234";
 
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
       );
       const inputUser = screen.getByLabelText("Usuario");
       const inputPassword = screen.getByLabelText("Contraseña");
@@ -32,9 +35,11 @@ describe("Given a LoginForm component", () => {
       const buttonName = "Iniciar sesión";
 
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
       );
       const inputUser = screen.getByLabelText("Usuario");
       const inputPassword = screen.getByLabelText("Contraseña");
