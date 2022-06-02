@@ -18,11 +18,10 @@ const RegisterForm = (): JSX.Element => {
     setUserData({ ...userData, [event.target.id]: event.target.value });
   };
 
-  const submitForm = async (event: React.SyntheticEvent) => {
+  const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const message = await userRegisterThunk(userData);
+    userRegisterThunk(userData);
     setUserData(initialFormValue);
-    return message;
   };
 
   const redirectToLogin = () => {

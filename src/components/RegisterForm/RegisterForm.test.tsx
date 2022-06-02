@@ -62,12 +62,10 @@ describe("Given a RegisterForm component", () => {
       userEvent.type(inputPassword, "1234");
       userEvent.click(button);
 
-      setTimeout(() => {
-        expect(inputName).toHaveAttribute("value", expectTextName);
-        expect(inputUser).toHaveAttribute("value", expectTextUser);
-        expect(inputEmail).toHaveAttribute("value", expectTextEmail);
-        expect(inputPassword).toHaveAttribute("value", expectTextPassword);
-      }, 5000);
+      expect(inputName).toHaveAttribute("value", expectTextName);
+      expect(inputUser).toHaveAttribute("value", expectTextUser);
+      expect(inputEmail).toHaveAttribute("value", expectTextEmail);
+      expect(inputPassword).toHaveAttribute("value", expectTextPassword);
     });
   });
 });
