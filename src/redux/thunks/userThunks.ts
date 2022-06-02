@@ -25,12 +25,19 @@ export const userRegisterThunk = async (user: User) => {
 
 export const userLoginThunk =
   (user: LoginUser) => async (dispatch: Dispatch) => {
-    const { data } = await axios.post(
-      `${process.env.REACT_APP_API_URL}user/login`,
-      user
-    );
-    const token: string = data.token;
-    const { username, id }: UserResponseApi = jwt_decode(token);
-    dispatch(userLoginActionCreator({ name: username, id }));
-    localStorage.setItem("token", token);
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}user/login`,
+        user
+      );
+      const token: string = data.token;
+      const { username, id }: UserResponseApi = jwt_decode(token);
+      dispatch(userLoginActionCreator({ name: username, id }));
+      localStorage.setItem("token", token);
+    } catch (error: AxiosError | any) {
+      if (AxiosError) {
+        const message = customErrorApi(error);
+        return message;
+      }
+    }
   };
