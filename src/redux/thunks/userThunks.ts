@@ -14,6 +14,8 @@ export const userRegisterThunk = async (user: User) => {
     if (status === 201) {
       const message: string = "Usuario creado";
       return message;
+    } else {
+      throw new Error();
     }
   } catch (error: any) {
     return customErrorApi(error);

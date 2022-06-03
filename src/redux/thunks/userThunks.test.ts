@@ -40,6 +40,17 @@ describe("Given a userRegisterThunk function", () => {
       expect(message).toEqual(expectedMessage);
     });
   });
+
+  describe("When it's invoked and do right but with wrong status", () => {
+    test("Then it should return a message 'Usuario creado'", async () => {
+      axios.post = jest.fn().mockResolvedValue({ status: 204 });
+      const expectedMessage = "";
+
+      const message = await userRegisterThunk(singleUser);
+
+      expect(message).toEqual(expectedMessage);
+    });
+  });
 });
 
 describe("Given a userLoginThunk function", () => {
