@@ -17,7 +17,7 @@ describe("Given a userSlice", () => {
       const initialState: UserState = {
         name: "",
         id: "",
-        logged: true,
+        logged: false,
       };
 
       const action = userLoginActionCreator(user);

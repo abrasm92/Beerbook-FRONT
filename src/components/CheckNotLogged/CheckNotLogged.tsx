@@ -6,21 +6,21 @@ type PropChildren = {
   children: JSX.Element;
 };
 
-const CheckLogged = ({ children }: PropChildren) => {
+const CheckNotLogged = ({ children }: PropChildren) => {
   const { logged } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!logged) {
-      navigate("/iniciar-sesion");
+    if (logged) {
+      navigate("/cervezas-del-mundo");
     }
   }, [logged, navigate]);
 
-  if (logged) {
+  if (!logged) {
     return children;
   } else {
     return null;
   }
 };
 
-export default CheckLogged;
+export default CheckNotLogged;

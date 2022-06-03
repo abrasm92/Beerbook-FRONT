@@ -5,14 +5,14 @@ const SubHeaderStyles = styled.section`
   height: 100px;
   width: 100vw;
   background: linear-gradient(
-    rgba(13, 71, 161, 1) 0%,
+    rgba(13, 71, 161, 1) 10%,
     rgba(255, 255, 255, 0) 100%
   );
   p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
     font-weight: 700;
-    padding-top: 20px;
+    color: #fff;
   }
 `;
 

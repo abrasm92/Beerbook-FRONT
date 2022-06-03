@@ -1,12 +1,22 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { userLogged } from "../../mocks/userMocks";
 import { store } from "../../redux/store/store";
 import Header from "./Header";
 
+let mockUserState = { ...userLogged, logged: true };
 jest.mock("../../redux/hooks", () => ({
   ...jest.requireActual("../../redux/hooks"),
-  useAppSelector: () => ({ name: "admin", id: "1234", logged: true }),
+  useAppSelector: () => mockUserState,
+}));
+
+const mockedUsedNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => mockedUsedNavigate,
 }));
 
 describe("Given a Header component", () => {
@@ -45,6 +55,27 @@ describe("Given a Header component", () => {
       });
 
       expect(buttonText).toHaveTextContent(expectButtonText);
+    });
+  });
+
+  describe("When it's instantiated with unlogged user", () => {
+    test("Then it should show button with 'Iniciar sesión' on content text", () => {
+      const expectButtonText = "Iniciar sesión";
+      mockUserState = { id: "", name: "", logged: false };
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Header />
+          </Provider>
+        </BrowserRouter>
+      );
+      const buttonText = screen.getByRole("button", {
+        name: expectButtonText,
+      });
+      userEvent.click(buttonText);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });
