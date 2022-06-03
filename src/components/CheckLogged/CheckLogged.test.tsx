@@ -2,9 +2,8 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import LoginFormPage from "../../pages/LoginPage/LoginFormPage";
-import CheckNotLogged from "./CheckNotLogged";
-
+import BeerListPage from "../../pages/BeerListPage/BeerListPage";
+import CheckLogged from "./CheckLogged";
 const mockedUsedNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({
@@ -12,12 +11,12 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedUsedNavigate,
 }));
 
-describe("Given CheckNotLogged component", () => {
-  describe("When it's instantiated with user logged", () => {
+describe("Given a CheckLogged component", () => {
+  describe("When it's instantiated with user not logged", () => {
     test("Then it should call navigate to redirect", () => {
       const userMockSlice = createSlice({
         name: "user",
-        initialState: { name: "admin", id: "1234", logged: true },
+        initialState: { name: "", id: "", logged: false },
         reducers: {},
       });
       const mockStore = configureStore({
@@ -27,9 +26,9 @@ describe("Given CheckNotLogged component", () => {
       render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <CheckNotLogged>
-              <LoginFormPage />
-            </CheckNotLogged>
+            <CheckLogged>
+              <BeerListPage />
+            </CheckLogged>
           </Provider>
         </BrowserRouter>
       );
