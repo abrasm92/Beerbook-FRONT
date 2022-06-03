@@ -15,6 +15,7 @@ function App() {
   const dispatch = useAppDispatch();
   if (token) {
     const { username, id }: UserResponseApi = jwtDecode(token);
+    debugger;
     dispatch(userLoginActionCreator({ name: username, id }));
   }
   return (

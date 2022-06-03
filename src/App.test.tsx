@@ -4,11 +4,19 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { store } from "./redux/store/store";
+import { UserResponseApi } from "./types/interfaces";
 
+let mockUser = { name: "admin", id: "1234", logged: true };
 jest.mock("./redux/hooks", () => ({
   ...jest.requireActual("./redux/hooks"),
-  useAppSelector: () => ({ name: "admin", id: "1234", logged: true }),
+  useAppSelector: () => mockUser,
 }));
+const userLoggedCredentials: UserResponseApi = {
+  iat: 1234,
+  id: "1234",
+  username: "admin",
+};
+jest.mock("jwt-decode", () => () => userLoggedCredentials);
 
 describe("Given an app component", () => {
   describe("When it's instantiated with user logged and user click on 'cerrar sesión' button", () => {
