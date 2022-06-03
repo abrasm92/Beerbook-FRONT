@@ -1,4 +1,4 @@
-import { beerDataApi as BeerDataApi } from "../types/interfaces";
+import { BeerDataApi } from "../types/interfaces";
 
 export const singleBeer: BeerDataApi = {
   id: "6297a8369ab4b03687f15b72",
