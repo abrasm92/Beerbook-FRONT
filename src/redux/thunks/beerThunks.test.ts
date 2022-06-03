@@ -1,19 +1,17 @@
 import axios from "axios";
 import { groupOfBeer } from "../../mocks/beerMocks";
-import { loadBeersActionCreator } from "../features/beerSlice";
 import loadBeersThunk from "./beerThunks";
 
 describe("Given a loadBeersThunk function", () => {
   describe("When it's invoked and do right", () => {
     test("Then it should call dispatch with a loadbeersActionCreator", async () => {
-      axios.get = jest.fn().mockResolvedValue({ data: groupOfBeer });
+      axios.get = jest.fn().mockResolvedValue({ data: { groupOfBeer } });
       const dispatch = jest.fn();
       const thunk = loadBeersThunk();
-      const action = loadBeersActionCreator(groupOfBeer);
 
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledWith(action);
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 
