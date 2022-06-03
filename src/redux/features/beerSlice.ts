@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { beerState } from "../../types/interfaces";
+import { BeerState } from "../../types/interfaces";
 
-const initialState: beerState = {
+const initialState: BeerState = {
   listOfBeers: [],
   page: 0,
   singleBeer: {

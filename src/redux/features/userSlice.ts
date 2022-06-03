@@ -15,7 +15,7 @@ const userSlice = createSlice({
       ...action.payload,
       logged: true,
     }),
-    userLogout: (user: UserState) => initialState,
+    userLogout: () => initialState,
   },
 });
 
