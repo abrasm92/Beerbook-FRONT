@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { BeerState } from "../../types/interfaces";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { BeerState, BeerDataApi } from "../../types/interfaces";
 
 const initialState: BeerState = {
   listOfBeers: [],
@@ -21,7 +21,17 @@ const initialState: BeerState = {
 const beerSlice = createSlice({
   name: "beer",
   initialState,
-  reducers: {},
+  reducers: {
+    loadBeers: (
+      beer: BeerState,
+      action: PayloadAction<BeerDataApi[]>
+    ): BeerState => ({
+      ...beer,
+      listOfBeers: action.payload,
+    }),
+  },
 });
 
 export default beerSlice.reducer;
+
+export const { loadBeers: loadBeersActionCreator } = beerSlice.actions;
