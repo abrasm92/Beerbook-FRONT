@@ -1,8 +1,8 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { Dispatch } from "redux";
 import { LoginUser, User, UserResponseApi } from "../../types/interfaces";
 import { customErrorApi } from "../../utils/customerrorApi";
-import jwt_decode from "jwt-decode";
 import { userLoginActionCreator } from "../features/userSlice";
 
 export const userRegisterThunk = async (user: User) => {
@@ -28,7 +28,7 @@ export const userLoginThunk =
         user
       );
       const token: string = data.token;
-      const { username, id }: UserResponseApi = jwt_decode(token);
+      const { username, id }: UserResponseApi = jwtDecode(token);
       dispatch(userLoginActionCreator({ name: username, id }));
 
       localStorage.setItem("token", token);

@@ -12,7 +12,7 @@ const CheckLogged = ({ children }: PropChildren) => {
 
   useEffect(() => {
     if (!logged) {
-      navigate("/login");
+      navigate("/iniciar-sesion");
     }
   }, [logged, navigate]);
 

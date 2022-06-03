@@ -4,10 +4,10 @@ import { loadBeersActionCreator } from "../features/beerSlice";
 
 const loadBeersThunk = () => async (dispatch: Dispatch) => {
   try {
-    const { data: listOfBeers } = await axios.get(
-      `${process.env.REACT_APP_API_URL}beer`
-    );
-    dispatch(loadBeersActionCreator(listOfBeers));
+    const {
+      data: { beers },
+    } = await axios.get(`${process.env.REACT_APP_API_URL}beer`);
+    dispatch(loadBeersActionCreator(beers));
   } catch (error) {
     return error;
   }

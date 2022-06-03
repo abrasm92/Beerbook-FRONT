@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import Navbar from "./Navbar";
 
@@ -9,9 +10,11 @@ describe("Given a Navbar component", () => {
       const expectTotalImage = 3;
 
       render(
-        <Provider store={store}>
-          <Navbar />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <Navbar />
+          </Provider>
+        </BrowserRouter>
       );
       const imagesLength = screen.getAllByRole("img");
 

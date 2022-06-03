@@ -1,12 +1,13 @@
-import { groupOfBeer } from "../../mocks/beerMocks";
+import { useAppSelector } from "../../redux/hooks";
 import SingleBeer from "../SingleBeer/SingleBeer";
 import ListBeersStyles from "./ListBeersStyles";
 
 const ListBeers = (): JSX.Element => {
-  const array = groupOfBeer;
+  const { listOfBeers } = useAppSelector((state) => state.beer);
+
   return (
     <ListBeersStyles>
-      {array.map((beer) => (
+      {listOfBeers.map((beer) => (
         <SingleBeer beer={beer} key={beer.id} />
       ))}
     </ListBeersStyles>
