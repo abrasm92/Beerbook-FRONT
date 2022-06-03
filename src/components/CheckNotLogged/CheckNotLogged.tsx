@@ -8,6 +8,7 @@ type PropChildren = {
 
 const CheckNotLogged = ({ children }: PropChildren) => {
   const { logged } = useAppSelector((state) => state.user);
+  debugger;
   const navigate = useNavigate();
 
   useEffect(() => {
