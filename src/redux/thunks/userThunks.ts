@@ -16,8 +16,7 @@ export const userRegisterThunk = async (user: User) => {
       return message;
     }
   } catch (error: any) {
-    const message = customErrorApi(error);
-    return message;
+    return customErrorApi(error);
   }
 };
 
@@ -34,7 +33,6 @@ export const userLoginThunk =
 
       localStorage.setItem("token", token);
     } catch (error: any) {
-      const message = customErrorApi(error);
-      return message;
+      return customErrorApi(error);
     }
   };

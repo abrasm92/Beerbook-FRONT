@@ -31,7 +31,7 @@ export interface UserResponseApi {
   username: string;
 }
 
-export interface beerDataApi {
+export interface BeerDataApi {
   name: string;
   brewery: string;
   style: string;
@@ -44,8 +44,8 @@ export interface beerDataApi {
   id: string;
 }
 
-export interface beerState {
-  listOfBeers: beerDataApi[];
+export interface BeerState {
+  listOfBeers: BeerDataApi[];
   page: number;
-  singleBeer: beerDataApi;
+  singleBeer: BeerDataApi;
 }

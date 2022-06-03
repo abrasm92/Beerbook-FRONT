@@ -1,8 +1,8 @@
-import { beerDataApi } from "../../types/interfaces";
+import { BeerDataApi } from "../../types/interfaces";
 import SingleBeerStyles from "./SingleBeerStyles";
 
 type PropBeer = {
-  beer: beerDataApi;
+  beer: BeerDataApi;
 };
 
 const SingleBeer = ({ beer }: PropBeer): JSX.Element => {

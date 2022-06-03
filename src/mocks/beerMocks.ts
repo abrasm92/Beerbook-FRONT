@@ -1,6 +1,6 @@
-import { beerDataApi } from "../types/interfaces";
+import { BeerDataApi } from "../types/interfaces";
 
-export const singleBeer: beerDataApi = {
+export const singleBeer: BeerDataApi = {
   id: "6297a8369ab4b03687f15b72",
   name: "Sofie",
   brewery: "Goose Island",
@@ -14,7 +14,7 @@ export const singleBeer: beerDataApi = {
   owner: null,
 };
 
-export const groupOfBeer: beerDataApi[] = [
+export const groupOfBeer: BeerDataApi[] = [
   {
     id: "6297a8369ab4b03687f15b72",
     name: "Sofie",
