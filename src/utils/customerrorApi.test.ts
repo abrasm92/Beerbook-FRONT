@@ -81,4 +81,16 @@ describe("Given a customErrorApi function", () => {
       expect(message).toEqual(expectedMessage);
     });
   });
+
+  describe("When it's invoked with response status undefined", () => {
+    test("Then it should return ''", () => {
+      const error: CustomError | any = new Error();
+      error.response = {};
+      const expectedMessage = "";
+
+      const message = customErrorApi(error);
+
+      expect(message).toEqual(expectedMessage);
+    });
+  });
 });
