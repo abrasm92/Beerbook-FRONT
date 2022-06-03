@@ -22,6 +22,10 @@ const NavbarStyles = styled.nav`
       height: 30px;
     }
   }
+
+  .navbar-button--link {
+    align-self: center;
+  }
 `;
 
 export default NavbarStyles;

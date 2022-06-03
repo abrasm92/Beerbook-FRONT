@@ -25,7 +25,6 @@ const RegisterForm = (): JSX.Element => {
   };
 
   const redirectToLogin = () => {
-    debugger;
     navigate("/iniciar-sesion");
   };
 

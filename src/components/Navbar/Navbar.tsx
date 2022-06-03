@@ -8,7 +8,7 @@ const Navbar = (): JSX.Element => {
         <img src="/images/home.svg" alt="Enlace a inicio" />
         <p>Inicio</p>
       </span>
-      <Link to="/cervezas-del-mundo">
+      <Link to="/cervezas-del-mundo" className="navbar-button--link">
         <span className="navbar-button">
           <img src="/images/discover.svg" alt="Enlace a cervezas del mundo" />
           <p>Cervezas del mundo</p>

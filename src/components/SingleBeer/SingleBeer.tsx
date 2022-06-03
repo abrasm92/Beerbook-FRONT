@@ -8,7 +8,7 @@ type PropBeer = {
 const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
   return (
     <SingleBeerStyles>
-      <img src="" alt="Imagen de cerveza" />
+      <img src="/images/Albino Squid Assassin.png" alt="Imagen de cerveza" />
       <div className="beer-info">
         <h2>{beer.name}</h2>
         <h3>
