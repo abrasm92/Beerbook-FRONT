@@ -29,9 +29,18 @@ const beerSlice = createSlice({
       ...beer,
       listOfBeers: action.payload,
     }),
+    deleteBeer: (beer, action: PayloadAction<string>): BeerState => ({
+      ...beer,
+      listOfBeers: beer.listOfBeers.filter(
+        (beer) => beer.id !== action.payload
+      ),
+    }),
   },
 });
 
 export default beerSlice.reducer;
 
-export const { loadBeers: loadBeersActionCreator } = beerSlice.actions;
+export const {
+  loadBeers: loadBeersActionCreator,
+  deleteBeer: deleteBeerActionCreator,
+} = beerSlice.actions;
