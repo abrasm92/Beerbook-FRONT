@@ -4,7 +4,6 @@ import CheckLogged from "./components/CheckLogged/CheckLogged";
 import CheckNotLogged from "./components/CheckNotLogged/CheckNotLogged";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import AlertModal from "./modals/AlertModal/AlertModal";
 import BeerListPage from "./pages/BeerListPage/BeerListPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
