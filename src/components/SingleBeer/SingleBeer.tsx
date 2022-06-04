@@ -1,3 +1,5 @@
+import { useAppDispatch } from "../../redux/hooks";
+import { deleteBeerThunk } from "../../redux/thunks/beerThunks";
 import { BeerDataApi } from "../../types/interfaces";
 import SingleBeerStyles from "./SingleBeerStyles";
 
@@ -6,6 +8,12 @@ type PropBeer = {
 };
 
 const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  const deleteBeer = (id: string) => {
+    dispatch(deleteBeerThunk(id));
+  };
+
   return (
     <SingleBeerStyles>
       <img src="/images/Albino Squid Assassin.png" alt="Imagen de cerveza" />
@@ -18,6 +26,7 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
           {beer.style} · {beer.degrees}
         </p>
       </div>
+      <button onClick={() => deleteBeer(beer.id)}>Eliminar</button>
     </SingleBeerStyles>
   );
 };

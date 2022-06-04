@@ -1,6 +1,6 @@
 import axios from "axios";
 import { groupOfBeer } from "../../mocks/beerMocks";
-import loadBeersThunk from "./beerThunks";
+import { loadBeersThunk } from "./beerThunks";
 
 jest.useFakeTimers();
 
