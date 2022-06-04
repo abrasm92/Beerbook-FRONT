@@ -6,8 +6,8 @@ const NavbarStyles = styled.nav`
   background-color: #0d47a1;
   display: flex;
   justify-content: space-around;
-  position: fixed;
-  bottom: 0px;
+  position: sticky;
+  bottom: 0;
 
   .navbar-button {
     display: flex;

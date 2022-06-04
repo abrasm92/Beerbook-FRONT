@@ -4,7 +4,6 @@ import CheckLogged from "./components/CheckLogged/CheckLogged";
 import CheckNotLogged from "./components/CheckNotLogged/CheckNotLogged";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import AlertErrorModal from "./modals/AlertErrorModal/AlertErrorModal";
 import BeerListPage from "./pages/BeerListPage/BeerListPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
@@ -22,7 +21,6 @@ function App() {
   }
   return (
     <>
-      <AlertErrorModal />
       <Header />
       <Routes>
         <Route

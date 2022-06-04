@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a AlertModal componet When it's rendered Then it should show always the same as snapshot 1`] = `
+<div
+  className="sc-bczRLJ eYbbpD"
+>
+  <section
+    className="loading-modal"
+  />
+</div>
+`;

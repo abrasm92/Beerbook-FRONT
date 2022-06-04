@@ -1,9 +1,13 @@
 import AlertErrorModalSyles from "./AlertErrorModalStyles";
 
-const AlertErrorModal = (): JSX.Element => {
+type TextModal = {
+  text: string;
+};
+
+const AlertErrorModal = ({ text }: TextModal): JSX.Element => {
   return (
     <AlertErrorModalSyles>
-      <p className="alert-modal">El usuario o contraseña son incorrectos</p>
+      <p className="alert-modal">{text}</p>
     </AlertErrorModalSyles>
   );
 };
