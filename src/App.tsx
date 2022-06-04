@@ -1,4 +1,5 @@
 import jwtDecode from "jwt-decode";
+import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import CheckLogged from "./components/CheckLogged/CheckLogged";
 import CheckNotLogged from "./components/CheckNotLogged/CheckNotLogged";
@@ -17,11 +18,14 @@ import { UserResponseApi } from "./types/interfaces";
 function App() {
   const token = localStorage.getItem("token");
   const dispatch = useAppDispatch();
-  if (token) {
-    const { username, id }: UserResponseApi = jwtDecode(token);
 
-    dispatch(userLoginActionCreator({ name: username, id }));
-  }
+  useEffect(() => {
+    if (token) {
+      const { username, id }: UserResponseApi = jwtDecode(token);
+
+      dispatch(userLoginActionCreator({ name: username, id }));
+    }
+  }, [dispatch, token]);
 
   const { alertDone, alertWrong, text, loading } = useAppSelector(
     (state) => state.ui

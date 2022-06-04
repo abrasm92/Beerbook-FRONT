@@ -48,11 +48,11 @@ export const userLoginThunk =
         `${process.env.REACT_APP_API_URL}user/login`,
         user
       );
-      dispatch(loadingOffActionCreator());
       const token: string = data.token;
       const { username, id }: UserResponseApi = jwtDecode(token);
       const message: string = `Bienvenido ${username}`;
       dispatch(userLoginActionCreator({ name: username, id }));
+      dispatch(loadingOffActionCreator());
       dispatch(openAlertDoneActionCreator(message));
       setTimeout(() => {
         dispatch(closeAlertDoneActionCreator());
