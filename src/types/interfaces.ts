@@ -10,7 +10,7 @@ export interface LoginUser {
   password: string;
 }
 
-export interface useData {
+export interface UserData {
   name: string;
   username: string;
   email: string;
@@ -25,7 +25,7 @@ export interface UserState {
   name: string;
   id: string;
   logged: boolean;
-  data: useData;
+  data: UserData;
 }
 
 export interface BasicUser {
@@ -64,7 +64,7 @@ export interface BeerState {
 
 export interface UI {
   text: string;
-  alertDone: Boolean;
-  alertWrong: Boolean;
-  loading: Boolean;
+  alertDone: boolean;
+  alertWrong: boolean;
+  loading: boolean;
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const AlertModalSyles = styled.section`
+const AlertModalStyles = styled.section`
   background-color: #43a047;
   width: 100vw;
   height: 70px;
@@ -37,4 +37,4 @@ const AlertModalSyles = styled.section`
     }
   }
 `;
-export default AlertModalSyles;
+export default AlertModalStyles;

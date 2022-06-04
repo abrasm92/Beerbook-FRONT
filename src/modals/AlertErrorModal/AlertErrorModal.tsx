@@ -1,4 +1,4 @@
-import AlertErrorModalSyles from "./AlertErrorModalStyles";
+import AlertErrorModalStyles from "./AlertErrorModalStyles";
 
 type TextModal = {
   text: string;
@@ -6,9 +6,9 @@ type TextModal = {
 
 const AlertErrorModal = ({ text }: TextModal): JSX.Element => {
   return (
-    <AlertErrorModalSyles>
+    <AlertErrorModalStyles>
       <p className="alert-modal">{text}</p>
-    </AlertErrorModalSyles>
+    </AlertErrorModalStyles>
   );
 };
 export default AlertErrorModal;
