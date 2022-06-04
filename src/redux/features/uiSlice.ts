@@ -11,7 +11,15 @@ const initialState: UI = {
 const uiSlice = createSlice({
   name: "ui",
   initialState,
-  reducers: {},
+  reducers: {
+    loadingOn: () => ({ ...initialState, loading: true }),
+    loadingOff: () => ({ ...initialState, loading: false }),
+  },
 });
 
 export default uiSlice.reducer;
+
+export const {
+  loadingOn: loadingOnActionCreator,
+  loadingOff: loadingOffActionCreator,
+} = uiSlice.actions;
