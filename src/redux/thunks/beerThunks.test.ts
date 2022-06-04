@@ -20,11 +20,11 @@ describe("Given a loadBeersThunk function", () => {
       axios.get = jest.fn().mockRejectedValue(new Error());
       const dispatch = jest.fn();
       const thunk = loadBeersThunk();
-      const expectError = new Error();
+      const expectCalls = 3;
 
-      const response = await thunk(dispatch);
+      await thunk(dispatch);
 
-      expect(response).toEqual(expectError);
+      expect(dispatch).toHaveBeenCalledTimes(expectCalls);
     });
   });
 });

@@ -6,6 +6,8 @@ import { customErrorApi } from "../../utils/customerrorApi";
 import {
   closeAlertDoneActionCreator,
   closeAlertWrongActionCreator,
+  loadingOffActionCreator,
+  loadingOnActionCreator,
   openAlertDoneActionCreator,
   openAlertWrongActionCreator,
 } from "../features/uiSlice";
@@ -13,11 +15,13 @@ import { userLoginActionCreator } from "../features/userSlice";
 
 export const userRegisterThunk = (user: User) => async (dispatch: Dispatch) => {
   try {
+    dispatch(loadingOnActionCreator());
     const { status } = await axios.post(
       `${process.env.REACT_APP_API_URL}user/register`,
       user
     );
     if (status === 201) {
+      dispatch(loadingOffActionCreator());
       const message: string = "Usuario creado";
       dispatch(openAlertDoneActionCreator(message));
       setTimeout(() => {
@@ -27,6 +31,7 @@ export const userRegisterThunk = (user: User) => async (dispatch: Dispatch) => {
       throw new Error();
     }
   } catch (error: any) {
+    dispatch(loadingOffActionCreator());
     const message = customErrorApi(error);
     dispatch(openAlertWrongActionCreator(message));
     setTimeout(() => {
@@ -38,10 +43,12 @@ export const userRegisterThunk = (user: User) => async (dispatch: Dispatch) => {
 export const userLoginThunk =
   (user: LoginUser) => async (dispatch: Dispatch) => {
     try {
+      dispatch(loadingOnActionCreator());
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}user/login`,
         user
       );
+      dispatch(loadingOffActionCreator());
       const token: string = data.token;
       const { username, id }: UserResponseApi = jwtDecode(token);
       const message: string = `Bienvenido ${username}`;
@@ -53,6 +60,7 @@ export const userLoginThunk =
 
       localStorage.setItem("token", token);
     } catch (error: any) {
+      dispatch(loadingOffActionCreator());
       const message = customErrorApi(error);
       dispatch(openAlertWrongActionCreator(message));
       setTimeout(() => {
