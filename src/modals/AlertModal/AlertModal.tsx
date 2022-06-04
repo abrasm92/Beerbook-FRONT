@@ -1,9 +1,13 @@
 import AlertModalSyles from "./AlertModalStyles";
 
-const AlertModal = (): JSX.Element => {
+type TextModal = {
+  text: string;
+};
+
+const AlertModal = ({ text }: TextModal): JSX.Element => {
   return (
     <AlertModalSyles>
-      <p className="alert-modal">El usuario ha sido registrado</p>
+      <p className="alert-modal">{text}</p>
     </AlertModalSyles>
   );
 };
