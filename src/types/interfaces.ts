@@ -10,10 +10,22 @@ export interface LoginUser {
   password: string;
 }
 
+export interface useData {
+  name: string;
+  username: string;
+  email: string;
+  image: string | null;
+  creations: number;
+  favorites: number;
+  age: number;
+  country: string;
+  admin: boolean;
+}
 export interface UserState {
   name: string;
   id: string;
   logged: boolean;
+  data: useData;
 }
 
 export interface BasicUser {

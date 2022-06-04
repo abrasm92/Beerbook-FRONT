@@ -5,6 +5,17 @@ const initialState: UserState = {
   name: "",
   id: "",
   logged: false,
+  data: {
+    name: "",
+    username: "",
+    email: "",
+    image: null,
+    creations: NaN,
+    favorites: NaN,
+    age: NaN,
+    country: "",
+    admin: false,
+  },
 };
 
 const userSlice = createSlice({
@@ -12,7 +23,9 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     userLogin: (user: UserState, action: PayloadAction<BasicUser>) => ({
-      ...action.payload,
+      ...user,
+      name: action.payload.name,
+      id: action.payload.id,
       logged: true,
     }),
     userLogout: () => initialState,

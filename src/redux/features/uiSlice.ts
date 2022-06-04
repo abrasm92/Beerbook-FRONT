@@ -12,20 +12,20 @@ const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    loadingOn: () => ({ ...initialState, loading: true }),
-    loadingOff: () => ({ ...initialState, loading: false }),
+    loadingOn: (ui: UI) => ({ ...ui, loading: true }),
+    loadingOff: (ui: UI) => ({ ...ui, loading: false }),
     openAlertDone: (ui: UI, action: PayloadAction<string>) => ({
-      ...initialState,
+      ...ui,
       text: action.payload,
       alertDone: true,
     }),
-    closeAlertDone: () => ({ ...initialState, text: "", alertDone: false }),
+    closeAlertDone: (ui: UI) => ({ ...ui, text: "", alertDone: false }),
     openAlertWrong: (ui: UI, action: PayloadAction<string>) => ({
-      ...initialState,
+      ...ui,
       text: action.payload,
       alertWrong: true,
     }),
-    closeAlertWrong: () => ({ ...initialState, text: "", alertWrong: false }),
+    closeAlertWrong: (ui: UI) => ({ ...ui, text: "", alertWrong: false }),
   },
 });
 

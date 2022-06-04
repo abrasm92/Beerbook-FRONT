@@ -16,11 +16,33 @@ describe("Given a userSlice", () => {
         name: "admin",
         id: "1",
         logged: true,
+        data: {
+          name: "",
+          username: "",
+          email: "",
+          image: null,
+          creations: NaN,
+          favorites: NaN,
+          age: NaN,
+          country: "",
+          admin: false,
+        },
       };
       const initialState: UserState = {
         name: "",
         id: "",
         logged: false,
+        data: {
+          name: "",
+          username: "",
+          email: "",
+          image: null,
+          creations: NaN,
+          favorites: NaN,
+          age: NaN,
+          country: "",
+          admin: false,
+        },
       };
 
       const action = userLoginActionCreator(user);
@@ -39,11 +61,33 @@ describe("Given a userSlice", () => {
         name: "admin",
         id: "1",
         logged: true,
+        data: {
+          name: "",
+          username: "",
+          email: "",
+          image: null,
+          creations: NaN,
+          favorites: NaN,
+          age: NaN,
+          country: "",
+          admin: false,
+        },
       };
       const unLoggedUser: UserState = {
         name: "",
         id: "",
         logged: false,
+        data: {
+          name: "",
+          username: "",
+          email: "",
+          image: null,
+          creations: NaN,
+          favorites: NaN,
+          age: NaN,
+          country: "",
+          admin: false,
+        },
       };
 
       const action = userLogoutActionCreator();
