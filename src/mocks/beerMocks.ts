@@ -10,8 +10,8 @@ export const singleBeer: BeerDataApi = {
   country: "EEUU",
   description:
     "Cerveza de color ámbar, con aromas intensos de cítricos, con final lig…",
-  image: null,
-  owner: null,
+  image: "",
+  owner: "",
 };
 
 export const groupOfBeer: BeerDataApi[] = [
@@ -25,8 +25,8 @@ export const groupOfBeer: BeerDataApi[] = [
     country: "EEUU",
     description:
       "Cerveza de color ámbar, con aromas intensos de cítricos, con final lig…",
-    image: null,
-    owner: null,
+    image: "",
+    owner: "",
   },
   {
     id: "6297a8369ab4b03687f15b73",
@@ -38,8 +38,8 @@ export const groupOfBeer: BeerDataApi[] = [
     country: "EEUU",
     description:
       "Cerveza negra con gran espuma color marrón con arómas predominantes a …",
-    image: null,
-    owner: null,
+    image: "",
+    owner: "",
   },
   {
     id: "6297a8369ab4b03687f15b7a",
@@ -47,11 +47,11 @@ export const groupOfBeer: BeerDataApi[] = [
     brewery: "Brasserie La Binchoise",
     style: "Belgian Strong Ale",
     degrees: 8.5,
-    IBU: null,
+    IBU: NaN,
     country: "Bélgica",
     description:
       "Cerveza rojiza oscura con espuma densa, cuerpo medio suave y aromatica…",
-    image: null,
-    owner: null,
+    image: "",
+    owner: "",
   },
 ];

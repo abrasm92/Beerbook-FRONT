@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import LoginFormPage from "../../pages/LoginPage/LoginFormPage";
@@ -35,6 +35,36 @@ describe("Given CheckNotLogged component", () => {
       );
 
       expect(mockedUsedNavigate).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's instantiated with user no logged", () => {
+    test("Then it should call navigate to redirect", () => {
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "", id: "", logged: false },
+        reducers: {},
+      });
+
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
+
+      render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <CheckNotLogged>
+              <LoginFormPage />
+            </CheckNotLogged>
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const buttonLogin = screen.getByRole("button", {
+        name: "Iniciar sesión",
+      });
+
+      expect(buttonLogin).toBeInTheDocument();
     });
   });
 });
