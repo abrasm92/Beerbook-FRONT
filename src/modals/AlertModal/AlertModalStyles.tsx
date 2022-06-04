@@ -38,7 +38,7 @@ const AlertModalSyles = styled.section`
     }
   } */
 
-  animation: movein 1s ease forwards, moveout 1s 5s ease forwards;
+  animation: movein 1s ease forwards, moveout 1s 4s ease forwards;
 
   @keyframes movein {
     from {

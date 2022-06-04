@@ -22,7 +22,6 @@ function App() {
   }
   return (
     <>
-      <AlertModal text="Has iniciado sesión" />
       <Header />
       <Routes>
         <Route

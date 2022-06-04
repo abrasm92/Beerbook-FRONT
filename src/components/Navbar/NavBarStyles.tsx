@@ -7,7 +7,7 @@ const NavbarStyles = styled.nav`
   display: flex;
   justify-content: space-around;
   position: sticky;
-  bottom: 0px;
+  bottom: 0;
 
   .navbar-button {
     display: flex;

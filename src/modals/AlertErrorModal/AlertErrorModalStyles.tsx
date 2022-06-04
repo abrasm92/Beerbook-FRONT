@@ -17,7 +17,7 @@ const AlertErrorModalSyles = styled.section`
     font-weight: 700;
   }
 
-  animation: movein 1s ease forwards, moveout 1s 5s ease forwards;
+  animation: movein 1s ease forwards, moveout 1s 4s ease forwards;
 
   @keyframes movein {
     from {
