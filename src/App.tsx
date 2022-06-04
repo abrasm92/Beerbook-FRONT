@@ -4,11 +4,14 @@ import CheckLogged from "./components/CheckLogged/CheckLogged";
 import CheckNotLogged from "./components/CheckNotLogged/CheckNotLogged";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
+import AlertErrorModal from "./modals/AlertErrorModal/AlertErrorModal";
+import AlertModal from "./modals/AlertModal/AlertModal";
+import LoadingModal from "./modals/LoadingModal/LoadingModal";
 import BeerListPage from "./pages/BeerListPage/BeerListPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
 import { userLoginActionCreator } from "./redux/features/userSlice";
-import { useAppDispatch } from "./redux/hooks";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { UserResponseApi } from "./types/interfaces";
 
 function App() {
@@ -19,8 +22,16 @@ function App() {
 
     dispatch(userLoginActionCreator({ name: username, id }));
   }
+
+  const { alertDone, alertWrong, text, loading } = useAppSelector(
+    (state) => state.ui
+  );
+
   return (
     <>
+      {loading && <LoadingModal />}
+      {alertDone && <AlertModal text={text} />}
+      {alertWrong && <AlertErrorModal text={text} />}
       <Header />
       <Routes>
         <Route

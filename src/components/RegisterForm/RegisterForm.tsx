@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisterFormStyles from "./RegisterFormStyles";
 
 const RegisterForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const initialFormValue = {
     name: "",
@@ -20,7 +22,7 @@ const RegisterForm = (): JSX.Element => {
 
   const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    userRegisterThunk(userData);
+    dispatch(userRegisterThunk(userData));
     setUserData(initialFormValue);
   };
 
