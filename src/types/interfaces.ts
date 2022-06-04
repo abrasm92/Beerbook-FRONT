@@ -49,3 +49,10 @@ export interface BeerState {
   page: number;
   singleBeer: BeerDataApi;
 }
+
+export interface UI {
+  text: string;
+  alertDone: Boolean;
+  alertWrong: Boolean;
+  loading: Boolean;
+}
