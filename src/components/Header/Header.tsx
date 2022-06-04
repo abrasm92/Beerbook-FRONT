@@ -15,6 +15,7 @@ const Header = (): JSX.Element => {
   const logOutUser = () => {
     localStorage.removeItem("token");
     dispatch(userLogoutActionCreator());
+
     navigate("/iniciar-sesion");
   };
 

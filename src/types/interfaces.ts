@@ -48,11 +48,11 @@ export interface BeerDataApi {
   brewery: string;
   style: string;
   degrees: number;
-  IBU: number | null;
+  IBU: number;
   country: string;
-  description: string | null;
-  image: string | null;
-  owner: string | null;
+  description: string;
+  image: string;
+  owner: string;
   id: string;
 }
 

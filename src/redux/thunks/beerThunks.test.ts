@@ -2,6 +2,8 @@ import axios from "axios";
 import { groupOfBeer } from "../../mocks/beerMocks";
 import loadBeersThunk from "./beerThunks";
 
+jest.useFakeTimers();
+
 describe("Given a loadBeersThunk function", () => {
   describe("When it's invoked and do right", () => {
     test("Then it should call dispatch with a loadbeersActionCreator", async () => {
@@ -20,9 +22,11 @@ describe("Given a loadBeersThunk function", () => {
       axios.get = jest.fn().mockRejectedValue(new Error());
       const dispatch = jest.fn();
       const thunk = loadBeersThunk();
-      const expectCalls = 3;
+      const expectCalls = 4;
 
       await thunk(dispatch);
+
+      jest.runOnlyPendingTimers();
 
       expect(dispatch).toHaveBeenCalledTimes(expectCalls);
     });
