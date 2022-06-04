@@ -1,9 +1,8 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import LoginFormPage from "../../pages/LoginPage/LoginFormPage";
-import { BeerDataApi, BeerState } from "../../types/interfaces";
 import CheckNotLogged from "./CheckNotLogged";
 
 const mockedUsedNavigate = jest.fn();
