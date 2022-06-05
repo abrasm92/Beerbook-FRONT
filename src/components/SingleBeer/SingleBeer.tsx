@@ -11,7 +11,6 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const deleteBeer = () => {
-    debugger;
     dispatch(deleteBeerThunk(beer.id));
   };
 
