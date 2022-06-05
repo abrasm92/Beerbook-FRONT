@@ -72,7 +72,7 @@ export const createBeerThunk =
       dispatch(loadingOnActionCreator());
       const {
         data: { message, beer },
-      } = await axios.post(`${process.env.REACT_APP_LOCAL}beer/`, newBeer, {
+      } = await axios.post(`${process.env.REACT_APP_API_URL}beer/`, newBeer, {
         headers: {
           authorization: `Bearer ${token}`,
         },
