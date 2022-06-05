@@ -13,22 +13,28 @@ const CreateEditBeerForm = (): JSX.Element => {
     image: "",
   };
 
-  const [userData, setUserData] = useState(initialFormValue);
+  const [beerData, setBeerData] = useState(initialFormValue);
   const [file, setFile] = useState(false);
 
   useEffect(() => {
-    if (userData.image !== "") {
+    if (beerData.image !== "") {
       setFile(true);
     }
-  }, [userData.image]);
+  }, [beerData.image]);
 
-  const changeUserData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({ ...userData, [event.target.id]: event.target.value });
+  const changeBeerData = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBeerData({ ...beerData, [event.target.id]: event.target.value });
+  };
+
+  const changeBeerDescription = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setBeerData({ ...beerData, [event.target.id]: event.target.value });
   };
 
   const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    setUserData(initialFormValue);
+    setBeerData(initialFormValue);
     setFile(false);
   };
 
@@ -42,24 +48,24 @@ const CreateEditBeerForm = (): JSX.Element => {
       <input
         type="text"
         id="name"
-        value={userData.name}
-        onChange={changeUserData}
+        value={beerData.name}
+        onChange={changeBeerData}
         placeholder="Nombre de la cerveza"
       />
       <label htmlFor="brewery">Fabricante</label>
       <input
         type="text"
         id="brewery"
-        value={userData.brewery}
-        onChange={changeUserData}
+        value={beerData.brewery}
+        onChange={changeBeerData}
         placeholder="Fabricante"
       />
       <label htmlFor="style">Estilo</label>
       <input
         type="text"
         id="style"
-        value={userData.style}
-        onChange={changeUserData}
+        value={beerData.style}
+        onChange={changeBeerData}
         placeholder="Estilo"
       />
       <div className="formulary-number-inputs">
@@ -67,8 +73,8 @@ const CreateEditBeerForm = (): JSX.Element => {
         <input
           type="number"
           id="IBU"
-          value={userData.IBU}
-          onChange={changeUserData}
+          value={beerData.IBU}
+          onChange={changeBeerData}
           placeholder="IBU"
           className="number-input"
         />
@@ -76,8 +82,8 @@ const CreateEditBeerForm = (): JSX.Element => {
         <input
           type="number"
           id="degrees"
-          value={userData.degrees}
-          onChange={changeUserData}
+          value={beerData.degrees}
+          onChange={changeBeerData}
           placeholder="Grados"
           className="number-input"
         />
@@ -86,15 +92,15 @@ const CreateEditBeerForm = (): JSX.Element => {
       <input
         type="text"
         id="country"
-        value={userData.country}
-        onChange={changeUserData}
+        value={beerData.country}
+        onChange={changeBeerData}
         placeholder="País"
       />
       <label htmlFor="description">Descripción</label>
       <textarea
         id="description"
-        value={userData.description}
-        /* onChange={changeUserData} */
+        value={beerData.description}
+        onChange={changeBeerDescription}
         placeholder="Descripción"
       />
       <div className={file ? "fileUpload--On" : "fileUpload"}>
@@ -104,7 +110,7 @@ const CreateEditBeerForm = (): JSX.Element => {
           type="file"
           className="upload formulary--image-selector"
           required
-          onChange={changeUserData}
+          onChange={changeBeerData}
         />
         <span>Imagen</span>
       </div>
