@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useAppDispatch } from "../../redux/hooks";
+import { createBeerThunk } from "../../redux/thunks/beerThunks";
 import CreateEditBeerFormStyles from "./CreateEditBeerFormStyles";
 
 const CreateEditBeerForm = (): JSX.Element => {
@@ -12,6 +14,7 @@ const CreateEditBeerForm = (): JSX.Element => {
     description: "",
     image: "",
   };
+  const dispatch = useAppDispatch();
 
   const [beerData, setBeerData] = useState(initialFormValue);
   const [file, setFile] = useState(false);
@@ -26,7 +29,9 @@ const CreateEditBeerForm = (): JSX.Element => {
     setBeerData({
       ...beerData,
       [event.target.id]:
-        event.target.type === "file" ? event.target.files : event.target.value,
+        event.target.type === "file"
+          ? event.target.files![0]
+          : event.target.value,
     });
   };
 
@@ -36,18 +41,20 @@ const CreateEditBeerForm = (): JSX.Element => {
     setBeerData({ ...beerData, [event.target.id]: event.target.value });
   };
 
-  const newBeer = new FormData();
-  newBeer.append("name", beerData.name);
-  newBeer.append("brewery", beerData.brewery);
-  newBeer.append("style", beerData.style);
-  newBeer.append("degrees", beerData.degrees);
-  newBeer.append("IBU", beerData.IBU);
-  newBeer.append("country", beerData.country);
-  newBeer.append("description", beerData.description);
-  newBeer.append("image", beerData.image);
-
   const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
+
+    const newBeer = new FormData();
+    newBeer.append("name", beerData.name);
+    newBeer.append("brewery", beerData.brewery);
+    newBeer.append("style", beerData.style);
+    newBeer.append("degrees", beerData.degrees);
+    newBeer.append("IBU", beerData.IBU);
+    newBeer.append("country", beerData.country);
+    newBeer.append("description", beerData.description);
+    newBeer.append("image", beerData.image);
+
+    dispatch(createBeerThunk(newBeer));
     setBeerData(initialFormValue);
     setFile(false);
   };

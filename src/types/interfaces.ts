@@ -68,3 +68,14 @@ export interface UI {
   alertWrong: boolean;
   loading: boolean;
 }
+
+export interface BeerData {
+  name: string;
+  brewery: string;
+  style: string;
+  degrees: number;
+  IBU: number;
+  country: string;
+  description: string;
+  image: string;
+}

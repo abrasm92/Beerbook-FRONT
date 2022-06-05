@@ -9,6 +9,7 @@ import AlertErrorModal from "./modals/AlertErrorModal/AlertErrorModal";
 import AlertModal from "./modals/AlertModal/AlertModal";
 import LoadingModal from "./modals/LoadingModal/LoadingModal";
 import BeerListPage from "./pages/BeerListPage/BeerListPage";
+import CreateEditBeerFormPage from "./pages/CreateEditBeerFormPage/CreateEditBeerFormPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
 import { userLoginActionCreator } from "./redux/features/userSlice";
@@ -37,6 +38,7 @@ function App() {
       {alertDone && <AlertModal text={text} />}
       {alertWrong && <AlertErrorModal text={text} />}
       <Header />
+
       <Routes>
         <Route
           path="/iniciar-sesion"
@@ -52,6 +54,14 @@ function App() {
           element={
             <CheckLogged>
               <BeerListPage />
+            </CheckLogged>
+          }
+        />
+        <Route
+          path="/crear-cerveza"
+          element={
+            <CheckLogged>
+              <CreateEditBeerFormPage />
             </CheckLogged>
           }
         />
