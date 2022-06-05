@@ -10,8 +10,9 @@ type PropBeer = {
 const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const deleteBeer = (id: string) => {
-    dispatch(deleteBeerThunk(id));
+  const deleteBeer = () => {
+    debugger;
+    dispatch(deleteBeerThunk(beer.id));
   };
 
   return (
@@ -25,8 +26,8 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
         <p>
           {beer.style} · {beer.degrees}
         </p>
+        <button onClick={deleteBeer}>Eliminar</button>
       </div>
-      <button onClick={() => deleteBeer(beer.id)}>Eliminar</button>
     </SingleBeerStyles>
   );
 };

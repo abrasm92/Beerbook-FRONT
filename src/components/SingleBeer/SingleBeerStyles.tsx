@@ -13,6 +13,15 @@ const SingleBeerStyles = styled.li`
   border-bottom: 1px solid #b6b6b6;
   cursor: pointer;
 
+  button {
+    background-color: #0d47a1;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    padding: 7px;
+    cursor: pointer;
+  }
+
   img {
     width: 60px;
     height: 125px;
