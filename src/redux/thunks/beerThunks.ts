@@ -2,6 +2,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import { customErrorApi } from "../../utils/customerrorApi";
 import {
+  createBeerActionCreator,
   deleteBeerActionCreator,
   loadBeersActionCreator,
 } from "../features/beerSlice";
@@ -45,7 +46,7 @@ export const deleteBeerThunk = (id: string) => async (dispatch: Dispatch) => {
       data: { message },
     } = await axios.delete(`${process.env.REACT_APP_API_URL}beer/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
     });
     dispatch(loadingOffActionCreator());
@@ -63,3 +64,31 @@ export const deleteBeerThunk = (id: string) => async (dispatch: Dispatch) => {
     }, 4500);
   }
 };
+
+export const createBeerThunk =
+  (newBeer: FormData) => async (dispatch: Dispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+      dispatch(loadingOnActionCreator());
+      const {
+        data: { message, beer },
+      } = await axios.post(`${process.env.REACT_APP_API_URL}beer/`, newBeer, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch(loadingOffActionCreator());
+      dispatch(openAlertDoneActionCreator(message));
+      dispatch(createBeerActionCreator(beer));
+      setTimeout(() => {
+        dispatch(closeAlertDoneActionCreator());
+      }, 4500);
+    } catch (error: any) {
+      dispatch(loadingOffActionCreator());
+      const message = customErrorApi(error);
+      dispatch(openAlertWrongActionCreator(message));
+      setTimeout(() => {
+        dispatch(closeAlertWrongActionCreator());
+      }, 4500);
+    }
+  };

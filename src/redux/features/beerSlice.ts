@@ -35,6 +35,11 @@ const beerSlice = createSlice({
         (beer) => beer.id !== action.payload
       ),
     }),
+    createBeer: (beer, action: PayloadAction<BeerDataApi>): BeerState => ({
+      ...beer,
+      listOfBeers: beer.listOfBeers.concat(action.payload),
+      singleBeer: action.payload,
+    }),
   },
 });
 
@@ -43,4 +48,5 @@ export default beerSlice.reducer;
 export const {
   loadBeers: loadBeersActionCreator,
   deleteBeer: deleteBeerActionCreator,
+  createBeer: createBeerActionCreator,
 } = beerSlice.actions;
