@@ -23,7 +23,11 @@ const CreateEditBeerForm = (): JSX.Element => {
   }, [beerData.image]);
 
   const changeBeerData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setBeerData({ ...beerData, [event.target.id]: event.target.value });
+    setBeerData({
+      ...beerData,
+      [event.target.id]:
+        event.target.type === "file" ? event.target.files : event.target.value,
+    });
   };
 
   const changeBeerDescription = (
@@ -31,6 +35,16 @@ const CreateEditBeerForm = (): JSX.Element => {
   ) => {
     setBeerData({ ...beerData, [event.target.id]: event.target.value });
   };
+
+  const newBeer = new FormData();
+  newBeer.append("name", beerData.name);
+  newBeer.append("brewery", beerData.brewery);
+  newBeer.append("style", beerData.style);
+  newBeer.append("degrees", beerData.degrees);
+  newBeer.append("IBU", beerData.IBU);
+  newBeer.append("country", beerData.country);
+  newBeer.append("description", beerData.description);
+  newBeer.append("image", beerData.image);
 
   const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
