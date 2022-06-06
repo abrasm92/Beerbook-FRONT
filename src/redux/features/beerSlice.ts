@@ -32,7 +32,7 @@ const beerSlice = createSlice({
     deleteBeer: (beer, action: PayloadAction<string>): BeerState => ({
       ...beer,
       listOfBeers: beer.listOfBeers.filter(
-        (beer) => beer.id !== action.payload
+        (currentBeer) => currentBeer.id !== action.payload
       ),
     }),
     createBeer: (beer, action: PayloadAction<BeerDataApi>): BeerState => ({

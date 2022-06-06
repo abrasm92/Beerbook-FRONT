@@ -1,6 +1,7 @@
-import { groupOfBeer } from "../../mocks/beerMocks";
+import { groupOfBeer, singleBeer } from "../../mocks/beerMocks";
 import { BeerState } from "../../types/interfaces";
 import beerReducer, {
+  createBeerActionCreator,
   deleteBeerActionCreator,
   loadBeersActionCreator,
 } from "./beerSlice";
@@ -81,6 +82,34 @@ describe("Given a beerSlice", () => {
       };
 
       const action = deleteBeerActionCreator(groupOfBeer[0].id);
+
+      const recivedValue = beerReducer(initialState, action);
+
+      expect(recivedValue.listOfBeers).toEqual(expectList);
+    });
+  });
+
+  describe("When it's invoked createBeerActionCreator", () => {
+    test("Then it should change state of listOfBeers from [] to array with list of beers and new beer", () => {
+      const expectList = groupOfBeer.concat(singleBeer);
+      const initialState: BeerState = {
+        listOfBeers: groupOfBeer,
+        page: 0,
+        singleBeer: {
+          name: "",
+          brewery: "",
+          style: "",
+          degrees: 0,
+          IBU: NaN,
+          country: "",
+          description: "",
+          image: "",
+          owner: "",
+          id: "",
+        },
+      };
+
+      const action = createBeerActionCreator(singleBeer);
 
       const recivedValue = beerReducer(initialState, action);
 
