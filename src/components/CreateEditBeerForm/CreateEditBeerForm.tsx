@@ -5,13 +5,9 @@ import { createBeerThunk } from "../../redux/thunks/beerThunks";
 import CreateEditBeerFormStyles from "./CreateEditBeerFormStyles";
 
 const CreateEditBeerForm = (): JSX.Element => {
-  const { id } = useParams();
+  const path = window.location;
 
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
-
-  const initialFormValue = {
+  let initialFormValue = {
     name: "",
     brewery: "",
     style: "",
@@ -21,6 +17,23 @@ const CreateEditBeerForm = (): JSX.Element => {
     description: "",
     image: "",
   };
+
+  if (path.href.includes("editar-cerveza")) {
+    initialFormValue = {
+      name: "",
+      brewery: "",
+      style: "",
+      degrees: "",
+      IBU: "",
+      country: "",
+      description: "",
+      image: "",
+    };
+  }
+
+  const { id } = useParams();
+
+  useEffect(() => {}, [id]);
 
   const dispatch = useAppDispatch();
 
