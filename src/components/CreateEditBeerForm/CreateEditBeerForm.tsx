@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { createBeerThunk } from "../../redux/thunks/beerThunks";
 import CreateEditBeerFormStyles from "./CreateEditBeerFormStyles";
 
 const CreateEditBeerForm = (): JSX.Element => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    console.log(id);
+  }, [id]);
+
   const initialFormValue = {
     name: "",
     brewery: "",
@@ -14,6 +21,7 @@ const CreateEditBeerForm = (): JSX.Element => {
     description: "",
     image: "",
   };
+
   const dispatch = useAppDispatch();
 
   const [beerData, setBeerData] = useState(initialFormValue);

@@ -48,11 +48,18 @@ function App() {
             </CheckNotLogged>
           }
         />
-        <Route path="/registro" element={<RegisterFormPage />} />
+        <Route
+          path="/registro"
+          element={
+            <CheckNotLogged>
+              <RegisterFormPage />
+            </CheckNotLogged>
+          }
+        />
         <Route
           path="/cervezas-del-mundo"
           element={
-            <CheckLogged>
+            <CheckLogged /*  path="/cervezas-del-mundo" */>
               <BeerListPage />
             </CheckLogged>
           }
@@ -60,7 +67,15 @@ function App() {
         <Route
           path="/crear-cerveza"
           element={
-            <CheckLogged>
+            <CheckLogged /* path="/crear-cerveza" */>
+              <CreateEditBeerFormPage />
+            </CheckLogged>
+          }
+        />
+        <Route
+          path="/editar-cerveza/:id"
+          element={
+            <CheckLogged /* path="/editar-cerveza/:id" */>
               <CreateEditBeerFormPage />
             </CheckLogged>
           }

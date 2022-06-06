@@ -17,6 +17,12 @@ jest.mock("react-router-dom", () => ({
 describe("Given a CheckLogged component", () => {
   describe("When it's instantiated with user not logged", () => {
     test("Then it should call navigate to redirect", () => {
+      Object.defineProperty(window, "localStorage", {
+        value: {
+          getItem: jest.fn(() => null),
+        },
+        writable: true,
+      });
       const userMockSlice = createSlice({
         name: "user",
         initialState: { name: "", id: "", logged: false },
@@ -42,6 +48,12 @@ describe("Given a CheckLogged component", () => {
 
   describe("When it's instantiated with user logged", () => {
     test("Then it should show a list item from list page", () => {
+      Object.defineProperty(window, "localStorage", {
+        value: {
+          getItem: jest.fn(() => "token"),
+        },
+        writable: true,
+      });
       const userMockSlice = createSlice({
         name: "user",
         initialState: { name: "admin", id: "1234", logged: true },
