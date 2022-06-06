@@ -92,3 +92,31 @@ export const createBeerThunk =
       }, 4500);
     }
   };
+
+export const getBeerToUpdate =
+  (id: string | undefined) => async (dispatch: Dispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+      dispatch(loadingOnActionCreator());
+      const {
+        data: { message, beer },
+      } = await axios.get(`${process.env.REACT_APP_API_URL}beer/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch(loadingOffActionCreator());
+      dispatch(openAlertDoneActionCreator(message));
+      dispatch(createBeerActionCreator(beer));
+      setTimeout(() => {
+        dispatch(closeAlertDoneActionCreator());
+      }, 4500);
+    } catch (error: any) {
+      dispatch(loadingOffActionCreator());
+      const message = customErrorApi(error);
+      dispatch(openAlertWrongActionCreator(message));
+      setTimeout(() => {
+        dispatch(closeAlertWrongActionCreator());
+      }, 4500);
+    }
+  };

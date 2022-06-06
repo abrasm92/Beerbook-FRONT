@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
-import { createBeerThunk } from "../../redux/thunks/beerThunks";
+import {
+  createBeerThunk,
+  getBeerToUpdate,
+} from "../../redux/thunks/beerThunks";
 import CreateEditBeerFormStyles from "./CreateEditBeerFormStyles";
 
 const CreateEditBeerForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const path = window.location;
+  const { id } = useParams();
 
   let initialFormValue = {
     name: "",
@@ -17,25 +22,21 @@ const CreateEditBeerForm = (): JSX.Element => {
     description: "",
     image: "",
   };
-
-  if (path.href.includes("editar-cerveza")) {
-    initialFormValue = {
-      name: "",
-      brewery: "",
-      style: "",
-      degrees: "",
-      IBU: "",
-      country: "",
-      description: "",
-      image: "",
-    };
-  }
-
-  const { id } = useParams();
-
-  useEffect(() => {}, [id]);
-
-  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (path.href.includes("editar-cerveza")) {
+      const dataBeer: any = dispatch(getBeerToUpdate(id));
+      initialFormValue = {
+        name: dataBeer.name,
+        brewery: dataBeer.brewery,
+        style: dataBeer.style,
+        degrees: dataBeer.degrees,
+        IBU: dataBeer.IBU,
+        country: dataBeer.country,
+        description: dataBeer.description,
+        image: dataBeer.image,
+      };
+    }
+  });
 
   const [beerData, setBeerData] = useState(initialFormValue);
   const [file, setFile] = useState(false);

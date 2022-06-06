@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
-import CreateEditBeerFormPage from "./CreateEditBeerFormPage";
+import CreateBeerFormPage from "./CreateBeerFormPage";
 
 describe("Given a CreateEditBeerFormPage component", () => {
   describe("When it's rendered", () => {
@@ -12,7 +12,7 @@ describe("Given a CreateEditBeerFormPage component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateEditBeerFormPage />
+            <CreateBeerFormPage />
           </Provider>
         </BrowserRouter>
       );
