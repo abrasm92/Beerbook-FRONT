@@ -15,6 +15,7 @@ const DetailBeerStyles = styled.div`
 
   .detail-beer--general-info {
     display: flex;
+    align-items: flex-start;
   }
 
   .detail-beer--description {
