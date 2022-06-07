@@ -4,6 +4,7 @@ import { customErrorApi } from "../../utils/customerrorApi";
 import {
   createBeerActionCreator,
   deleteBeerActionCreator,
+  editBeerActionCreator,
   loadBeersActionCreator,
   loadSingleBeerActionCreator,
 } from "../features/beerSlice";
@@ -109,9 +110,6 @@ export const getBeerByIdThunk =
       });
       dispatch(loadingOffActionCreator());
       dispatch(loadSingleBeerActionCreator(beer));
-      setTimeout(() => {
-        dispatch(closeAlertDoneActionCreator());
-      }, 4500);
     } catch (error: any) {
       dispatch(loadingOffActionCreator());
       const message = customErrorApi(error);
@@ -138,9 +136,10 @@ export const updateBeerThunk =
           },
         }
       );
+
       dispatch(loadingOffActionCreator());
       dispatch(openAlertDoneActionCreator(message));
-      dispatch(createBeerActionCreator(beer));
+      dispatch(editBeerActionCreator(beer));
       setTimeout(() => {
         dispatch(closeAlertDoneActionCreator());
       }, 4500);

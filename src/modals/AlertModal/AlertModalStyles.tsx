@@ -11,6 +11,8 @@ const AlertModalStyles = styled.section`
   position: fixed;
   z-index: 1;
   margin-top: 100px;
+  padding: 15px;
+  text-align: center;
   p {
     color: #fff;
     font-size: medium;

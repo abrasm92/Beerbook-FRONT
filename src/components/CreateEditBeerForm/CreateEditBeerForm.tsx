@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import {
   createBeerThunk,
@@ -13,7 +14,7 @@ type BeerPropForm = {
 
 const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   let initialFormValue = {
     name: beer ? beer.name : "",
     brewery: beer ? beer.brewery : "",
@@ -76,6 +77,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         image: "",
       });
       setFile(false);
+      navigate("/cervezas-del-mundo");
     } else {
       dispatch(createBeerThunk(newBeer));
       setBeerData({
@@ -89,6 +91,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         image: "",
       });
       setFile(false);
+      navigate("/cervezas-del-mundo");
     }
   };
 
