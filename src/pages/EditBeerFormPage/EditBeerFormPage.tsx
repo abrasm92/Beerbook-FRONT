@@ -8,15 +8,14 @@ import EditBeerFormPageStyles from "./EditBeerFormPageStyles";
 const EditBeerFormPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  useEffect(() => {
-    (async () => {
-      await dispatch(getBeerByIdThunk(id));
-    })();
-  }, [dispatch, id]);
   const { singleBeer } = useAppSelector((state) => state.beer);
+  useEffect(() => {
+    dispatch(getBeerByIdThunk(id));
+  }, [dispatch, id]);
+
   return (
     <EditBeerFormPageStyles>
-      <CreateEditBeerForm beer={singleBeer} />
+      {singleBeer.name && <CreateEditBeerForm beer={singleBeer} />}
     </EditBeerFormPageStyles>
   );
 };
