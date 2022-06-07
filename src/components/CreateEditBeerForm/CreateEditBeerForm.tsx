@@ -12,7 +12,6 @@ type BeerPropForm = {
 };
 
 const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
-  /* const navigate = useNavigate(); */
   const dispatch = useAppDispatch();
 
   let initialFormValue = {
