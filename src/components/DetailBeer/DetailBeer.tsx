@@ -1,20 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { BeerDataApi } from "../../types/interfaces";
-import SingleBeerStyles from "./SingleBeerStyles";
+import DetailBeerStyles from "./DetailBeerStyles";
 
 type PropBeer = {
   beer: BeerDataApi;
 };
 
-const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
+const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
   const navigate = useNavigate();
 
-  const detailBeer = () => {
-    navigate(`/detalles-cerveza/${beer.id}`);
-  };
-
   return (
-    <SingleBeerStyles onClick={detailBeer}>
+    <DetailBeerStyles>
       <img src="/images/Albino Squid Assassin.png" alt="Imagen de cerveza" />
       <div className="beer-info">
         <h2>{beer.name}</h2>
@@ -25,8 +21,8 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
           {beer.style} · {beer.degrees}
         </p>
       </div>
-    </SingleBeerStyles>
+    </DetailBeerStyles>
   );
 };
 
-export default SingleBeer;
+export default DetailBeer;
