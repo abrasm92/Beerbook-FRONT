@@ -50,11 +50,13 @@ const DetailBeerStyles = styled.div`
     h3 {
       font-size: 1rem;
       padding-bottom: 10px;
+      text-align: right;
     }
 
     p {
       font-size: 0.8rem;
       padding-bottom: 10px;
+      text-align: right;
     }
   }
 
@@ -62,6 +64,12 @@ const DetailBeerStyles = styled.div`
     padding-right: 30px;
   }
 
+  .detail-beer--buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+  }
   button {
     background-color: #0d47a1;
     border: none;
