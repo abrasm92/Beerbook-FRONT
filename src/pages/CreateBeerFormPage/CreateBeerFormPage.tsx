@@ -4,7 +4,7 @@ import CreateBeerFormPageStyles from "./CreateBeerFormPageStyles";
 const CreateBeerFormPage = (): JSX.Element => {
   return (
     <CreateBeerFormPageStyles>
-      <CreateEditBeerForm />
+      <CreateEditBeerForm beer={null} />
     </CreateBeerFormPageStyles>
   );
 };

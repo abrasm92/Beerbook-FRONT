@@ -13,7 +13,7 @@ describe("Given a CreateEditBeerForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateEditBeerForm />
+            <CreateEditBeerForm beer={null} />
           </Provider>
         </BrowserRouter>
       );
@@ -31,7 +31,7 @@ describe("Given a CreateEditBeerForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateEditBeerForm />
+            <CreateEditBeerForm beer={null} />
           </Provider>
         </BrowserRouter>
       );
@@ -51,7 +51,7 @@ describe("Given a CreateEditBeerForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <CreateEditBeerForm />
+            <CreateEditBeerForm beer={null} />
           </Provider>
         </BrowserRouter>
       );

@@ -1,51 +1,39 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import {
   createBeerThunk,
-  getBeerToUpdate,
+  updateBeerThunk,
 } from "../../redux/thunks/beerThunks";
+import { BeerDataApi } from "../../types/interfaces";
 import CreateEditBeerFormStyles from "./CreateEditBeerFormStyles";
 
-const CreateEditBeerForm = (): JSX.Element => {
+type BeerPropForm = {
+  beer: BeerDataApi | null;
+};
+
+const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
+  /* const navigate = useNavigate(); */
   const dispatch = useAppDispatch();
-  const path = window.location;
-  const { id } = useParams();
 
   let initialFormValue = {
-    name: "",
-    brewery: "",
-    style: "",
-    degrees: "",
-    IBU: "",
-    country: "",
-    description: "",
-    image: "",
+    name: beer ? beer.name : "",
+    brewery: beer ? beer.brewery : "",
+    style: beer ? beer.style : "",
+    degrees: beer ? beer.degrees : "",
+    IBU: beer ? beer.IBU : "",
+    country: beer ? beer.country : "",
+    description: beer ? beer.description : "",
+    image: beer ? beer.image : "",
   };
-  useEffect(() => {
-    if (path.href.includes("editar-cerveza")) {
-      const dataBeer: any = dispatch(getBeerToUpdate(id));
-      initialFormValue = {
-        name: dataBeer.name,
-        brewery: dataBeer.brewery,
-        style: dataBeer.style,
-        degrees: dataBeer.degrees,
-        IBU: dataBeer.IBU,
-        country: dataBeer.country,
-        description: dataBeer.description,
-        image: dataBeer.image,
-      };
-    }
-  });
 
   const [beerData, setBeerData] = useState(initialFormValue);
   const [file, setFile] = useState(false);
 
   useEffect(() => {
-    if (beerData.image !== "") {
+    if (initialFormValue.image !== "") {
       setFile(true);
     }
-  }, [beerData.image]);
+  }, [initialFormValue.image]);
 
   const changeBeerData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBeerData({
@@ -66,7 +54,7 @@ const CreateEditBeerForm = (): JSX.Element => {
   const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const newBeer = new FormData();
+    const newBeer: FormData | any = new FormData();
     newBeer.append("name", beerData.name);
     newBeer.append("brewery", beerData.brewery);
     newBeer.append("style", beerData.style);
@@ -76,9 +64,33 @@ const CreateEditBeerForm = (): JSX.Element => {
     newBeer.append("description", beerData.description);
     newBeer.append("image", beerData.image);
 
-    dispatch(createBeerThunk(newBeer));
-    setBeerData(initialFormValue);
-    setFile(false);
+    if (beer) {
+      dispatch(updateBeerThunk(newBeer, beer.id));
+      setBeerData({
+        name: "",
+        brewery: "",
+        style: "",
+        degrees: 0,
+        IBU: 0,
+        country: "",
+        description: "",
+        image: "",
+      });
+      setFile(false);
+    } else {
+      dispatch(createBeerThunk(newBeer));
+      setBeerData({
+        name: "",
+        brewery: "",
+        style: "",
+        degrees: 0,
+        IBU: 0,
+        country: "",
+        description: "",
+        image: "",
+      });
+      setFile(false);
+    }
   };
 
   return (
@@ -157,7 +169,8 @@ const CreateEditBeerForm = (): JSX.Element => {
         />
         <span>Imagen</span>
       </div>
-      <button>Crear cerveza</button>
+      {!beer && <button>Crear cerveza</button>}
+      {beer && <button className="editing">Editar cerveza</button>}
     </CreateEditBeerFormStyles>
   );
 };

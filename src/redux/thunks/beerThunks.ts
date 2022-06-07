@@ -5,6 +5,7 @@ import {
   createBeerActionCreator,
   deleteBeerActionCreator,
   loadBeersActionCreator,
+  loadSingleBeerActionCreator,
 } from "../features/beerSlice";
 import {
   closeAlertDoneActionCreator,
@@ -26,6 +27,7 @@ export const loadBeersThunk = () => async (dispatch: Dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     });
+
     dispatch(loadBeersActionCreator(beers));
     dispatch(loadingOffActionCreator());
   } catch (error: any) {
@@ -93,14 +95,41 @@ export const createBeerThunk =
     }
   };
 
-export const getBeerToUpdate =
+export const getBeerByIdThunk =
   (id: string | undefined) => async (dispatch: Dispatch) => {
     const token = localStorage.getItem("token");
     try {
       dispatch(loadingOnActionCreator());
       const {
-        data: { message, beer },
+        data: { beer },
       } = await axios.get(`${process.env.REACT_APP_API_URL}beer/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch(loadingOffActionCreator());
+      dispatch(loadSingleBeerActionCreator(beer));
+      setTimeout(() => {
+        dispatch(closeAlertDoneActionCreator());
+      }, 4500);
+    } catch (error: any) {
+      dispatch(loadingOffActionCreator());
+      const message = customErrorApi(error);
+      dispatch(openAlertWrongActionCreator(message));
+      setTimeout(() => {
+        dispatch(closeAlertWrongActionCreator());
+      }, 4500);
+    }
+  };
+
+export const updateBeerThunk =
+  (newBeer: FormData, id: string) => async (dispatch: Dispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+      dispatch(loadingOnActionCreator());
+      const {
+        data: { message, beer },
+      } = await axios.put(`${process.env.REACT_APP_LOCAL}beer/${id}`, newBeer, {
         headers: {
           authorization: `Bearer ${token}`,
         },

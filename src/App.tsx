@@ -10,7 +10,6 @@ import AlertModal from "./modals/AlertModal/AlertModal";
 import LoadingModal from "./modals/LoadingModal/LoadingModal";
 import BeerListPage from "./pages/BeerListPage/BeerListPage";
 import CreateBeerFormPage from "./pages/CreateBeerFormPage/CreateBeerFormPage";
-import CreateEditBeerFormPage from "./pages/CreateBeerFormPage/CreateBeerFormPage";
 import EditBeerFormPage from "./pages/EditBeerFormPage/EditBeerFormPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
