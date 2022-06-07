@@ -129,11 +129,15 @@ export const updateBeerThunk =
       dispatch(loadingOnActionCreator());
       const {
         data: { message, beer },
-      } = await axios.put(`${process.env.REACT_APP_LOCAL}beer/${id}`, newBeer, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      } = await axios.put(
+        `${process.env.REACT_APP_API_URL}beer/${id}`,
+        newBeer,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
       dispatch(loadingOffActionCreator());
       dispatch(openAlertDoneActionCreator(message));
       dispatch(createBeerActionCreator(beer));
