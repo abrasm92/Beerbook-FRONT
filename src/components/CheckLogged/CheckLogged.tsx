@@ -1,22 +1,21 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../redux/hooks";
 
 type PropChildren = {
   children: JSX.Element;
 };
 
 const CheckLogged = ({ children }: PropChildren) => {
-  const { logged } = useAppSelector((state) => state.user);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!logged) {
+    if (!token) {
       navigate("/iniciar-sesion");
     }
-  }, [logged, navigate]);
+  }, [token, navigate]);
 
-  if (logged) {
+  if (token) {
     return children;
   } else {
     return null;

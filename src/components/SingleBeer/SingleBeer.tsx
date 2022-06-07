@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { deleteBeerThunk } from "../../redux/thunks/beerThunks";
 import { BeerDataApi } from "../../types/interfaces";
@@ -8,10 +9,15 @@ type PropBeer = {
 };
 
 const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const deleteBeer = () => {
     dispatch(deleteBeerThunk(beer.id));
+  };
+
+  const editBeer = () => {
+    navigate(`/editar-cerveza/${beer.id}`);
   };
 
   return (
@@ -26,6 +32,7 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
           {beer.style} · {beer.degrees}
         </p>
         <button onClick={deleteBeer}>Eliminar</button>
+        <button onClick={editBeer}>Editar</button>
       </div>
     </SingleBeerStyles>
   );

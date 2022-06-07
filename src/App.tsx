@@ -9,7 +9,8 @@ import AlertErrorModal from "./modals/AlertErrorModal/AlertErrorModal";
 import AlertModal from "./modals/AlertModal/AlertModal";
 import LoadingModal from "./modals/LoadingModal/LoadingModal";
 import BeerListPage from "./pages/BeerListPage/BeerListPage";
-import CreateEditBeerFormPage from "./pages/CreateEditBeerFormPage/CreateEditBeerFormPage";
+import CreateBeerFormPage from "./pages/CreateBeerFormPage/CreateBeerFormPage";
+import EditBeerFormPage from "./pages/EditBeerFormPage/EditBeerFormPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
 import { userLoginActionCreator } from "./redux/features/userSlice";
@@ -48,7 +49,14 @@ function App() {
             </CheckNotLogged>
           }
         />
-        <Route path="/registro" element={<RegisterFormPage />} />
+        <Route
+          path="/registro"
+          element={
+            <CheckNotLogged>
+              <RegisterFormPage />
+            </CheckNotLogged>
+          }
+        />
         <Route
           path="/cervezas-del-mundo"
           element={
@@ -61,7 +69,15 @@ function App() {
           path="/crear-cerveza"
           element={
             <CheckLogged>
-              <CreateEditBeerFormPage />
+              <CreateBeerFormPage />
+            </CheckLogged>
+          }
+        />
+        <Route
+          path="/editar-cerveza/:id"
+          element={
+            <CheckLogged>
+              <EditBeerFormPage />
             </CheckLogged>
           }
         />

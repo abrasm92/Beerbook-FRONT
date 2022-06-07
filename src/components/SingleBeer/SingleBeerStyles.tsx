@@ -20,6 +20,7 @@ const SingleBeerStyles = styled.li`
     color: #fff;
     padding: 7px;
     cursor: pointer;
+    margin: 0px 10px;
   }
 
   img {

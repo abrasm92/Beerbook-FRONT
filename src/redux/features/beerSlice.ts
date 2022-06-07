@@ -9,7 +9,7 @@ const initialState: BeerState = {
     brewery: "",
     style: "",
     degrees: 0,
-    IBU: NaN,
+    IBU: 0,
     country: "",
     description: "",
     image: "",
@@ -40,6 +40,10 @@ const beerSlice = createSlice({
       listOfBeers: beer.listOfBeers.concat(action.payload),
       singleBeer: action.payload,
     }),
+    loadSingleBeer: (beer, action: PayloadAction<BeerDataApi>): BeerState => ({
+      ...beer,
+      singleBeer: action.payload,
+    }),
   },
 });
 
@@ -49,4 +53,5 @@ export const {
   loadBeers: loadBeersActionCreator,
   deleteBeer: deleteBeerActionCreator,
   createBeer: createBeerActionCreator,
+  loadSingleBeer: loadSingleBeerActionCreator,
 } = beerSlice.actions;

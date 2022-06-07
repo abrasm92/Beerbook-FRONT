@@ -18,6 +18,9 @@ const CreateEditBeerFormStyles = styled.form`
     font-size: large;
     cursor: pointer;
   }
+  .editing {
+    font-size: medium;
+  }
 
   input {
     border: none;

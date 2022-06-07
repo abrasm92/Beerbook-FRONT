@@ -25,6 +25,7 @@ const NavbarStyles = styled.nav`
 
   .navbar-button--link {
     align-self: center;
+    text-decoration: none;
   }
 `;
 
