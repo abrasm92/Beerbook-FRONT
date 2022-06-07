@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import {
   createBeerThunk,
-  loadBeersThunk,
   updateBeerThunk,
 } from "../../redux/thunks/beerThunks";
 import { BeerDataApi } from "../../types/interfaces";
