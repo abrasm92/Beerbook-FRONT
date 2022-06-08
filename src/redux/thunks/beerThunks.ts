@@ -8,6 +8,7 @@ import {
   getMaxPagesActionCreator,
   loadBeersActionCreator,
   loadSingleBeerActionCreator,
+  setNumberPageActionCreator,
 } from "../features/beerSlice";
 import {
   closeAlertDoneActionCreator,
@@ -36,6 +37,7 @@ export const loadBeersThunk =
       );
       dispatch(loadBeersActionCreator(beersOnPage));
       dispatch(getMaxPagesActionCreator(maxPages));
+      dispatch(setNumberPageActionCreator(currentPage));
       dispatch(loadingOffActionCreator());
     } catch (error: any) {
       dispatch(loadingOffActionCreator());
