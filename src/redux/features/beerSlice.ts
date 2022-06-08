@@ -55,6 +55,18 @@ const beerSlice = createSlice({
       ...beer,
       totalPages: action.payload,
     }),
+    upNumberPage: (beer): BeerState => ({
+      ...beer,
+      page: beer.page + 1 > beer.totalPages ? beer.page : beer.page + 1,
+    }),
+    downNumberPage: (beer): BeerState => ({
+      ...beer,
+      page: beer.page - 1 < 0 ? beer.page : beer.page - 1,
+    }),
+    setNumberPage: (beer, action: PayloadAction<number>): BeerState => ({
+      ...beer,
+      page: action.payload,
+    }),
   },
 });
 
