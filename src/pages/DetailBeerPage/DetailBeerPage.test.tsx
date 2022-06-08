@@ -1,26 +1,13 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import reactTestRenderer from "react-test-renderer";
 import { groupOfBeer, singleBeer } from "../../mocks/beerMocks";
-import { store } from "../../redux/store/store";
-import EditBeerFormPage from "./EditBeerFormPage";
+import DetailBeerPage from "./DetailBeerPage";
 
-describe("Given a EditBeerFormPage component", () => {
-  describe("When it's rendered", () => {
-    test("Then it sould show button to editBeer", () => {
-      const editForm = reactTestRenderer.create(
-        <Provider store={store}>
-          <EditBeerFormPage />
-        </Provider>
-      );
-
-      expect(editForm).toMatchSnapshot();
-    });
-
-    test("Then it should call dispatch 1 time to get id by params", async () => {
+describe("Given a DetailBeerPage component", () => {
+  describe("When it's instantiated with singleBeer.id on params", () => {
+    test("Then it should show an image on screen with alt text 'Imagen de cerveza'", async () => {
       const beerMockSlice = createSlice({
         name: "beer",
         initialState: {
@@ -40,19 +27,19 @@ describe("Given a EditBeerFormPage component", () => {
           id: mockId,
         }),
       }));
-      const textButton = "Editar cerveza";
+      const altText = "Imagen de cerveza";
 
       await render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <EditBeerFormPage />
+            <DetailBeerPage />
           </Provider>
         </BrowserRouter>
       );
 
-      const buttonSendEdit = screen.getByRole("button", { name: textButton });
+      const image = screen.getByAltText(altText);
 
-      expect(buttonSendEdit).toBeInTheDocument();
+      expect(image).toBeInTheDocument();
     });
   });
 });

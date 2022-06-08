@@ -7,6 +7,7 @@ import { loadBeersThunk } from "../../redux/thunks/beerThunks";
 import BeerListPageStyles from "./BeerListPageStyles";
 
 const BeerListPage = (): JSX.Element => {
+  debugger;
   const dispatch = useAppDispatch();
   const { page }: any = useParams();
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const BeerListPage = (): JSX.Element => {
 
   const previewPage = () => {
     if (+page === 1) {
-      navigate(`/cervezas-del-mundo/page=${page}`);
+      navigate(`/cervezas-del-mundo/page=${+page}`);
     } else {
       navigate(`/cervezas-del-mundo/page=${+page - 1}`);
     }

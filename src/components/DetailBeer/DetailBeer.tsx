@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { deleteBeerThunk } from "../../redux/thunks/beerThunks";
 import { BeerDataApi } from "../../types/interfaces";
@@ -11,10 +11,11 @@ type PropBeer = {
 const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { page }: any = useParams();
 
   const deleteBeer = () => {
     dispatch(deleteBeerThunk(beer.id));
-    navigate("/cervezas-del-mundo");
+    navigate(`/cervezas-del-mundo/page=${+page}`);
   };
   const editBeer = () => {
     navigate(`/editar-cerveza/${beer.id}`);

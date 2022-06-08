@@ -4,6 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
 import BeerListPage from "./BeerListPage";
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe("Given a BeerLisPage component", () => {
   describe("When it's instanciated", () => {
     test("Then it should show a list item", () => {
