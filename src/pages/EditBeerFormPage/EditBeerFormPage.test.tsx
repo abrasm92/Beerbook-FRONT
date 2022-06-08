@@ -20,7 +20,7 @@ describe("Given a EditBeerFormPage component", () => {
       expect(editForm).toMatchSnapshot();
     });
 
-    test.only("Then it should call dispatch 1 time to get id by params", async () => {
+    test("Then it should call dispatch 1 time to get id by params", async () => {
       const beerMockSlice = createSlice({
         name: "beer",
         initialState: {
