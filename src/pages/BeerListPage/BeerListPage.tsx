@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate, useNavigationType, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ListBeers from "../../components/ListBeers/ListBeers";
 import SubHeader from "../../components/SubHeader/Subheader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
