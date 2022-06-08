@@ -59,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/cervezas-del-mundo"
+          path="/cervezas-del-mundo/page=:page"
           element={
             <CheckLogged>
               <BeerListPage />

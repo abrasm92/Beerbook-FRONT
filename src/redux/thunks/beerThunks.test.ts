@@ -9,7 +9,7 @@ describe("Given a loadBeersThunk function", () => {
     test("Then it should call dispatch", async () => {
       axios.get = jest.fn().mockResolvedValue({ data: { groupOfBeer } });
       const dispatch = jest.fn();
-      const thunk = loadBeersThunk();
+      const thunk = loadBeersThunk(0);
 
       await thunk(dispatch);
 
@@ -21,7 +21,7 @@ describe("Given a loadBeersThunk function", () => {
     test("Then it should call dispatch 4 times", async () => {
       axios.get = jest.fn().mockRejectedValue(new Error());
       const dispatch = jest.fn();
-      const thunk = loadBeersThunk();
+      const thunk = loadBeersThunk(0);
       const expectCalls = 4;
 
       await thunk(dispatch);

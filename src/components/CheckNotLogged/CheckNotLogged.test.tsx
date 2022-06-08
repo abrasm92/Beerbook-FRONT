@@ -2,6 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { groupOfBeer } from "../../mocks/beerMocks";
 import LoginFormPage from "../../pages/LoginPage/LoginFormPage";
 import CheckNotLogged from "./CheckNotLogged";
 
@@ -20,8 +21,13 @@ describe("Given CheckNotLogged component", () => {
         initialState: { name: "admin", id: "1234", logged: true },
         reducers: {},
       });
+      const beerMockSlice = createSlice({
+        name: "beer",
+        initialState: { page: 0, listOfBeers: groupOfBeer },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
+        reducer: { user: userMockSlice.reducer, beer: beerMockSlice.reducer },
       });
 
       render(
@@ -45,9 +51,13 @@ describe("Given CheckNotLogged component", () => {
         initialState: { name: "", id: "", logged: false },
         reducers: {},
       });
-
+      const beerMockSlice = createSlice({
+        name: "beer",
+        initialState: { page: 0, listOfBeers: groupOfBeer },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
+        reducer: { user: userMockSlice.reducer, beer: beerMockSlice.reducer },
       });
 
       render(

@@ -5,6 +5,7 @@ import {
   createBeerActionCreator,
   deleteBeerActionCreator,
   editBeerActionCreator,
+  getMaxPagesActionCreator,
   loadBeersActionCreator,
   loadSingleBeerActionCreator,
 } from "../features/beerSlice";
@@ -17,19 +18,19 @@ import {
   openAlertWrongActionCreator,
 } from "../features/uiSlice";
 
-export const loadBeersThunk = () => async (dispatch: Dispatch) => {
+export const loadBeersThunk = (page: number) => async (dispatch: Dispatch) => {
   const token = localStorage.getItem("token");
   try {
     dispatch(loadingOnActionCreator());
     const {
-      data: { beers },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}beer`, {
+      data: { beersOnPage, totalPages },
+    } = await axios.get(`${process.env.REACT_APP_LOCAL}beer/${page}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    dispatch(loadBeersActionCreator(beers));
+    dispatch(loadBeersActionCreator(beersOnPage));
+    dispatch(getMaxPagesActionCreator(totalPages));
     dispatch(loadingOffActionCreator());
   } catch (error: any) {
     dispatch(loadingOffActionCreator());

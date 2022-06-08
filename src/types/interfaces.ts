@@ -59,6 +59,7 @@ export interface BeerDataApi {
 export interface BeerState {
   listOfBeers: BeerDataApi[];
   page: number;
+  totalPages: number;
   singleBeer: BeerDataApi;
 }
 
