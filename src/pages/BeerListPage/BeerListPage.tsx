@@ -1,13 +1,14 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ListBeers from "../../components/ListBeers/ListBeers";
 import SubHeader from "../../components/SubHeader/Subheader";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { loadBeersThunk } from "../../redux/thunks/beerThunks";
 import BeerListPageStyles from "./BeerListPageStyles";
 
 const BeerListPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { page } = useAppSelector((state) => state.beer);
+  const { page } = useParams();
 
   useEffect(() => {
     (async () => {

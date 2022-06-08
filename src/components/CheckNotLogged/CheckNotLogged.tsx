@@ -13,7 +13,7 @@ const CheckNotLogged = ({ children }: PropChildren) => {
 
   useEffect(() => {
     if (logged) {
-      navigate(`/cervezas-del-mundo/page=${page}`);
+      navigate(`/cervezas-del-mundo/page=${page + 1}`);
     }
   }, [logged, navigate, page]);
 
