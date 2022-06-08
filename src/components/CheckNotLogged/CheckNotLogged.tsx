@@ -8,13 +8,14 @@ type PropChildren = {
 
 const CheckNotLogged = ({ children }: PropChildren) => {
   const { logged } = useAppSelector((state) => state.user);
+  const { page } = useAppSelector((state) => state.beer);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (logged) {
-      navigate("/cervezas-del-mundo");
+      navigate(`/cervezas-del-mundo/page=${page + 1}`);
     }
-  }, [logged, navigate]);
+  }, [logged, navigate, page]);
 
   if (!logged) {
     return children;

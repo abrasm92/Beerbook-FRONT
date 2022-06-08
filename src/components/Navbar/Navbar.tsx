@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks";
 import NavbarStyles from "./NavBarStyles";
 
 const Navbar = (): JSX.Element => {
+  const { page } = useAppSelector((state) => state.beer);
+  const pageBeerList = `/cervezas-del-mundo/page=${page + 1}`;
   return (
     <NavbarStyles>
       <Link to="/crear-cerveza" className="navbar-button--link">
@@ -10,7 +13,7 @@ const Navbar = (): JSX.Element => {
           <p>Inicio</p>
         </span>
       </Link>
-      <Link to="/cervezas-del-mundo" className="navbar-button--link">
+      <Link to={pageBeerList} className="navbar-button--link">
         <span className="navbar-button">
           <img src="/images/discover.svg" alt="Enlace a cervezas del mundo" />
           <p>Cervezas del mundo</p>

@@ -4,6 +4,7 @@ import { BeerState, BeerDataApi } from "../../types/interfaces";
 const initialState: BeerState = {
   listOfBeers: [],
   page: 0,
+  totalPages: 0,
   singleBeer: {
     name: "",
     brewery: "",
@@ -50,6 +51,14 @@ const beerSlice = createSlice({
         currentBeer.id === action.payload.id ? action.payload : currentBeer
       ),
     }),
+    getMaxPages: (beer, action: PayloadAction<number>): BeerState => ({
+      ...beer,
+      totalPages: action.payload,
+    }),
+    setNumberPage: (beer, action: PayloadAction<number>): BeerState => ({
+      ...beer,
+      page: action.payload,
+    }),
   },
 });
 
@@ -61,4 +70,6 @@ export const {
   createBeer: createBeerActionCreator,
   loadSingleBeer: loadSingleBeerActionCreator,
   editBeer: editBeerActionCreator,
+  getMaxPages: getMaxPagesActionCreator,
+  setNumberPage: setNumberPageActionCreator,
 } = beerSlice.actions;

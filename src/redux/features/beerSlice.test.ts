@@ -13,6 +13,7 @@ describe("Given a beerSlice", () => {
       const initialState: BeerState = {
         listOfBeers: [],
         page: 0,
+        totalPages: 0,
         singleBeer: {
           name: "",
           brewery: "",
@@ -67,6 +68,7 @@ describe("Given a beerSlice", () => {
       const initialState: BeerState = {
         listOfBeers: groupOfBeer,
         page: 0,
+        totalPages: 0,
         singleBeer: {
           name: "",
           brewery: "",
@@ -95,6 +97,7 @@ describe("Given a beerSlice", () => {
       const initialState: BeerState = {
         listOfBeers: groupOfBeer,
         page: 0,
+        totalPages: 0,
         singleBeer: {
           name: "",
           brewery: "",

@@ -28,8 +28,13 @@ describe("Given a CheckLogged component", () => {
         initialState: { name: "", id: "", logged: false },
         reducers: {},
       });
+      const beerMockSlice = createSlice({
+        name: "beer",
+        initialState: { page: 0, listOfBeers: groupOfBeer },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer },
+        reducer: { user: userMockSlice.reducer, beer: beerMockSlice.reducer },
       });
 
       render(
@@ -65,6 +70,7 @@ describe("Given a CheckLogged component", () => {
         initialState: {
           listOfBeers: groupOfBeer,
           page: 0,
+          totalPages: 0,
           singleBeer: {
             name: "",
             brewery: "",

@@ -5,8 +5,10 @@ import {
   createBeerActionCreator,
   deleteBeerActionCreator,
   editBeerActionCreator,
+  getMaxPagesActionCreator,
   loadBeersActionCreator,
   loadSingleBeerActionCreator,
+  setNumberPageActionCreator,
 } from "../features/beerSlice";
 import {
   closeAlertDoneActionCreator,
@@ -17,29 +19,35 @@ import {
   openAlertWrongActionCreator,
 } from "../features/uiSlice";
 
-export const loadBeersThunk = () => async (dispatch: Dispatch) => {
-  const token = localStorage.getItem("token");
-  try {
-    dispatch(loadingOnActionCreator());
-    const {
-      data: { beers },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}beer`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    dispatch(loadBeersActionCreator(beers));
-    dispatch(loadingOffActionCreator());
-  } catch (error: any) {
-    dispatch(loadingOffActionCreator());
-    const message = customErrorApi(error);
-    dispatch(openAlertWrongActionCreator(message));
-    setTimeout(() => {
-      dispatch(closeAlertWrongActionCreator());
-    }, 4500);
-  }
-};
+export const loadBeersThunk =
+  (page: number | any) => async (dispatch: Dispatch) => {
+    const token = localStorage.getItem("token");
+    const currentPage = +page - 1;
+    try {
+      dispatch(loadingOnActionCreator());
+      const {
+        data: { beersOnPage, totalPages: maxPages },
+      } = await axios.get(
+        `${process.env.REACT_APP_API_URL}beer/page/${currentPage}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(loadBeersActionCreator(beersOnPage));
+      dispatch(getMaxPagesActionCreator(maxPages));
+      dispatch(setNumberPageActionCreator(currentPage));
+      dispatch(loadingOffActionCreator());
+    } catch (error: any) {
+      dispatch(loadingOffActionCreator());
+      const message = customErrorApi(error);
+      dispatch(openAlertWrongActionCreator(message));
+      setTimeout(() => {
+        dispatch(closeAlertWrongActionCreator());
+      }, 4500);
+    }
+  };
 
 export const deleteBeerThunk = (id: string) => async (dispatch: Dispatch) => {
   const token = localStorage.getItem("token");
