@@ -2,8 +2,16 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { singleBeer } from "../../mocks/beerMocks";
 import { store } from "../../redux/store/store";
 import CreateEditBeerForm from "./CreateEditBeerForm";
+
+const mockedUsedNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUsedNavigate,
+}));
 
 describe("Given a CreateEditBeerForm component", () => {
   describe("When it's rendered and user write on name input", () => {
@@ -64,6 +72,44 @@ describe("Given a CreateEditBeerForm component", () => {
 
       expect(textarea).toHaveTextContent(expectTextInput);
       expect(inputName).toHaveAttribute("value", expectTextName);
+    });
+  });
+
+  describe("When it's rendered with a beer on props", () => {
+    test("Then it should show the button image", () => {
+      const buttonImage = "Imagen";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <CreateEditBeerForm
+              beer={{ ...singleBeer, image: "this is an image" }}
+            />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const expectButtonImage = screen.getByLabelText(buttonImage);
+
+      expect(expectButtonImage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's rendered with a beer on props and user click on 'Editar cerveza' button", () => {
+    test("Then it should call navigate", () => {
+      const buttonsubmit = "Editar cerveza";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <CreateEditBeerForm beer={singleBeer} />
+          </Provider>
+        </BrowserRouter>
+      );
+      const button = screen.getByRole("button", { name: buttonsubmit });
+      userEvent.click(button);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });

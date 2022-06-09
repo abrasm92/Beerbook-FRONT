@@ -69,6 +69,7 @@ const Filter = (): JSX.Element => {
             className="categories--options"
             onChange={changeFilterType}
             defaultValue={filterCategory.filterType}
+            data-testid="filterType"
           >
             <option value="style">Estilo</option>
             <option value="country">País</option>
@@ -82,6 +83,7 @@ const Filter = (): JSX.Element => {
               name="filterValue"
               className="values--options"
               onChange={changeFilterValue}
+              data-testid="filterValue-style"
             >
               <option value="Lager">Lager</option>
               <option value="Porter">Porter</option>
@@ -94,6 +96,7 @@ const Filter = (): JSX.Element => {
               name="filterValue"
               className="values--options"
               onChange={changeFilterValue}
+              data-testid="filterValue-country"
             >
               <option value="Escocia">Escocia</option>
               <option value="EEUU">EEUU</option>
@@ -108,6 +111,7 @@ const Filter = (): JSX.Element => {
               name="filterValue"
               className="values--options"
               onChange={changeFilterValue}
+              data-testid="filterValue-degrees"
             >
               <option value="N/A">Sin Alcohol</option>
               <option value="0">0</option>
@@ -138,6 +142,7 @@ const Filter = (): JSX.Element => {
               name="filterValue"
               className="values--options"
               onChange={changeFilterValue}
+              data-testid="filterValue-IBU"
             >
               <option value="0">0-9</option>
               <option value="10">10-19</option>

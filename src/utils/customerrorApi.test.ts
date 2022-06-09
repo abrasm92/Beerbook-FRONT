@@ -93,4 +93,20 @@ describe("Given a customErrorApi function", () => {
       expect(message).toEqual(expectedMessage);
     });
   });
+
+  describe("When it's invoked with response status 404 and message 'No se ha encontrado ninguna cerveza'", () => {
+    test("Then it should return 'No se ha encontrado ninguna cerveza'", () => {
+      const error: CustomError = {
+        response: {
+          status: 404,
+          data: { message: "No se ha encontrado ninguna cerveza" },
+        },
+      };
+      const expectedMessage = "No se ha encontrado ninguna cerveza";
+
+      const message = customErrorApi(error);
+
+      expect(message).toEqual(expectedMessage);
+    });
+  });
 });
