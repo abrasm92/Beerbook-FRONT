@@ -171,7 +171,7 @@ export const filterBeerThuk =
       const {
         data: { beersOnPage, totalPages: maxPages },
       } = await axios.get(
-        `${process.env.REACT_APP_LOCAL}beer/filter/${filter}/${filterValue}/${currentPage}`,
+        `${process.env.REACT_APP_API_URL}beer/filter/${filter}/${filterValue}/${currentPage}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

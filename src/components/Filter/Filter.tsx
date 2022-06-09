@@ -109,13 +109,28 @@ const Filter = (): JSX.Element => {
               className="values--options"
               onChange={changeFilterValue}
             >
-              <option value="5">0-5</option>
+              <option value="N/A">Sin Alcohol</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
               <option value="9">9</option>
               <option value="10">10</option>
-              <option value="11">11-30</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
             </select>
           )}
           {filterCategory.filterType === "IBU" && (
@@ -124,11 +139,16 @@ const Filter = (): JSX.Element => {
               className="values--options"
               onChange={changeFilterValue}
             >
-              <option value="0">0-20</option>
-              <option value="20">21-40</option>
-              <option value="40">41-60</option>
-              <option value="60">61-80</option>
-              <option value="80">81-100</option>
+              <option value="0">0-9</option>
+              <option value="10">10-19</option>
+              <option value="20">20-29</option>
+              <option value="30">30-39</option>
+              <option value="40">40-49</option>
+              <option value="50">50-59</option>
+              <option value="60">60-69</option>
+              <option value="70">70-79</option>
+              <option value="80">80-89</option>
+              <option value="90">90-100</option>
             </select>
           )}
         </label>
