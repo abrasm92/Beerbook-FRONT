@@ -7,7 +7,6 @@ import { loadBeersThunk } from "../../redux/thunks/beerThunks";
 import BeerListPageStyles from "./BeerListPageStyles";
 
 const BeerListPage = (): JSX.Element => {
-  debugger;
   const dispatch = useAppDispatch();
   const { page }: any = useParams();
   const navigate = useNavigate();

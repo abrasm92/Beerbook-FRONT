@@ -160,3 +160,34 @@ export const updateBeerThunk =
       }, 4500);
     }
   };
+
+export const filterBeerThuk =
+  (filter: string, filterValue: string, page: number | any) =>
+  async (dispatch: Dispatch) => {
+    const token = localStorage.getItem("token");
+    const currentPage = +page - 1;
+    try {
+      dispatch(loadingOnActionCreator());
+      const {
+        data: { beersOnPage, totalPages: maxPages },
+      } = await axios.get(
+        `${process.env.REACT_APP_LOCAL}beer/filter/${filter}/${filterValue}/${currentPage}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(loadBeersActionCreator(beersOnPage));
+      dispatch(getMaxPagesActionCreator(maxPages));
+      dispatch(setNumberPageActionCreator(currentPage));
+      dispatch(loadingOffActionCreator());
+    } catch (error: any) {
+      dispatch(loadingOffActionCreator());
+      const message = customErrorApi(error);
+      dispatch(openAlertWrongActionCreator(message));
+      setTimeout(() => {
+        dispatch(closeAlertWrongActionCreator());
+      }, 4500);
+    }
+  };
