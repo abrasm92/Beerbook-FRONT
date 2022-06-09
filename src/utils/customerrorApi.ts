@@ -12,6 +12,8 @@ export const customErrorApi = (error: CustomError): string => {
           return error.response.data.message;
         case 401:
           return error.response.data.message;
+        case 404:
+          return error.response.data.message;
         default:
           return "";
       }
