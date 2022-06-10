@@ -80,6 +80,7 @@ describe("Given a CheckLogged component", () => {
             country: "",
             description: "",
             image: "",
+            imageBackup: "",
             owner: "",
             id: "",
           },

@@ -14,6 +14,7 @@ const initialState: BeerState = {
     country: "",
     description: "",
     image: "",
+    imageBackup: "",
     owner: "",
     id: "",
   },

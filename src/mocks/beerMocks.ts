@@ -11,6 +11,7 @@ export const singleBeer: BeerDataApi = {
   description:
     "Cerveza de color ámbar, con aromas intensos de cítricos, con final lig…",
   image: "",
+  imageBackup: "",
   owner: "",
 };
 
@@ -26,6 +27,7 @@ export const groupOfBeer: BeerDataApi[] = [
     description:
       "Cerveza de color ámbar, con aromas intensos de cítricos, con final lig…",
     image: "",
+    imageBackup: "",
     owner: "",
   },
   {
@@ -39,6 +41,7 @@ export const groupOfBeer: BeerDataApi[] = [
     description:
       "Cerveza negra con gran espuma color marrón con arómas predominantes a …",
     image: "",
+    imageBackup: "",
     owner: "",
   },
   {
@@ -52,6 +55,7 @@ export const groupOfBeer: BeerDataApi[] = [
     description:
       "Cerveza rojiza oscura con espuma densa, cuerpo medio suave y aromatica…",
     image: "",
+    imageBackup: "",
     owner: "",
   },
 ];

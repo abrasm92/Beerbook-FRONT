@@ -91,6 +91,7 @@ function App() {
           }
         />
         <Route path="/" element={<Navigate replace to="/iniciar-sesion" />} />
+        <Route path="/*" element={<Navigate replace to="/iniciar-sesion" />} />
       </Routes>
       <Navbar />
     </>

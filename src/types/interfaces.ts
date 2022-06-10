@@ -52,6 +52,7 @@ export interface BeerDataApi {
   country: string;
   description: string;
   image: string;
+  imageBackup: string;
   owner: string;
   id: string;
 }
