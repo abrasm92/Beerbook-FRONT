@@ -26,6 +26,7 @@ const SingleBeerStyles = styled.li`
   img {
     width: 60px;
     height: 125px;
+    object-fit: contain;
   }
   .beer-info {
     margin-top: -15px;

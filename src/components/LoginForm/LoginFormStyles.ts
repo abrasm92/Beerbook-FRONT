@@ -21,6 +21,7 @@ const LoginFormStyles = styled.form`
     border-bottom: 1px solid #b6b6b6;
     text-align: left;
     height: 35px;
+    width: 60%;
     margin: 10px;
   }
   label {

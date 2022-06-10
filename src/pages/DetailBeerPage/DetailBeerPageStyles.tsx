@@ -6,7 +6,9 @@ const DetailBeerPageStyles = styled.section`
   padding-top: 30px;
   margin: 100px auto;
   border: 1px solid #b6b6b6;
-  width: 320px;
+  min-width: 280px;
+  width: 80%;
+  max-width: 400px;
   height: 100%;
   min-height: calc(100vh - 360px);
   border-radius: 20px;
