@@ -7,10 +7,11 @@ const DetailBeerStyles = styled.div`
   align-items: flex-start;
   list-style: none;
   height: 100%;
-  width: 280px;
+  min-width: 280px;
+  width: 80%;
+  max-width: 400px;
   margin-top: 20px;
   overflow: hidden;
-
   border: none;
 
   .detail-beer--general-info {
@@ -19,7 +20,7 @@ const DetailBeerStyles = styled.div`
   }
 
   .detail-beer--description {
-    padding: 50px 10px;
+    padding: 50px 30px;
   }
   p {
     font-size: 0.9rem;
@@ -29,7 +30,6 @@ const DetailBeerStyles = styled.div`
   .beer-info {
     display: flex;
     flex-direction: column;
-    padding-right: 30px;
     justify-content: start;
     align-items: flex-end;
 
@@ -44,7 +44,6 @@ const DetailBeerStyles = styled.div`
       text-align: right;
       font-size: 1.3rem;
       font-weight: 800;
-      width: 180px;
       text-overflow: ellipsis;
       padding-bottom: 10px;
     }

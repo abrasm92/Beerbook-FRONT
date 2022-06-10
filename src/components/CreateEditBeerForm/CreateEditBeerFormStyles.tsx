@@ -12,6 +12,9 @@ const CreateEditBeerFormStyles = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    img {
+      object-fit: contain;
+    }
   }
 
   .formulary--previus-image * {
@@ -39,6 +42,7 @@ const CreateEditBeerFormStyles = styled.form`
     border-bottom: 1px solid #b6b6b6;
     text-align: left;
     height: 35px;
+    width: 60%;
     margin: 10px;
   }
 
@@ -47,6 +51,7 @@ const CreateEditBeerFormStyles = styled.form`
     border-bottom: 1px solid #b6b6b6;
     text-align: left;
     height: 100px;
+    width: 60%;
     margin: 10px;
   }
 
