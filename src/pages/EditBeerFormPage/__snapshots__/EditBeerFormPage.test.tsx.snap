@@ -2,6 +2,6 @@
 
 exports[`Given a EditBeerFormPage component When it's rendered Then it sould show button to editBeer 1`] = `
 <section
-  className="sc-gsnTZi knpQih"
+  className="sc-gsnTZi iNagRp"
 />
 `;
