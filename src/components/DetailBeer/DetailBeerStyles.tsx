@@ -34,10 +34,9 @@ const DetailBeerStyles = styled.div`
     align-items: flex-end;
 
     img {
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      margin-right: 30px;
+      width: 50px;
+      height: 50px;
+      padding: 10px;
       margin-bottom: 20px;
     }
     h2 {
@@ -85,6 +84,8 @@ const DetailBeerStyles = styled.div`
     height: 250px;
     object-fit: contain;
     overflow: hidden;
+    margin-right: 20px;
+    margin-left: 30px;
   }
 `;
 
