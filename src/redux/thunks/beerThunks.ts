@@ -2,7 +2,6 @@ import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import { customErrorApi } from "../../utils/customerrorApi";
 import {
-  createBeerActionCreator,
   deleteBeerActionCreator,
   editBeerActionCreator,
   getMaxPagesActionCreator,
@@ -90,7 +89,7 @@ export const createBeerThunk =
       });
       dispatch(loadingOffActionCreator());
       dispatch(openAlertDoneActionCreator(message));
-      dispatch(createBeerActionCreator(beer));
+      dispatch(loadSingleBeerActionCreator(beer));
       setTimeout(() => {
         dispatch(closeAlertDoneActionCreator());
       }, 4500);

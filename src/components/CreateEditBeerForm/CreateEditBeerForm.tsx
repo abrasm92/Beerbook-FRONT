@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   createBeerThunk,
   updateBeerThunk,
@@ -13,7 +13,7 @@ type BeerPropForm = {
 };
 
 const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
-  const { page }: any = useParams();
+  const { singleBeer } = useAppSelector((state) => state.beer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   let initialFormValue = {
@@ -31,10 +31,13 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
   const [file, setFile] = useState(false);
 
   useEffect(() => {
-    if (initialFormValue.image !== "") {
+    if (beerData.image !== "") {
       setFile(true);
     }
-  }, [initialFormValue.image]);
+    if (beerData.image === null) {
+      setFile(false);
+    }
+  }, [beerData.image, initialFormValue.image]);
 
   const changeBeerData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBeerData({
@@ -78,7 +81,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         image: "",
       });
       setFile(false);
-      navigate(`/cervezas-del-mundo/page=${+page}`);
+      navigate(`/detalles-cerveza/${singleBeer.id}`);
     } else {
       dispatch(createBeerThunk(newBeer));
       setBeerData({
@@ -92,7 +95,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         image: "",
       });
       setFile(false);
-      navigate(`/cervezas-del-mundo/page=${+page}`);
+      navigate(`/detalles-cerveza/${singleBeer.id}`);
     }
   };
 
@@ -161,6 +164,17 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         onChange={changeBeerDescription}
         placeholder="Descripción"
       />
+      {beer && (
+        <div className="formulary--previus-image">
+          <p>Imagen previa</p>
+          <img
+            src={beer.imageBackup}
+            alt="imagen de la cerveza"
+            width={60}
+            height={125}
+          />
+        </div>
+      )}
       <div className={file ? "fileUpload--On" : "fileUpload"}>
         <label htmlFor="country">Imagen</label>
         <input

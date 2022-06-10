@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { deleteBeerThunk } from "../../redux/thunks/beerThunks";
 import { BeerDataApi } from "../../types/interfaces";
 import DetailBeerStyles from "./DetailBeerStyles";
@@ -11,11 +11,11 @@ type PropBeer = {
 const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { page }: any = useParams();
+  const { page } = useAppSelector((state) => state.beer);
 
   const deleteBeer = () => {
     dispatch(deleteBeerThunk(beer.id));
-    navigate(`/cervezas-del-mundo/page=${+page}`);
+    navigate(`/cervezas-del-mundo/page=${+page + 1}`);
   };
   const editBeer = () => {
     navigate(`/editar-cerveza/${beer.id}`);
@@ -24,7 +24,7 @@ const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
   return (
     <DetailBeerStyles>
       <div className="detail-beer--general-info">
-        <img src="/images/Albino Squid Assassin.png" alt="Imagen de cerveza" />
+        <img src={beer.imageBackup} alt="Imagen de cerveza" />
         <div className="beer-info">
           <img src="/images/like-off.svg" alt="favorite-icon" />
           <h2>{beer.name}</h2>

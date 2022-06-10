@@ -13,8 +13,12 @@ const BeerListPage = (): JSX.Element => {
   const { totalPages } = useAppSelector((state) => state.beer);
 
   useEffect(() => {
-    dispatch(loadBeersThunk(page));
-  }, [dispatch, page]);
+    if (page === "0" || page === "NaN") {
+      navigate(`/cervezas-del-mundo/page=1`);
+    } else {
+      dispatch(loadBeersThunk(page));
+    }
+  }, [dispatch, navigate, page]);
 
   const previewPage = () => {
     if (+page === 1) {

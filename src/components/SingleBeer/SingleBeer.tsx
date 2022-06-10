@@ -15,7 +15,7 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
 
   return (
     <SingleBeerStyles onClick={detailBeer}>
-      <img src="/images/Albino Squid Assassin.png" alt="Imagen de cerveza" />
+      <img src={beer.imageBackup} alt="Imagen de cerveza" />
       <div className="beer-info">
         <h2>{beer.name}</h2>
         <h3>
