@@ -5,12 +5,16 @@ const BeerListPageStyles = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: center;
   margin: 100px auto;
   border: 1px solid #b6b6b6;
-  width: 320px;
+  min-width: 280px;
+  width: 80%;
+  max-width: 400px;
   height: 100%;
   border-radius: 20px;
   box-shadow: 10px 10px 7px #b6b6b6;
+
   .buttons-pagination {
     width: 200px;
     display: flex;
