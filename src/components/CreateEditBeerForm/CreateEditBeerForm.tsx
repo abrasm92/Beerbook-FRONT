@@ -31,10 +31,13 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
   const [file, setFile] = useState(false);
 
   useEffect(() => {
-    if (initialFormValue.image !== "") {
+    if (beerData.image !== "") {
       setFile(true);
     }
-  }, [initialFormValue.image]);
+    if (beerData.image === null) {
+      setFile(false);
+    }
+  }, [beerData.image, initialFormValue.image]);
 
   const changeBeerData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBeerData({
@@ -161,6 +164,17 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         onChange={changeBeerDescription}
         placeholder="Descripción"
       />
+      {beer && (
+        <div className="formulary--previus-image">
+          <p>Imagen previa</p>
+          <img
+            src={beer.imageBackup}
+            alt="imagen de la cerveza"
+            width={60}
+            height={125}
+          />
+        </div>
+      )}
       <div className={file ? "fileUpload--On" : "fileUpload"}>
         <label htmlFor="country">Imagen</label>
         <input

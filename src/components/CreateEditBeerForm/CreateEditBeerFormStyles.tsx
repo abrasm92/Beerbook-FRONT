@@ -7,6 +7,17 @@ const CreateEditBeerFormStyles = styled.form`
   align-items: center;
   margin-top: 20px;
 
+  .formulary--previus-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .formulary--previus-image * {
+    padding: 10px 0px 10px 0px;
+  }
+
   button {
     background-color: #0d47a1;
     border: none;
@@ -18,6 +29,7 @@ const CreateEditBeerFormStyles = styled.form`
     font-size: large;
     cursor: pointer;
   }
+
   .editing {
     font-size: medium;
   }
