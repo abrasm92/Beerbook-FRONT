@@ -15,7 +15,12 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
 
   return (
     <SingleBeerStyles onClick={detailBeer}>
-      <img src={beer.imageBackup} alt="Imagen de cerveza" />
+      <img
+        src={beer.imageBackup}
+        alt="Imagen de cerveza"
+        width={60}
+        height={125}
+      />
       <div className="beer-info">
         <h2>{beer.name}</h2>
         <h3>
@@ -24,6 +29,7 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
         <p>
           {beer.style} · {beer.degrees}
         </p>
+        <button>Eliminar</button>
       </div>
     </SingleBeerStyles>
   );

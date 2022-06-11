@@ -20,7 +20,7 @@ const SingleBeerStyles = styled.li`
     color: #fff;
     padding: 7px;
     cursor: pointer;
-    margin: 0px 10px;
+    margin-left: 90px;
   }
 
   img {
@@ -28,13 +28,16 @@ const SingleBeerStyles = styled.li`
     height: 125px;
     object-fit: contain;
   }
+
   .beer-info {
     margin-top: -15px;
     padding-left: 25px;
   }
+
   .beer-info * {
     padding-bottom: 5px;
   }
+
   h2 {
     font-size: 1rem;
     font-weight: 800;
@@ -43,9 +46,11 @@ const SingleBeerStyles = styled.li`
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
   h3 {
     font-size: 0.9rem;
   }
+
   p {
     font-size: 0.8rem;
   }

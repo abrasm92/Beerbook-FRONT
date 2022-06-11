@@ -14,6 +14,7 @@ import DetailBeerPage from "./pages/DetailBeerPage/DetailBeerPage";
 import EditBeerFormPage from "./pages/EditBeerFormPage/EditBeerFormPage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RegisterFormPage from "./pages/RegisterPage/RegisterFormPage";
 import { userLoginActionCreator } from "./redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
@@ -91,9 +92,17 @@ function App() {
             </CheckLogged>
           }
         />
+        <Route
+          path="/mi-perfil"
+          element={
+            <CheckLogged>
+              <ProfilePage />
+            </CheckLogged>
+          }
+        />
         <Route path="/" element={<Navigate replace to="/iniciar-sesion" />} />
         <Route path="/error-404" element={<NotFoundPage />} />
-        <Route path="/*" element={<NotFoundPage />} />
+        <Route path="/*" element={<Navigate replace to="/error-404" />} />
       </Routes>
       <Navbar />
     </>
