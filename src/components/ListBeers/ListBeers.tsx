@@ -4,6 +4,7 @@ import ListBeersStyles from "./ListBeersStyles";
 
 const ListBeers = (): JSX.Element => {
   const { listOfBeers } = useAppSelector((state) => state.beer);
+
   return (
     <ListBeersStyles>
       {listOfBeers.map((beer) => (

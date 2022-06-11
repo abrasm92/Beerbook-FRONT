@@ -31,14 +31,14 @@ const Filter = (): JSX.Element => {
         setFilterCategory({
           ...filterCategory,
           [event.target.name]: event.target.value,
-          filterValue: "0-5",
+          filterValue: "NA",
         });
         break;
       case "IBU":
         setFilterCategory({
           ...filterCategory,
           [event.target.name]: event.target.value,
-          filterValue: "0-20",
+          filterValue: "0",
         });
         break;
       default:
@@ -113,7 +113,7 @@ const Filter = (): JSX.Element => {
               onChange={changeFilterValue}
               data-testid="filterValue-degrees"
             >
-              <option value="N/A">Sin Alcohol</option>
+              <option value="NA">Sin Alcohol</option>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
