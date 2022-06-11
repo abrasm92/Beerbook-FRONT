@@ -11,7 +11,10 @@ import {
   openAlertDoneActionCreator,
   openAlertWrongActionCreator,
 } from "../features/uiSlice";
-import { userLoginActionCreator } from "../features/userSlice";
+import {
+  getUserDataActionCreator,
+  userLoginActionCreator,
+} from "../features/userSlice";
 
 export const userRegisterThunk = (user: User) => async (dispatch: Dispatch) => {
   try {
@@ -68,3 +71,12 @@ export const userLoginThunk =
       }, 4500);
     }
   };
+
+export const getUserByIdThunk = (id: string) => async (dispatch: Dispatch) => {
+  try {
+    const {
+      data: { user },
+    } = await axios.get(`${process.env.REACT_APP_API_URL}user/userinfo/${id}`);
+    dispatch(getUserDataActionCreator(user));
+  } catch (error) {}
+};

@@ -15,10 +15,11 @@ export interface UserData {
   username: string;
   email: string;
   image: string | null;
+  imageBackup: string | null;
   creations: number;
   favorites: number;
-  age: number;
-  country: string;
+  age: number | null;
+  country: string | null;
   admin: boolean;
 }
 export interface UserState {
