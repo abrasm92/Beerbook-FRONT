@@ -5,7 +5,7 @@ const Profile = (): JSX.Element => {
     <ProfileStyles>
       <div className="profile">
         <div className="profile--main-info">
-          <img src="" alt="imagen de perfil" />
+          <img src="/images/default-profile-image.jpg" alt="imagen de perfil" />
           <div className="profile--main-info-text">
             <h2>NOMBRE Y APELLIDO</h2>
             <p>xx años · País</p>
