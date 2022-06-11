@@ -9,8 +9,8 @@ const NotFoundPage = (): JSX.Element => {
             src="https://cdn.rawgit.com/ahmedhosna95/upload/1731955f/sad404.svg"
             alt="404"
           />
-          <span className="number"> 404</span>
-          <span className="text">PAGINA NO ENCONTRADA</span>
+          <p className="number">404</p>
+          <p className="text">PAGINA NO ENCONTRADA</p>
           <p className="p-a">
             La página que estás buscando no se pudo encontrar
           </p>

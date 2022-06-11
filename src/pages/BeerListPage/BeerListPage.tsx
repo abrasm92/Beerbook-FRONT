@@ -4,13 +4,14 @@ import ListBeers from "../../components/ListBeers/ListBeers";
 import SubHeader from "../../components/SubHeader/Subheader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { loadBeersThunk } from "../../redux/thunks/beerThunks";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import BeerListPageStyles from "./BeerListPageStyles";
 
 const BeerListPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { page }: any = useParams();
   const navigate = useNavigate();
-  const { totalPages } = useAppSelector((state) => state.beer);
+  const { totalPages, listOfBeers } = useAppSelector((state) => state.beer);
 
   useEffect(() => {
     if (page === "0" || page === "NaN") {
@@ -38,14 +39,19 @@ const BeerListPage = (): JSX.Element => {
 
   return (
     <>
-      <SubHeader />
-      <BeerListPageStyles>
-        <ListBeers />
-        <div className="buttons-pagination">
-          <button onClick={previewPage}>{"<"}</button>
-          <button onClick={nextPage}>{">"}</button>
-        </div>
-      </BeerListPageStyles>
+      {listOfBeers.length !== 0 && (
+        <>
+          <SubHeader />
+          <BeerListPageStyles>
+            <ListBeers />
+            <div className="buttons-pagination">
+              <button onClick={previewPage}>{"<"}</button>
+              <button onClick={nextPage}>{">"}</button>
+            </div>
+          </BeerListPageStyles>
+        </>
+      )}
+      {listOfBeers.length === 0 && <NotFoundPage />}
     </>
   );
 };

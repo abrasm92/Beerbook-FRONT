@@ -92,6 +92,7 @@ function App() {
           }
         />
         <Route path="/" element={<Navigate replace to="/iniciar-sesion" />} />
+        <Route path="/error-404" element={<NotFoundPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Navbar />

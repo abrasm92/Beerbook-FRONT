@@ -34,6 +34,7 @@ export const loadBeersThunk =
           },
         }
       );
+
       dispatch(loadBeersActionCreator(beersOnPage));
       dispatch(getMaxPagesActionCreator(maxPages));
       dispatch(setNumberPageActionCreator(currentPage));

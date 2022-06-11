@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import DetailBeer from "../../components/DetailBeer/DetailBeer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { getBeerByIdThunk } from "../../redux/thunks/beerThunks";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import DetailBeerPageStyles from "./DetailBeerPageStyles";
 
 const DetailBeerPage = (): JSX.Element => {
@@ -15,9 +16,14 @@ const DetailBeerPage = (): JSX.Element => {
   }, [dispatch, id]);
   const { singleBeer } = useAppSelector((state) => state.beer);
   return (
-    <DetailBeerPageStyles>
-      <DetailBeer beer={singleBeer} />
-    </DetailBeerPageStyles>
+    <>
+      {singleBeer.name !== "" && (
+        <DetailBeerPageStyles>
+          <DetailBeer beer={singleBeer} />
+        </DetailBeerPageStyles>
+      )}
+      {singleBeer.name === "" && <NotFoundPage />}
+    </>
   );
 };
 
