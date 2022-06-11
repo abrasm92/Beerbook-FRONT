@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BasicUser, UserState } from "../../types/interfaces";
+import { BasicUser, UserData, UserState } from "../../types/interfaces";
 
 const initialState: UserState = {
   name: "",
@@ -10,6 +10,7 @@ const initialState: UserState = {
     username: "",
     email: "",
     image: null,
+    imageBackup: null,
     creations: NaN,
     favorites: NaN,
     age: NaN,
@@ -29,6 +30,10 @@ const userSlice = createSlice({
       logged: true,
     }),
     userLogout: () => initialState,
+    getUserData: (user: UserState, action: PayloadAction<UserData>) => ({
+      ...user,
+      data: action.payload,
+    }),
   },
 });
 
@@ -37,4 +42,5 @@ export default userSlice.reducer;
 export const {
   userLogin: userLoginActionCreator,
   userLogout: userLogoutActionCreator,
+  getUserData: getUserDataActionCreator,
 } = userSlice.actions;
