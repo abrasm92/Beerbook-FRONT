@@ -17,7 +17,7 @@ const Navbar = (): JSX.Element => {
           <p>Cervezas del mundo</p>
         </span>
       </Link>
-      <Link to="" className="navbar-button--link">
+      <Link to="/mi-perfil" className="navbar-button--link">
         <span className="navbar-button">
           <img src="/images/profile.svg" alt="Enlace a mi perfil" />
           <p>Mi perfil</p>
