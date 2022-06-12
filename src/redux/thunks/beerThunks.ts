@@ -191,3 +191,21 @@ export const filterBeerThuk =
       }, 4500);
     }
   };
+
+export const getHomePageBeersThunk = () => async (dispatch: Dispatch) => {
+  try {
+    dispatch(loadingOnActionCreator());
+    const {
+      data: { beers },
+    } = await axios.get(`${process.env.REACT_APP_LOCAL}beer/freerandom`);
+    dispatch(loadBeersActionCreator(beers));
+    dispatch(loadingOffActionCreator());
+  } catch (error: any) {
+    dispatch(loadingOffActionCreator());
+    const message = customErrorApi(error);
+    dispatch(openAlertWrongActionCreator(message));
+    setTimeout(() => {
+      dispatch(closeAlertWrongActionCreator());
+    }, 4500);
+  }
+};
