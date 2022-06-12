@@ -19,10 +19,10 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
   let initialFormValue = {
     name: beer ? beer.name : "",
     brewery: beer ? beer.brewery : "",
-    style: beer ? beer.style : "",
-    degrees: beer ? beer.degrees : "",
-    IBU: beer ? beer.IBU : "",
-    country: beer ? beer.country : "",
+    style: beer ? beer.style : "Lager",
+    degrees: beer ? beer.degrees : 0,
+    IBU: beer ? beer.IBU : 0,
+    country: beer ? beer.country : "Escocia",
     description: beer ? beer.description : "",
     image: beer ? beer.image : "",
   };
@@ -55,6 +55,13 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
     setBeerData({ ...beerData, [event.target.id]: event.target.value });
   };
 
+  const changeBeerOptions = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setBeerData({
+      ...beerData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const submitForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
@@ -73,10 +80,10 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
       setBeerData({
         name: "",
         brewery: "",
-        style: "",
+        style: "Lager",
         degrees: 0,
         IBU: 0,
-        country: "",
+        country: "Escocia",
         description: "",
         image: "",
       });
@@ -87,10 +94,10 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
       setBeerData({
         name: "",
         brewery: "",
-        style: "",
+        style: "Lager",
         degrees: 0,
         IBU: 0,
-        country: "",
+        country: "Escocia",
         description: "",
         image: "",
       });
@@ -122,13 +129,24 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         placeholder="Fabricante"
       />
       <label htmlFor="style">Estilo</label>
-      <input
+      <select
+        name="style"
+        data-testid="style-options"
+        onChange={changeBeerOptions}
+        defaultValue={beerData.style}
+      >
+        <option value="Lager">Lager</option>
+        <option value="Porter">Porter</option>
+        <option value="Blonde">Blonde</option>
+        <option value="Red Ale">Red Ale</option>
+      </select>
+      {/*       <input
         type="text"
         id="style"
         value={beerData.style}
         onChange={changeBeerData}
         placeholder="Estilo"
-      />
+      /> */}
       <div className="formulary-number-inputs">
         <label htmlFor="IBU">IBU</label>
         <input
@@ -138,6 +156,8 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
           onChange={changeBeerData}
           placeholder="IBU"
           className="number-input"
+          max={100}
+          min={0}
         />
         <label htmlFor="degrees">Grados</label>
         <input
@@ -147,16 +167,31 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
           onChange={changeBeerData}
           placeholder="Grados"
           className="number-input"
+          max={30}
+          min={0}
         />
       </div>
       <label htmlFor="country">País</label>
-      <input
+      <select
+        name="country"
+        data-testid="country-options"
+        onChange={changeBeerOptions}
+        defaultValue={beerData.country}
+      >
+        <option value="Escocia">Escocia</option>
+        <option value="EEUU">EEUU</option>
+        <option value="España">España</option>
+        <option value="Bélgica">Bélgica</option>
+        <option value="Japon">Japon</option>
+        <option value="Italia">Italia</option>
+      </select>
+      {/* <input
         type="text"
         id="country"
         value={beerData.country}
         onChange={changeBeerData}
         placeholder="País"
-      />
+      /> */}
       <label htmlFor="description">Descripción</label>
       <textarea
         id="description"

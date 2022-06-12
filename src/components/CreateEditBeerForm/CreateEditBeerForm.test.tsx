@@ -75,26 +75,6 @@ describe("Given a CreateEditBeerForm component", () => {
     });
   });
 
-  describe("When it's rendered with a beer on props", () => {
-    test("Then it should show the button image", () => {
-      const buttonImage = "Imagen";
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <CreateEditBeerForm
-              beer={{ ...singleBeer, image: "this is an image" }}
-            />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const expectButtonImage = screen.getByLabelText(buttonImage);
-
-      expect(expectButtonImage).toBeInTheDocument();
-    });
-  });
-
   describe("When it's rendered with a beer on props and user click on 'Editar cerveza' button", () => {
     test("Then it should call navigate", () => {
       const buttonsubmit = "Editar cerveza";
