@@ -37,7 +37,8 @@ const CreateEditBeerFormStyles = styled.form`
     font-size: medium;
   }
 
-  input {
+  input,
+  select {
     border: none;
     border-bottom: 1px solid #b6b6b6;
     text-align: left;

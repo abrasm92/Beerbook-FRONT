@@ -4,7 +4,7 @@ import SingleBeerStyles from "./SingleBeerStyles";
 
 type PropBeer = {
   beer: BeerDataApi;
-  inHome: Boolean;
+  inHome: boolean;
 };
 
 const SingleBeer = ({ beer, inHome }: PropBeer): JSX.Element => {

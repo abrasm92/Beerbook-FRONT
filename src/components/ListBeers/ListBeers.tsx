@@ -3,7 +3,7 @@ import SingleBeer from "../SingleBeer/SingleBeer";
 import ListBeersStyles from "./ListBeersStyles";
 
 type InHome = {
-  checkInHome: Boolean;
+  checkInHome: boolean;
 };
 
 const ListBeers = ({ checkInHome }: InHome): JSX.Element => {
