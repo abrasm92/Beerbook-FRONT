@@ -13,7 +13,7 @@ describe("Given a SubHeader component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <SubHeader />
+            <SubHeader checkInHome={false} />
           </Provider>
         </BrowserRouter>
       );
@@ -32,7 +32,7 @@ describe("Given a SubHeader component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <SubHeader />
+            <SubHeader checkInHome={false} />
           </Provider>
         </BrowserRouter>
       );

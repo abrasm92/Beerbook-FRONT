@@ -5,7 +5,7 @@ const Navbar = (): JSX.Element => {
   const pageBeerList = `/cervezas-del-mundo/page=1`;
   return (
     <NavbarStyles>
-      <Link to="/crear-cerveza" className="navbar-button--link">
+      <Link to="/" className="navbar-button--link">
         <span className="navbar-button">
           <img src="/images/home.svg" alt="Enlace a inicio" />
           <p>Inicio</p>

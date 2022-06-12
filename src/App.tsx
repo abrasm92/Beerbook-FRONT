@@ -12,6 +12,7 @@ import BeerListPage from "./pages/BeerListPage/BeerListPage";
 import CreateBeerFormPage from "./pages/CreateBeerFormPage/CreateBeerFormPage";
 import DetailBeerPage from "./pages/DetailBeerPage/DetailBeerPage";
 import EditBeerFormPage from "./pages/EditBeerFormPage/EditBeerFormPage";
+import HomePage from "./pages/HomePage/HomePage";
 import LoginFormPage from "./pages/LoginPage/LoginFormPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -100,7 +101,7 @@ function App() {
             </CheckLogged>
           }
         />
-        <Route path="/" element={<Navigate replace to="/iniciar-sesion" />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/error-404" element={<NotFoundPage />} />
         <Route path="/*" element={<Navigate replace to="/error-404" />} />
       </Routes>

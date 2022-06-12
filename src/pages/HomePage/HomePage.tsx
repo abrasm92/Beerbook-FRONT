@@ -13,7 +13,7 @@ const HomePage = (): JSX.Element => {
 
   return (
     <>
-      <SubHeader />
+      <SubHeader checkInHome={true} />
       <ListBeers />
     </>
   );

@@ -41,7 +41,7 @@ const BeerListPage = (): JSX.Element => {
     <>
       {listOfBeers.length !== 0 && (
         <>
-          <SubHeader />
+          <SubHeader checkInHome={false} />
           <BeerListPageStyles>
             <ListBeers />
             <div className="buttons-pagination">
