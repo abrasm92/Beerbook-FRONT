@@ -41,7 +41,7 @@ describe("Given a CheckLogged component", () => {
         <BrowserRouter>
           <Provider store={mockStore}>
             <CheckLogged>
-              <BeerListPage />
+              <BeerListPage currentPage="cervezas-del-mundo" />
             </CheckLogged>
           </Provider>
         </BrowserRouter>
@@ -108,7 +108,7 @@ describe("Given a CheckLogged component", () => {
         <BrowserRouter>
           <Provider store={mockStore}>
             <CheckLogged>
-              <BeerListPage />
+              <BeerListPage currentPage="cervezas-del-mundo" />
             </CheckLogged>
           </Provider>
         </BrowserRouter>

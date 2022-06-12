@@ -5,13 +5,13 @@ import SubHeader from "../../components/SubHeader/Subheader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { loadBeersThunk } from "../../redux/thunks/beerThunks";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import BeerListPageStyles from "./BeerListPageStyles";
+import CreationsBeerListPageStyles from "./CreationsBeerListPageStyles";
 
 type PageList = {
   currentPage: string;
 };
 
-const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
+const CreationsBeerListPage = ({ currentPage }: PageList): JSX.Element => {
   const dispatch = useAppDispatch();
   const { page }: any = useParams();
   const navigate = useNavigate();
@@ -46,13 +46,13 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
       {listOfBeers.length !== 0 && (
         <>
           <SubHeader checkInHome={false} />
-          <BeerListPageStyles>
+          <CreationsBeerListPageStyles>
             <ListBeers checkInHome={false} />
             <div className="buttons-pagination">
               <button onClick={previewPage}>{"<"}</button>
               <button onClick={nextPage}>{">"}</button>
             </div>
-          </BeerListPageStyles>
+          </CreationsBeerListPageStyles>
         </>
       )}
       {listOfBeers.length === 0 && <NotFoundPage />}
@@ -60,4 +60,4 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
   );
 };
 
-export default BeerListPage;
+export default CreationsBeerListPage;

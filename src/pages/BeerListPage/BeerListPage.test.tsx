@@ -26,7 +26,7 @@ describe("Given a BeerLisPage component", () => {
       render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <BeerListPage />
+            <BeerListPage currentPage="cervezas-del-mundo" />
           </Provider>
         </BrowserRouter>
       );
@@ -50,7 +50,7 @@ describe("Given a BeerLisPage component", () => {
       render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <BeerListPage />
+            <BeerListPage currentPage="cervezas-del-mundo" />
           </Provider>
         </BrowserRouter>
       );

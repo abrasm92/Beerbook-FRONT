@@ -64,6 +64,7 @@ const beerSlice = createSlice({
       ...beer,
       page: action.payload,
     }),
+    changeFilterState: (beer) => ({ ...beer, filter: !beer.filter }),
   },
 });
 
@@ -77,4 +78,5 @@ export const {
   editBeer: editBeerActionCreator,
   getMaxPages: getMaxPagesActionCreator,
   setNumberPage: setNumberPageActionCreator,
+  changeFilterState: changeFilterStateActionCreator,
 } = beerSlice.actions;
