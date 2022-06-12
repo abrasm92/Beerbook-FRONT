@@ -3,7 +3,7 @@ import Filter from "../Filter/Filter";
 import SubHeaderStyles from "./SubHeaderStyles";
 
 type InHome = {
-  checkInHome: Boolean;
+  checkInHome: boolean;
 };
 
 const SubHeader = ({ checkInHome }: InHome): JSX.Element => {
