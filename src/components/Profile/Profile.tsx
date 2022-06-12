@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { UserData } from "../../types/interfaces";
 import ProfileStyles from "./ProfileStyles";
 
@@ -6,6 +7,11 @@ type ProfileProp = {
 };
 
 const Profile = ({ user }: ProfileProp): JSX.Element => {
+  const navigate = useNavigate();
+
+  const goToCreate = () => {
+    navigate("/crear-cerveza");
+  };
   return (
     <ProfileStyles>
       <div className="profile">
@@ -36,7 +42,7 @@ const Profile = ({ user }: ProfileProp): JSX.Element => {
           <h3>Mis favoritas - {user.favorites}</h3>
           <button>Ver favoritas</button>
         </div>
-        <button className="profile--button-add-beer">
+        <button className="profile--button-add-beer" onClick={goToCreate}>
           Agregar una cerveza
         </button>
       </div>

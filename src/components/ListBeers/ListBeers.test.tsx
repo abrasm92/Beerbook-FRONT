@@ -35,7 +35,7 @@ describe("Given a ListBeer component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ListBeers />
+            <ListBeers checkInHome={false} />
           </Provider>
         </BrowserRouter>
       );
