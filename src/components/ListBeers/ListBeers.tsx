@@ -2,13 +2,17 @@ import { useAppSelector } from "../../redux/hooks";
 import SingleBeer from "../SingleBeer/SingleBeer";
 import ListBeersStyles from "./ListBeersStyles";
 
-const ListBeers = (): JSX.Element => {
+type InHome = {
+  checkInHome: Boolean;
+};
+
+const ListBeers = ({ checkInHome }: InHome): JSX.Element => {
   const { listOfBeers } = useAppSelector((state) => state.beer);
 
   return (
     <ListBeersStyles>
       {listOfBeers.map((beer) => (
-        <SingleBeer beer={beer} key={beer.id} />
+        <SingleBeer beer={beer} key={beer.id} inHome={checkInHome} />
       ))}
     </ListBeersStyles>
   );

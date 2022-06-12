@@ -13,11 +13,14 @@ const SubHeaderStyles = styled.section`
     rgba(13, 71, 161, 1) 10%,
     rgba(255, 255, 255, 0) 100%
   );
-  p {
+  .subheader--tittle {
     font-size: 1.2rem;
     text-align: center;
     font-weight: 700;
     color: #fff;
+    margin: 0 auto;
+    margin-top: -70px;
+    padding: 0 20px;
   }
 
   .subHeader--open-filter {

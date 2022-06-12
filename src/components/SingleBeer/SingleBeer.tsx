@@ -4,9 +4,10 @@ import SingleBeerStyles from "./SingleBeerStyles";
 
 type PropBeer = {
   beer: BeerDataApi;
+  inHome: Boolean;
 };
 
-const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
+const SingleBeer = ({ beer, inHome }: PropBeer): JSX.Element => {
   const navigate = useNavigate();
 
   const detailBeer = () => {
@@ -29,7 +30,7 @@ const SingleBeer = ({ beer }: PropBeer): JSX.Element => {
         <p>
           {beer.style} · {beer.degrees}
         </p>
-        <button>Eliminar</button>
+        {inHome && <button>Eliminar</button>}
       </div>
     </SingleBeerStyles>
   );

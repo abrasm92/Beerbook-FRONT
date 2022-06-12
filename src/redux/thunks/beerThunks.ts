@@ -197,7 +197,7 @@ export const getHomePageBeersThunk = () => async (dispatch: Dispatch) => {
     dispatch(loadingOnActionCreator());
     const {
       data: { beers },
-    } = await axios.get(`${process.env.REACT_APP_LOCAL}beer/freerandom`);
+    } = await axios.get(`${process.env.REACT_APP_API_URL}beer/freerandom`);
     dispatch(loadBeersActionCreator(beers));
     dispatch(loadingOffActionCreator());
   } catch (error: any) {

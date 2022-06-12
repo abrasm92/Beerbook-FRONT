@@ -16,7 +16,9 @@ const SubHeader = ({ checkInHome }: InHome): JSX.Element => {
     <>
       {checkInHome && (
         <SubHeaderStyles>
-          <p>Descubre todo sobre las mejores cervezas del mundo</p>
+          <p className="subheader--tittle">
+            Descubre todo sobre las mejores cervezas del mundo
+          </p>
         </SubHeaderStyles>
       )}
 

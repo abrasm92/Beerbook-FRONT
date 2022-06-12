@@ -21,7 +21,7 @@ describe("Given a SingleBeer component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <SingleBeer beer={singleBeer} />
+            <SingleBeer beer={singleBeer} inHome={true} />
           </Provider>
         </BrowserRouter>
       );
@@ -39,7 +39,7 @@ describe("Given a SingleBeer component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <SingleBeer beer={singleBeer} />
+            <SingleBeer beer={singleBeer} inHome={true} />
           </Provider>
         </BrowserRouter>
       );

@@ -43,7 +43,7 @@ const BeerListPage = (): JSX.Element => {
         <>
           <SubHeader checkInHome={false} />
           <BeerListPageStyles>
-            <ListBeers />
+            <ListBeers checkInHome={false} />
             <div className="buttons-pagination">
               <button onClick={previewPage}>{"<"}</button>
               <button onClick={nextPage}>{">"}</button>
