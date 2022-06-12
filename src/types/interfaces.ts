@@ -62,6 +62,10 @@ export interface BeerState {
   listOfBeers: BeerDataApi[];
   page: number;
   totalPages: number;
+  filter: boolean;
+  favoritesList: boolean;
+  creationsList: boolean;
+  generalList: boolean;
   singleBeer: BeerDataApi;
 }
 

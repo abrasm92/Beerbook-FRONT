@@ -71,6 +71,10 @@ describe("Given a CheckLogged component", () => {
           listOfBeers: groupOfBeer,
           page: 0,
           totalPages: 0,
+          filter: false,
+          favoritesList: false,
+          creationsList: false,
+          generalList: true,
           singleBeer: {
             name: "",
             brewery: "",
