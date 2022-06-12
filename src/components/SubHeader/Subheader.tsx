@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { changeFilterStateActionCreator } from "../../redux/features/beerSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Filter from "../Filter/Filter";
 import SubHeaderStyles from "./SubHeaderStyles";
 
@@ -7,10 +8,11 @@ type InHome = {
 };
 
 const SubHeader = ({ checkInHome }: InHome): JSX.Element => {
-  const [filter, setFilter] = useState(false);
+  const dispatch = useAppDispatch();
+  const { filter } = useAppSelector((state) => state.beer);
 
   const openCloseFilter = () => {
-    setFilter(!filter);
+    dispatch(changeFilterStateActionCreator());
   };
   return (
     <>
@@ -27,7 +29,7 @@ const SubHeader = ({ checkInHome }: InHome): JSX.Element => {
           <button onClick={openCloseFilter} className="subHeader--open-filter">
             O/C
           </button>
-          {filter && <Filter />}
+          {filter.status && <Filter />}
         </SubHeaderStyles>
       )}
     </>

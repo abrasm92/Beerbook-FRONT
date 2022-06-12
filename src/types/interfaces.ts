@@ -58,11 +58,16 @@ export interface BeerDataApi {
   id: string;
 }
 
+export interface Filters {
+  status: boolean;
+  type: string;
+  value: string;
+}
 export interface BeerState {
   listOfBeers: BeerDataApi[];
   page: number;
   totalPages: number;
-  filter: boolean;
+  filter: Filters;
   favoritesList: boolean;
   creationsList: boolean;
   generalList: boolean;

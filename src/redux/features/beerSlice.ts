@@ -5,7 +5,11 @@ const initialState: BeerState = {
   listOfBeers: [],
   page: 0,
   totalPages: 0,
-  filter: false,
+  filter: {
+    status: false,
+    type: "",
+    value: "",
+  },
   favoritesList: false,
   creationsList: false,
   generalList: true,
@@ -64,7 +68,10 @@ const beerSlice = createSlice({
       ...beer,
       page: action.payload,
     }),
-    changeFilterState: (beer) => ({ ...beer, filter: !beer.filter }),
+    changeFilterState: (beer) => ({
+      ...beer,
+      filter: { ...beer.filter, status: !beer.filter.status },
+    }),
   },
 });
 

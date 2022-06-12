@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ListBeers from "../../components/ListBeers/ListBeers";
 import SubHeader from "../../components/SubHeader/Subheader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { loadBeersThunk } from "../../redux/thunks/beerThunks";
+import { filterBeerThunk, loadBeersThunk } from "../../redux/thunks/beerThunks";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import BeerListPageStyles from "./BeerListPageStyles";
 
@@ -15,15 +15,25 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
   const dispatch = useAppDispatch();
   const { page }: any = useParams();
   const navigate = useNavigate();
-  const { totalPages, listOfBeers } = useAppSelector((state) => state.beer);
+  const { totalPages, listOfBeers, filter } = useAppSelector(
+    (state) => state.beer
+  );
 
   useEffect(() => {
     if (page === "0" || page === "NaN") {
       navigate(`/${currentPage}/page=1`);
     } else {
+      switch (currentPage) {
+        case "cervezas-del-mundo":
+          if (filter.status === true) {
+            dispatch(filterBeerThunk(filter.type, filter.value, page));
+          } else {
+            dispatch(loadBeersThunk(page));
+          }
+      }
       dispatch(loadBeersThunk(page));
     }
-  }, [currentPage, dispatch, navigate, page]);
+  }, [currentPage, dispatch, filter, navigate, page]);
 
   const previewPage = () => {
     if (+page === 1) {
