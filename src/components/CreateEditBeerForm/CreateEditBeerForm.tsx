@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import {
   createBeerThunk,
   updateBeerThunk,
@@ -13,7 +13,6 @@ type BeerPropForm = {
 };
 
 const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
-  const { singleBeer } = useAppSelector((state) => state.beer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   let initialFormValue = {
@@ -88,7 +87,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         image: "",
       });
       setFile(false);
-      navigate(`/detalles-cerveza/${singleBeer.id}`);
+      navigate(`/cervezas-del-mundo/page=1`);
     } else {
       dispatch(createBeerThunk(newBeer));
       setBeerData({
@@ -102,7 +101,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         image: "",
       });
       setFile(false);
-      navigate(`/detalles-cerveza/${singleBeer.id}`);
+      navigate(`/cervezas-del-mundo/page=1`);
     }
   };
 

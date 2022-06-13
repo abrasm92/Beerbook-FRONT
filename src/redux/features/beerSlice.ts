@@ -85,6 +85,15 @@ const beerSlice = createSlice({
       ...beer,
       filter: { ...beer.filter, value: action.payload },
     }),
+    resetFilter: (beer): BeerState => ({
+      ...beer,
+      filter: {
+        ...beer.filter,
+        status: false,
+        type: "",
+        value: "",
+      },
+    }),
   },
 });
 
@@ -101,4 +110,5 @@ export const {
   changeFilterState: changeFilterStateActionCreator,
   changeFilterType: changeFilterTypeActionCreator,
   changeFilterValue: changeFilterValueActionCreator,
+  resetFilter: resetFilterActionCreator,
 } = beerSlice.actions;
