@@ -27,7 +27,12 @@ const SubHeader = ({ checkInHome }: InHome): JSX.Element => {
       {!checkInHome && (
         <SubHeaderStyles>
           <button onClick={openCloseFilter} className="subHeader--open-filter">
-            O/C
+            <img
+              src="/images/filter-symbol.svg"
+              alt="icono de filtro"
+              width={20}
+              height={20}
+            />
           </button>
           {filter.status && <Filter />}
         </SubHeaderStyles>

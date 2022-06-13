@@ -8,7 +8,7 @@ import SubHeader from "./Subheader";
 describe("Given a SubHeader component", () => {
   describe("When it's instantiated", () => {
     test("Then it show it show a button to filter", () => {
-      const textButton = "O/C";
+      const filterButton = "icono de filtro";
 
       render(
         <BrowserRouter>
@@ -18,7 +18,7 @@ describe("Given a SubHeader component", () => {
         </BrowserRouter>
       );
 
-      const button = screen.getByRole("button", { name: textButton });
+      const button = screen.getByAltText(filterButton);
 
       expect(button).toBeInTheDocument();
     });
@@ -26,7 +26,7 @@ describe("Given a SubHeader component", () => {
 
   describe("When it's instantiated and user clicks on button", () => {
     test("Then it show it show a button to submit filter", () => {
-      const textButton = "O/C";
+      const filterButton = "icono de filtro";
       const expectedTextButton = "Filtrar";
 
       render(
@@ -37,7 +37,7 @@ describe("Given a SubHeader component", () => {
         </BrowserRouter>
       );
 
-      const button = screen.getByRole("button", { name: textButton });
+      const button = screen.getByAltText(filterButton);
       userEvent.click(button);
       const buttonSubmit = screen.getByRole("button", {
         name: expectedTextButton,
