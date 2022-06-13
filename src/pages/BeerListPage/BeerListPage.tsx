@@ -35,19 +35,11 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
   }, [currentPage, dispatch, filter.status, navigate, page]);
 
   const previewPage = () => {
-    if (+page === 1) {
-      navigate(`/${currentPage}/page=${+page}`);
-    } else {
-      navigate(`/${currentPage}/page=${+page - 1}`);
-    }
+    navigate(`/${currentPage}/page=${+page - 1}`);
   };
 
   const nextPage = () => {
-    if (+page < totalPages) {
-      navigate(`/${currentPage}/page=${+page + 1}`);
-    } else {
-      navigate(`/${currentPage}/page=${+page}`);
-    }
+    navigate(`/${currentPage}/page=${+page + 1}`);
   };
 
   return (
@@ -58,8 +50,26 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
           <BeerListPageStyles>
             <ListBeers checkInHome={false} />
             <div className="buttons-pagination">
-              <button onClick={previewPage}>{"<"}</button>
-              <button onClick={nextPage}>{">"}</button>
+              {page > 1 && <button onClick={previewPage}>{"<"}</button>}
+              {page <= 1 && (
+                <button
+                  onClick={previewPage}
+                  disabled={true}
+                  className="button--off"
+                >
+                  {"<"}
+                </button>
+              )}
+              {page < totalPages && <button onClick={nextPage}>{">"}</button>}
+              {page >= totalPages && (
+                <button
+                  onClick={nextPage}
+                  disabled={true}
+                  className="button--off"
+                >
+                  {">"}
+                </button>
+              )}
             </div>
           </BeerListPageStyles>
         </>

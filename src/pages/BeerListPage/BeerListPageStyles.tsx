@@ -30,6 +30,9 @@ const BeerListPageStyles = styled.section`
       padding-bottom: 20px;
       cursor: pointer;
     }
+    .button--off {
+      visibility: hidden;
+    }
   }
 `;
 
