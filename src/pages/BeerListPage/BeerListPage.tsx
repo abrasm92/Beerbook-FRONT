@@ -26,9 +26,11 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
       switch (currentPage) {
         case "cervezas-del-mundo":
           if (filter.status === true) {
+            return;
           } else {
             dispatch(loadBeersThunk(page));
           }
+          break;
       }
       dispatch(loadBeersThunk(page));
     }

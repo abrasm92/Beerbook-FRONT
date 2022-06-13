@@ -3,7 +3,9 @@ import { groupOfBeer, singleBeer } from "../../mocks/beerMocks";
 import {
   createBeerThunk,
   deleteBeerThunk,
+  filterBeerThunk,
   getBeerByIdThunk,
+  getHomePageBeersThunk,
   loadBeersThunk,
   updateBeerThunk,
 } from "./beerThunks";
@@ -170,6 +172,76 @@ describe("Given a updateBeerThunk function", () => {
       jest.runOnlyPendingTimers();
 
       expect(dispatch).toHaveBeenCalledTimes(expectCalls);
+    });
+  });
+});
+
+describe("Given a filterBeerThunk function", () => {
+  describe("When it's invoked with a parameters to filter and page", () => {
+    test("Then it should call dispatch 5 times", async () => {
+      const expectedCalles = 5;
+      const filter = "style";
+      const filterValue = "Lager";
+      const page = 1;
+      const totalPages = 3;
+      const beerOnPage = groupOfBeer;
+      const thunk = filterBeerThunk(filter, filterValue, page);
+      const dispatch = jest.fn();
+      axios.get = jest.fn().mockResolvedValue({
+        data: { beerOnPage, totalPages },
+      });
+
+      await thunk(dispatch);
+      jest.runOnlyPendingTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalles);
+    });
+  });
+
+  describe("When it's invoked with a parameters to filter and page but it's fail", () => {
+    test("Then it should call dispatch 5 times", async () => {
+      const expectedCalles = 4;
+      const filter = "style";
+      const filterValue = "Lager";
+      const page = 1;
+      const thunk = filterBeerThunk(filter, filterValue, page);
+      const dispatch = jest.fn();
+      axios.get = jest.fn().mockRejectedValue(new Error());
+
+      await thunk(dispatch);
+      jest.runOnlyPendingTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalles);
+    });
+  });
+});
+
+describe("Given a getHomePageBeersThunk function", () => {
+  describe("When it's invoked and do right", () => {
+    test("Then it should call dispatch 3 times", async () => {
+      const dispatch = jest.fn();
+      const thunk = getHomePageBeersThunk();
+      const expectedCalls = 3;
+      const beers = groupOfBeer;
+      axios.get = jest.fn().mockResolvedValue({ data: { beers } });
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalls);
+    });
+  });
+
+  describe("When it's invoked and axios returns error", () => {
+    test("Then it should call dispatch 4 times", async () => {
+      const dispatch = jest.fn();
+      const thunk = getHomePageBeersThunk();
+      const expectedCalls = 4;
+      axios.get = jest.fn().mockRejectedValue(new Error());
+
+      await thunk(dispatch);
+      jest.runOnlyPendingTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalls);
     });
   });
 });

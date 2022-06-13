@@ -1,7 +1,11 @@
 import axios from "axios";
-import { loginUser, singleUser } from "../../mocks/userMocks";
+import { loginUser, singleUser, userData } from "../../mocks/userMocks";
 import { UserResponseApi } from "../../types/interfaces";
-import { userLoginThunk, userRegisterThunk } from "./userThunks";
+import {
+  getUserByIdThunk,
+  userLoginThunk,
+  userRegisterThunk,
+} from "./userThunks";
 
 const userLoggedCredentials: UserResponseApi = {
   iat: 1234,
@@ -106,6 +110,46 @@ describe("Given a userLoginThunk function", () => {
       jest.runOnlyPendingTimers();
 
       expect(dispatch).toHaveBeenCalledTimes(expectCalls);
+    });
+  });
+});
+
+describe("Given a getUserByIdThunkfunction", () => {
+  describe("When it's invoked and it works", () => {
+    test("Then it should call dispatch 3 times", async () => {
+      const dispatch = jest.fn();
+      const id = "1234";
+      const thunk = getUserByIdThunk(id);
+      const expectedCalls = 3;
+      axios.get = jest.fn().mockResolvedValue({ data: { userData } });
+
+      await thunk(dispatch);
+      jest.runOnlyPendingTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalls);
+    });
+  });
+
+  describe("When it's invoked and it fails", () => {
+    test("Then it should call dispatch 4 times", async () => {
+      const dispatch = jest.fn();
+      const id = "1234";
+      const thunk = getUserByIdThunk(id);
+      const expectedCalls = 4;
+      axios.get = jest.fn().mockRejectedValue({
+        status: 404,
+        response: {
+          status: 404,
+          data: {
+            message: "Usuario que busca no existe",
+          },
+        },
+      });
+
+      await thunk(dispatch);
+      jest.runOnlyPendingTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalls);
     });
   });
 });
