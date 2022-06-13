@@ -131,7 +131,7 @@ describe("Given a getUserByIdThunkfunction", () => {
   });
 
   describe("When it's invoked and it fails", () => {
-    test("Then it should call dispatch 3 times", async () => {
+    test("Then it should call dispatch 4 times", async () => {
       const dispatch = jest.fn();
       const id = "1234";
       const thunk = getUserByIdThunk(id);
