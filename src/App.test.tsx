@@ -35,30 +35,4 @@ describe("Given an App component", () => {
       expect(list).toBeInTheDocument();
     });
   });
-
-  describe("When it's instantiated without a token in local storage", () => {
-    test("Then it should show a list item", () => {
-      Object.defineProperty(window, "localStorage", {
-        value: {
-          getItem: jest.fn(() => null),
-        },
-      });
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-      );
-
-      const linkProfile = screen.getByAltText("Enlace a mi perfil");
-      userEvent.click(linkProfile);
-      const inputsLogin = screen.getAllByRole("button", {
-        name: "Iniciar sesión",
-      });
-
-      expect(inputsLogin).toHaveLength(2);
-    });
-  });
 });
