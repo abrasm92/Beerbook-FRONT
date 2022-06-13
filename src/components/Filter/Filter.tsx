@@ -1,4 +1,8 @@
 import { useState } from "react";
+import {
+  changeFilterTypeActionCreator,
+  changeFilterValueActionCreator,
+} from "../../redux/features/beerSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { filterBeerThunk } from "../../redux/thunks/beerThunks";
 import FilterStyles from "./FilterStyles";
@@ -53,11 +57,13 @@ const Filter = (): JSX.Element => {
       ...filterCategory,
       [event.target.name]: event.target.value,
     });
-    //dispatch pata cambiar valor del estado de filtro
+    dispatch(changeFilterTypeActionCreator(filterCategory.filterType));
+    dispatch(changeFilterValueActionCreator(filterCategory.filterValue));
   };
 
   const submitFilter = (event: React.SyntheticEvent) => {
     event.preventDefault();
+
     dispatch(
       filterBeerThunk(filterCategory.filterType, filterCategory.filterValue, 1)
     );

@@ -68,9 +68,22 @@ const beerSlice = createSlice({
       ...beer,
       page: action.payload,
     }),
-    changeFilterState: (beer) => ({
+    changeFilterState: (beer): BeerState => ({
       ...beer,
-      filter: { ...beer.filter, status: !beer.filter.status },
+      filter: {
+        ...beer.filter,
+        status: !beer.filter.status,
+        type: "",
+        value: "",
+      },
+    }),
+    changeFilterType: (beer, action: PayloadAction<string>): BeerState => ({
+      ...beer,
+      filter: { ...beer.filter, type: action.payload },
+    }),
+    changeFilterValue: (beer, action: PayloadAction<string>): BeerState => ({
+      ...beer,
+      filter: { ...beer.filter, value: action.payload },
     }),
   },
 });
@@ -86,4 +99,6 @@ export const {
   getMaxPages: getMaxPagesActionCreator,
   setNumberPage: setNumberPageActionCreator,
   changeFilterState: changeFilterStateActionCreator,
+  changeFilterType: changeFilterTypeActionCreator,
+  changeFilterValue: changeFilterValueActionCreator,
 } = beerSlice.actions;

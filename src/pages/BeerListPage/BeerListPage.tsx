@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ListBeers from "../../components/ListBeers/ListBeers";
 import SubHeader from "../../components/SubHeader/Subheader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { filterBeerThunk, loadBeersThunk } from "../../redux/thunks/beerThunks";
+import { loadBeersThunk } from "../../redux/thunks/beerThunks";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import BeerListPageStyles from "./BeerListPageStyles";
 
@@ -26,14 +26,13 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
       switch (currentPage) {
         case "cervezas-del-mundo":
           if (filter.status === true) {
-            dispatch(filterBeerThunk(filter.type, filter.value, page));
           } else {
             dispatch(loadBeersThunk(page));
           }
       }
       dispatch(loadBeersThunk(page));
     }
-  }, [currentPage, dispatch, filter, navigate, page]);
+  }, [currentPage, dispatch, filter.status, navigate, page]);
 
   const previewPage = () => {
     if (+page === 1) {
