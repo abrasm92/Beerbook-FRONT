@@ -18,6 +18,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: [],
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",
@@ -76,6 +84,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: groupOfBeer,
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",
@@ -106,6 +122,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: groupOfBeer,
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",
@@ -136,6 +160,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: groupOfBeer,
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",
@@ -169,6 +201,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: groupOfBeer,
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",
@@ -199,6 +239,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: groupOfBeer,
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",
@@ -229,6 +277,14 @@ describe("Given a beerSlice", () => {
         listOfBeers: groupOfBeer,
         page: 0,
         totalPages: 0,
+        filter: {
+          status: false,
+          type: "",
+          value: "",
+        },
+        favoritesList: false,
+        creationsList: false,
+        generalList: true,
         singleBeer: {
           name: "",
           brewery: "",

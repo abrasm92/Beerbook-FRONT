@@ -65,7 +65,23 @@ function App() {
           path="/cervezas-del-mundo/page=:page"
           element={
             <CheckLogged>
-              <BeerListPage />
+              <BeerListPage currentPage="cervezas-del-mundo" />
+            </CheckLogged>
+          }
+        />
+        <Route
+          path="/mi-creations/page=:page"
+          element={
+            <CheckLogged>
+              <BeerListPage currentPage="mi-creations" />
+            </CheckLogged>
+          }
+        />
+        <Route
+          path="/mi-favorites/page=:page"
+          element={
+            <CheckLogged>
+              <BeerListPage currentPage="mi-favorites" />
             </CheckLogged>
           }
         />

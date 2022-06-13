@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store/store";
-import { filterBeerThuk } from "../../redux/thunks/beerThunks";
+import { filterBeerThunk } from "../../redux/thunks/beerThunks";
 import Filter from "./Filter";
 
 describe("Given a Filter component", () => {
@@ -90,7 +90,7 @@ describe("Given a Filter component", () => {
   describe("When user click on 'Filtrar' button", () => {
     test("Then it should call dispatch", () => {
       const buttonName = "Filtrar";
-      const thunk = filterBeerThuk("hola", "hola", "0");
+      const thunk = filterBeerThunk("hola", "hola", "0");
       const dispatch = jest.fn();
 
       render(

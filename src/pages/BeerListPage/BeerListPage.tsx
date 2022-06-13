@@ -7,34 +7,39 @@ import { loadBeersThunk } from "../../redux/thunks/beerThunks";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import BeerListPageStyles from "./BeerListPageStyles";
 
-const BeerListPage = (): JSX.Element => {
+type PageList = {
+  currentPage: string;
+};
+
+const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
   const dispatch = useAppDispatch();
   const { page }: any = useParams();
   const navigate = useNavigate();
-  const { totalPages, listOfBeers } = useAppSelector((state) => state.beer);
+  const { totalPages, listOfBeers, filter } = useAppSelector(
+    (state) => state.beer
+  );
 
   useEffect(() => {
     if (page === "0" || page === "NaN") {
-      navigate(`/cervezas-del-mundo/page=1`);
+      navigate(`/${currentPage}/page=1`);
     } else {
+      switch (currentPage) {
+        case "cervezas-del-mundo":
+          if (filter.status === true) {
+          } else {
+            dispatch(loadBeersThunk(page));
+          }
+      }
       dispatch(loadBeersThunk(page));
     }
-  }, [dispatch, navigate, page]);
+  }, [currentPage, dispatch, filter.status, navigate, page]);
 
   const previewPage = () => {
-    if (+page === 1) {
-      navigate(`/cervezas-del-mundo/page=${+page}`);
-    } else {
-      navigate(`/cervezas-del-mundo/page=${+page - 1}`);
-    }
+    navigate(`/${currentPage}/page=${+page - 1}`);
   };
 
   const nextPage = () => {
-    if (+page < totalPages) {
-      navigate(`/cervezas-del-mundo/page=${+page + 1}`);
-    } else {
-      navigate(`/cervezas-del-mundo/page=${+page}`);
-    }
+    navigate(`/${currentPage}/page=${+page + 1}`);
   };
 
   return (
@@ -45,8 +50,26 @@ const BeerListPage = (): JSX.Element => {
           <BeerListPageStyles>
             <ListBeers checkInHome={false} />
             <div className="buttons-pagination">
-              <button onClick={previewPage}>{"<"}</button>
-              <button onClick={nextPage}>{">"}</button>
+              {page > 1 && <button onClick={previewPage}>{"<"}</button>}
+              {page <= 1 && (
+                <button
+                  onClick={previewPage}
+                  disabled={true}
+                  className="button--off"
+                >
+                  {"<"}
+                </button>
+              )}
+              {page < totalPages && <button onClick={nextPage}>{">"}</button>}
+              {page >= totalPages && (
+                <button
+                  onClick={nextPage}
+                  disabled={true}
+                  className="button--off"
+                >
+                  {">"}
+                </button>
+              )}
             </div>
           </BeerListPageStyles>
         </>

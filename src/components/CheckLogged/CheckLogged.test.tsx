@@ -41,7 +41,7 @@ describe("Given a CheckLogged component", () => {
         <BrowserRouter>
           <Provider store={mockStore}>
             <CheckLogged>
-              <BeerListPage />
+              <BeerListPage currentPage="cervezas-del-mundo" />
             </CheckLogged>
           </Provider>
         </BrowserRouter>
@@ -71,6 +71,14 @@ describe("Given a CheckLogged component", () => {
           listOfBeers: groupOfBeer,
           page: 0,
           totalPages: 0,
+          filter: {
+            status: false,
+            type: "",
+            value: "",
+          },
+          favoritesList: false,
+          creationsList: false,
+          generalList: true,
           singleBeer: {
             name: "",
             brewery: "",
@@ -104,7 +112,7 @@ describe("Given a CheckLogged component", () => {
         <BrowserRouter>
           <Provider store={mockStore}>
             <CheckLogged>
-              <BeerListPage />
+              <BeerListPage currentPage="cervezas-del-mundo" />
             </CheckLogged>
           </Provider>
         </BrowserRouter>

@@ -1,6 +1,10 @@
 import { useState } from "react";
+import {
+  changeFilterTypeActionCreator,
+  changeFilterValueActionCreator,
+} from "../../redux/features/beerSlice";
 import { useAppDispatch } from "../../redux/hooks";
-import { filterBeerThuk } from "../../redux/thunks/beerThunks";
+import { filterBeerThunk } from "../../redux/thunks/beerThunks";
 import FilterStyles from "./FilterStyles";
 
 const Filter = (): JSX.Element => {
@@ -10,6 +14,8 @@ const Filter = (): JSX.Element => {
     filterValue: "Lager",
   };
   const [filterCategory, setFilterCategory] = useState(initialStateFilter);
+
+  //useEffect con dispatch para cambiar el estado de valor de filtro
 
   const changeFilterType = (event: React.ChangeEvent<HTMLSelectElement>) => {
     switch (event.target.value) {
@@ -51,12 +57,15 @@ const Filter = (): JSX.Element => {
       ...filterCategory,
       [event.target.name]: event.target.value,
     });
+    dispatch(changeFilterTypeActionCreator(filterCategory.filterType));
+    dispatch(changeFilterValueActionCreator(filterCategory.filterValue));
   };
 
   const submitFilter = (event: React.SyntheticEvent) => {
     event.preventDefault();
+
     dispatch(
-      filterBeerThuk(filterCategory.filterType, filterCategory.filterValue, 1)
+      filterBeerThunk(filterCategory.filterType, filterCategory.filterValue, 1)
     );
   };
 

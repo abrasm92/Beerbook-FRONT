@@ -140,13 +140,6 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         <option value="Blonde">Blonde</option>
         <option value="Red Ale">Red Ale</option>
       </select>
-      {/*       <input
-        type="text"
-        id="style"
-        value={beerData.style}
-        onChange={changeBeerData}
-        placeholder="Estilo"
-      /> */}
       <div className="formulary-number-inputs">
         <label htmlFor="IBU">IBU</label>
         <input
@@ -185,13 +178,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
         <option value="Japon">Japon</option>
         <option value="Italia">Italia</option>
       </select>
-      {/* <input
-        type="text"
-        id="country"
-        value={beerData.country}
-        onChange={changeBeerData}
-        placeholder="País"
-      /> */}
+
       <label htmlFor="description">Descripción</label>
       <textarea
         id="description"

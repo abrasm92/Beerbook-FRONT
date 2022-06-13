@@ -21,6 +21,7 @@ const SingleBeerStyles = styled.li`
     padding: 7px;
     cursor: pointer;
     margin-left: 90px;
+    z-index: 100;
   }
 
   img {

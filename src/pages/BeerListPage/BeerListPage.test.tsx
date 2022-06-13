@@ -17,7 +17,7 @@ describe("Given a BeerLisPage component", () => {
     test("Then it should show an image 404 from 404 page", () => {
       const beerMockSlice = createSlice({
         name: "beer",
-        initialState: { listOfBeers: [] },
+        initialState: { listOfBeers: [], filter: { status: false } },
         reducers: {},
       });
       const mockStore = configureStore({
@@ -26,7 +26,7 @@ describe("Given a BeerLisPage component", () => {
       render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <BeerListPage />
+            <BeerListPage currentPage="cervezas-del-mundo" />
           </Provider>
         </BrowserRouter>
       );
@@ -40,7 +40,7 @@ describe("Given a BeerLisPage component", () => {
     test("Then it should show an image beer from detail page", () => {
       const beerMockSlice = createSlice({
         name: "beer",
-        initialState: { listOfBeers: groupOfBeer },
+        initialState: { listOfBeers: groupOfBeer, filter: { status: false } },
         reducers: {},
       });
       const mockStore = configureStore({
@@ -50,7 +50,7 @@ describe("Given a BeerLisPage component", () => {
       render(
         <BrowserRouter>
           <Provider store={mockStore}>
-            <BeerListPage />
+            <BeerListPage currentPage="cervezas-del-mundo" />
           </Provider>
         </BrowserRouter>
       );

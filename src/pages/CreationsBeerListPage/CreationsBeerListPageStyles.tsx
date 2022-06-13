@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BeerListPageStyles = styled.section`
+const CreationsBeerListPageStyles = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,10 +30,7 @@ const BeerListPageStyles = styled.section`
       padding-bottom: 20px;
       cursor: pointer;
     }
-    .button--off {
-      visibility: hidden;
-    }
   }
 `;
 
-export default BeerListPageStyles;
+export default CreationsBeerListPageStyles;

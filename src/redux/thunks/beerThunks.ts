@@ -161,7 +161,7 @@ export const updateBeerThunk =
     }
   };
 
-export const filterBeerThuk =
+export const filterBeerThunk =
   (filter: string, filterValue: string, page: number | any) =>
   async (dispatch: Dispatch) => {
     const token = localStorage.getItem("token");
