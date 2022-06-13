@@ -9,7 +9,11 @@ const ProfilePage = (): JSX.Element => {
   const { id, data } = useAppSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(getUserByIdThunk(id));
+    if (id !== "") {
+      dispatch(getUserByIdThunk(id));
+    } else {
+      return;
+    }
   }, [dispatch, id]);
 
   return (
