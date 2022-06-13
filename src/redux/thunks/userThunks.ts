@@ -73,10 +73,24 @@ export const userLoginThunk =
   };
 
 export const getUserByIdThunk = (id: string) => async (dispatch: Dispatch) => {
+  const token = localStorage.getItem("token");
   try {
+    dispatch(loadingOnActionCreator());
     const {
       data: { user },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}user/userinfo/${id}`);
+    } = await axios.get(`${process.env.REACT_APP_API_URL}user/userinfo/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     dispatch(getUserDataActionCreator(user));
-  } catch (error) {}
+    dispatch(loadingOffActionCreator());
+  } catch (error: any) {
+    dispatch(loadingOffActionCreator());
+    const message = customErrorApi(error);
+    dispatch(openAlertWrongActionCreator(message));
+    setTimeout(() => {
+      dispatch(closeAlertWrongActionCreator());
+    }, 4500);
+  }
 };
