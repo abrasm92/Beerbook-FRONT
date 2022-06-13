@@ -5,6 +5,7 @@ import {
   deleteBeerThunk,
   filterBeerThunk,
   getBeerByIdThunk,
+  getHomePageBeersThunk,
   loadBeersThunk,
   updateBeerThunk,
 } from "./beerThunks";
@@ -211,6 +212,36 @@ describe("Given a filterBeerThunk function", () => {
       jest.runOnlyPendingTimers();
 
       expect(dispatch).toHaveBeenCalledTimes(expectedCalles);
+    });
+  });
+});
+
+describe("Given a getHomePageBeersThunk function", () => {
+  describe("When it's invoked and do right", () => {
+    test("Then it should call dispatch 3 times", async () => {
+      const dispatch = jest.fn();
+      const thunk = getHomePageBeersThunk();
+      const expectedCalls = 3;
+      const beers = groupOfBeer;
+      axios.get = jest.fn().mockResolvedValue({ data: { beers } });
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalls);
+    });
+  });
+
+  describe("When it's invoked and axios returns error", () => {
+    test("Then it should call dispatch 4 times", async () => {
+      const dispatch = jest.fn();
+      const thunk = getHomePageBeersThunk();
+      const expectedCalls = 4;
+      axios.get = jest.fn().mockRejectedValue(new Error());
+
+      await thunk(dispatch);
+      jest.runOnlyPendingTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(expectedCalls);
     });
   });
 });
