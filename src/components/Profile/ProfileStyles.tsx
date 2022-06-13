@@ -20,7 +20,7 @@ const ProfileStyles = styled.section`
     padding: 0 20px 20px 20px;
 
     p {
-      font-size: 1rem;
+      font-size: 0.8rem;
       padding-bottom: 10px;
     }
 
