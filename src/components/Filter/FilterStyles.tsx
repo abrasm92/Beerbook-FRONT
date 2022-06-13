@@ -7,8 +7,8 @@ const FilterStyles = styled.div`
   align-items: center;
 
   .filter {
-    margin-top: -40px;
-    margin-right: 25px;
+    margin-top: -70px;
+    margin-right: 65px;
     display: flex;
     flex-direction: row;
   }
@@ -17,8 +17,29 @@ const FilterStyles = styled.div`
   .categories--options,
   .values,
   .values--options {
-    width: 100px;
+    width: 75px;
     height: 30px;
+    margin-right: 10px;
+    text-align: center;
+    background: #fff;
+    color: #0d47a1;
+    border: none;
+    font-weight: 700;
+  }
+
+  option {
+    font-weight: 700;
+    width: 75px;
+    height: 30px;
+  }
+
+  button {
+    background: #fff;
+    border: none;
+    color: #0d47a1;
+    cursor: pointer;
+    margin-right: 5px;
+    font-weight: 700;
   }
 `;
 

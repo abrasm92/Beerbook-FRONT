@@ -8,8 +8,9 @@ const HeaderStyles = styled.header`
   top: 0px;
 
   .header-content {
-    padding: 20px;
+    padding: 30px;
     padding-top: 25px;
+    padding-bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;

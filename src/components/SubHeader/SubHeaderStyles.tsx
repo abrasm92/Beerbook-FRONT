@@ -24,9 +24,17 @@ const SubHeaderStyles = styled.section`
   }
 
   .subHeader--open-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    margin-top: -120px;
-    margin-right: 25px;
+    margin-top: -70px;
+    margin-right: 30px;
+    background: #ffc107;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    width: 30px;
   }
 `;
 

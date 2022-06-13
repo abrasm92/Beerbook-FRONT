@@ -15,8 +15,6 @@ const Filter = (): JSX.Element => {
   };
   const [filterCategory, setFilterCategory] = useState(initialStateFilter);
 
-  //useEffect con dispatch para cambiar el estado de valor de filtro
-
   const changeFilterType = (event: React.ChangeEvent<HTMLSelectElement>) => {
     switch (event.target.value) {
       case "style":
