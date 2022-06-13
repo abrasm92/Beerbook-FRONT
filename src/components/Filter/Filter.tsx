@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   changeFilterTypeActionCreator,
   changeFilterValueActionCreator,
@@ -8,6 +9,7 @@ import { filterBeerThunk } from "../../redux/thunks/beerThunks";
 import FilterStyles from "./FilterStyles";
 
 const Filter = (): JSX.Element => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const initialStateFilter = {
     filterType: "style",
@@ -65,6 +67,7 @@ const Filter = (): JSX.Element => {
     dispatch(
       filterBeerThunk(filterCategory.filterType, filterCategory.filterValue, 1)
     );
+    navigate("/cervezas-del-mundo/page=1");
   };
 
   return (
