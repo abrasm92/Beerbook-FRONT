@@ -36,6 +36,31 @@ const SubHeaderStyles = styled.section`
     height: 30px;
     width: 30px;
   }
+
+  @media screen and (min-width: 600px) {
+  }
+
+  @media screen and (min-width: 800px) {
+    .subHeader--open-filter {
+      margin-top: -70px;
+      margin-right: 90px;
+    }
+    .subheader--tittle {
+      font-size: 1.5rem;
+      margin-top: -60px;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .subHeader--open-filter {
+      margin-top: -70px;
+      margin-right: 150px;
+    }
+
+    .subheader--tittle {
+      font-size: 1.8rem;
+      margin-top: -50px;
+    }
+  }
 `;
 
 export default SubHeaderStyles;

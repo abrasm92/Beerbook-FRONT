@@ -4,17 +4,28 @@ const ProfileStyles = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+
+  .profile--button-add-beer {
+    background-color: #0d47a1;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-size: larger;
+    margin: 0 auto;
+    margin-top: 140px;
+    margin-bottom: 20px;
+  }
+
   .profile {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     list-style: none;
     height: 100%;
-    min-width: 280px;
-    width: 80%;
-    max-width: 400px;
+
     overflow: hidden;
     border: none;
     padding: 0 20px 20px 20px;
@@ -53,6 +64,7 @@ const ProfileStyles = styled.section`
       font-weight: 700;
       font-size: 0.9rem;
       margin-bottom: 20px;
+      cursor: pointer;
     }
 
     .profile--lists {
@@ -68,12 +80,34 @@ const ProfileStyles = styled.section`
     .profile--lists * {
       margin-top: 10px;
     }
+  }
+
+  @media screen and (min-width: 600px) {
+    min-width: 400px;
+    width: 80%;
+    max-width: 640px;
+
+    .profile {
+      min-width: 400px;
+      width: 80%;
+      max-width: 640px;
+    }
 
     .profile--button-add-beer {
-      font-size: larger;
-      margin: 0 auto;
-      margin-top: 140px;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
+    }
+
+    .profile--lists {
+      margin-top: 30px;
+      padding-bottom: 20px;
+      min-width: 320px;
+      width: 80%;
+      max-width: 500px;
+
+      h3 {
+        font-size: 1rem;
+      }
+      border-bottom: 1px solid #b6b6b6;
     }
   }
 `;

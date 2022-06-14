@@ -34,6 +34,12 @@ const BeerListPageStyles = styled.section`
       visibility: hidden;
     }
   }
+
+  @media screen and (min-width: 600px) {
+    min-width: 400px;
+    width: 80%;
+    max-width: 800px;
+  }
 `;
 
 export default BeerListPageStyles;

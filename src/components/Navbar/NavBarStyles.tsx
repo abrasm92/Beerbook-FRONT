@@ -27,6 +27,43 @@ const NavbarStyles = styled.nav`
     align-self: center;
     text-decoration: none;
   }
+
+  @media screen and (min-width: 600px) {
+    width: 250px;
+    height: 60px;
+    background: none;
+    display: flex;
+    position: fixed;
+    top: 18px;
+    right: 130px;
+
+    .navbar-button {
+      cursor: pointer;
+      img {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 300px;
+    height: 60px;
+    background: none;
+    display: flex;
+    position: fixed;
+    top: 18px;
+    right: 200px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 350px;
+    height: 60px;
+    background: none;
+    display: flex;
+    position: fixed;
+    top: 18px;
+    right: 260px;
+  }
 `;
 
 export default NavbarStyles;

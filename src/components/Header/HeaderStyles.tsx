@@ -27,6 +27,29 @@ const HeaderStyles = styled.header`
       cursor: pointer;
     }
   }
+
+  @media screen and (min-width: 600px) {
+    .header-content {
+      padding: 30px;
+      padding-top: 25px;
+      padding-bottom: 0;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    .header-content {
+      padding: 90px;
+      padding-top: 25px;
+      padding-bottom: 0;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .header-content {
+      padding: 150px;
+      padding-top: 25px;
+      padding-bottom: 0;
+    }
+  }
 `;
 
 export default HeaderStyles;

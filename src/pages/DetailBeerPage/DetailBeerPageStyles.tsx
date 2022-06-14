@@ -10,9 +10,23 @@ const DetailBeerPageStyles = styled.section`
   width: 80%;
   max-width: 400px;
   height: 100%;
-  min-height: calc(100vh - 360px);
   border-radius: 20px;
   box-shadow: 10px 10px 7px #b6b6b6;
+
+  @media screen and (min-width: 600px) {
+    min-width: 400px;
+    width: 80%;
+    max-width: 600px;
+  }
+
+  @media screen and (min-width: 800px) {
+    min-width: 600px;
+    width: 80%;
+    max-width: 1200px;
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
 `;
 
 export default DetailBeerPageStyles;

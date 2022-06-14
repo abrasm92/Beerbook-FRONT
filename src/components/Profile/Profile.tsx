@@ -42,10 +42,10 @@ const Profile = ({ user }: ProfileProp): JSX.Element => {
           <h3>Mis favoritas - {user.favorites}</h3>
           <button>Ver favoritas</button>
         </div>
-        <button className="profile--button-add-beer" onClick={goToCreate}>
-          Agregar una cerveza
-        </button>
       </div>
+      <button className="profile--button-add-beer" onClick={goToCreate}>
+        Agregar una cerveza
+      </button>
     </ProfileStyles>
   );
 };
