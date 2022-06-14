@@ -20,9 +20,9 @@ const DetailBeerPageStyles = styled.section`
   }
 
   @media screen and (min-width: 800px) {
-    min-width: 400px;
+    min-width: 600px;
     width: 80%;
-    max-width: 600px;
+    max-width: 1200px;
   }
 
   @media screen and (min-width: 1200px) {

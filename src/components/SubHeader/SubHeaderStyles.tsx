@@ -45,11 +45,20 @@ const SubHeaderStyles = styled.section`
       margin-top: -70px;
       margin-right: 90px;
     }
+    .subheader--tittle {
+      font-size: 1.5rem;
+      margin-top: -60px;
+    }
   }
   @media screen and (min-width: 1200px) {
     .subHeader--open-filter {
       margin-top: -70px;
       margin-right: 150px;
+    }
+
+    .subheader--tittle {
+      font-size: 1.8rem;
+      margin-top: -50px;
     }
   }
 `;

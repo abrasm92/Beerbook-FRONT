@@ -14,6 +14,12 @@ const HomePageStyles = styled.section`
   height: 100%;
   border-radius: 20px;
   box-shadow: 10px 10px 7px #b6b6b6;
+
+  @media screen and (min-width: 600px) {
+    min-width: 400px;
+    width: 80%;
+    max-width: 800px;
+  }
 `;
 
 export default HomePageStyles;

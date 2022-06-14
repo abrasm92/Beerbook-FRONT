@@ -175,13 +175,13 @@ const DetailBeerStyles = styled.div`
       }
       h2 {
         text-align: right;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
       h3 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
       p {
-        font-size: 1.3rem;
+        font-size: 1rem;
         padding-bottom: 10px;
       }
     }
@@ -191,6 +191,30 @@ const DetailBeerStyles = styled.div`
       height: 500px;
       object-fit: contain;
       overflow: hidden;
+    }
+
+    .detail-beer--description {
+      position: relative;
+      padding: 0px 25px 50px 0px;
+      text-align: right;
+      margin-top: -100px;
+      align-self: flex-end;
+      width: 360px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .detail-beer--description {
+      margin-top: -150px;
+      width: 560px;
+    }
+
+    img {
+      width: 240px;
+      height: 500px;
+      object-fit: contain;
+      overflow: hidden;
+      margin-left: -50px;
     }
   }
 `;
