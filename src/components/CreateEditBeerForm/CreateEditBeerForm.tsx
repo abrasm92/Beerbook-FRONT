@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { resetFilterActionCreator } from "../../redux/features/beerSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import {
   createBeerThunk,
@@ -75,6 +76,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
     newBeer.append("image", beerData.image);
 
     if (beer) {
+      dispatch(resetFilterActionCreator());
       dispatch(updateBeerThunk(newBeer, beer.id));
       setBeerData({
         name: "",
@@ -89,6 +91,7 @@ const CreateEditBeerForm = ({ beer }: BeerPropForm): JSX.Element => {
       setFile(false);
       navigate(`/cervezas-del-mundo/page=1`);
     } else {
+      dispatch(resetFilterActionCreator());
       dispatch(createBeerThunk(newBeer));
       setBeerData({
         name: "",
