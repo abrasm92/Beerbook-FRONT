@@ -22,6 +22,7 @@ const DetailBeerStyles = styled.div`
   .detail-beer--description {
     padding: 50px 30px;
   }
+
   p {
     font-size: 0.9rem;
     padding-bottom: 10px;
@@ -64,11 +65,13 @@ const DetailBeerStyles = styled.div`
   }
 
   .detail-beer--buttons {
-    width: 100%;
     display: flex;
     justify-content: space-around;
     margin-bottom: 30px;
+    width: 300px;
+    align-self: center;
   }
+
   button {
     background-color: #0d47a1;
     border: none;
@@ -77,6 +80,7 @@ const DetailBeerStyles = styled.div`
     padding: 7px;
     cursor: pointer;
     margin: 0px 10px;
+    margin-bottom: 20px;
   }
 
   img {
@@ -86,6 +90,108 @@ const DetailBeerStyles = styled.div`
     overflow: hidden;
     margin-right: 20px;
     margin-left: 30px;
+  }
+
+  @media screen and (min-width: 600px) {
+    min-width: 400px;
+    width: 80%;
+    max-width: 640px;
+
+    p {
+      font-size: 1.1rem;
+      padding-bottom: 10px;
+    }
+
+    .detail-beer--general-info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .beer-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-end;
+
+      img {
+        width: 70px;
+        height: 70px;
+      }
+      h2 {
+        text-align: right;
+        font-size: 1.3rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 1.1rem;
+        padding-bottom: 10px;
+      }
+    }
+
+    .detail-beer--general-info {
+      display: flex;
+      align-items: flex-start;
+      align-self: center;
+    }
+
+    .detail-beer--buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+      width: 300px;
+    }
+
+    img {
+      width: 180px;
+      height: 375px;
+      object-fit: contain;
+      overflow: hidden;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    min-width: 600px;
+    width: 80%;
+    max-width: 900px;
+
+    p {
+      font-size: 1.3rem;
+      padding-bottom: 10px;
+    }
+
+    .detail-beer--general-info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .beer-info {
+      img {
+        width: 90px;
+        height: 90px;
+      }
+      h2 {
+        text-align: right;
+        font-size: 1.5rem;
+      }
+      h3 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 1.3rem;
+        padding-bottom: 10px;
+      }
+    }
+
+    img {
+      width: 240px;
+      height: 500px;
+      object-fit: contain;
+      overflow: hidden;
+    }
   }
 `;
 

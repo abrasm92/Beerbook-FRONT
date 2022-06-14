@@ -36,6 +36,22 @@ const SubHeaderStyles = styled.section`
     height: 30px;
     width: 30px;
   }
+
+  @media screen and (min-width: 600px) {
+  }
+
+  @media screen and (min-width: 800px) {
+    .subHeader--open-filter {
+      margin-top: -70px;
+      margin-right: 90px;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .subHeader--open-filter {
+      margin-top: -70px;
+      margin-right: 150px;
+    }
+  }
 `;
 
 export default SubHeaderStyles;
