@@ -21,10 +21,24 @@ const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
     navigate(`/editar-cerveza/${beer.id}`);
   };
 
+  const errorLocalImage = (error: any) => {
+    let backupSrc = beer.imageBackup
+      ? beer.imageBackup
+      : "./images/producto-sin-imagen.jpg";
+    (error.target as HTMLImageElement).onerror = null;
+    (error.target as HTMLImageElement).src = backupSrc;
+  };
+
+  const url = process.env.REACT_APP_API_URL;
+
   return (
     <DetailBeerStyles>
       <div className="detail-beer--general-info">
-        <img src={beer.imageBackup} alt="Imagen de cerveza" />
+        <img
+          src={`${url}uploads/${beer.image}`}
+          alt="Imagen de cerveza"
+          onError={errorLocalImage}
+        />
         <div className="beer-info">
           <img src="/images/like-off.svg" alt="favorite-icon" />
           <h2>{beer.name}</h2>

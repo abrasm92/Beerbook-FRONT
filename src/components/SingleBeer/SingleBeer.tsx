@@ -24,13 +24,24 @@ const SingleBeer = ({ beer, inHome }: PropBeer): JSX.Element => {
     navigate(`/cervezas-del-mundo/page=${+page}`);
   };
 
+  const errorLocalImage = (error: any) => {
+    let backupSrc = beer.imageBackup
+      ? beer.imageBackup
+      : "./images/producto-sin-imagen.jpg";
+    (error.target as HTMLImageElement).onerror = null;
+    (error.target as HTMLImageElement).src = backupSrc;
+  };
+
+  const url = process.env.REACT_APP_API_URL;
+
   return (
     <SingleBeerStyles onClick={detailBeer}>
       <img
-        src={beer.imageBackup}
+        src={`${url}uploads/${beer.image}`}
         alt="Imagen de cerveza"
         width={60}
         height={125}
+        onError={errorLocalImage}
       />
       <div className="beer-info">
         <h2>{beer.name}</h2>
