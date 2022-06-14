@@ -21,6 +21,8 @@ describe("Given a beerbook app", () => {
       cy.get('input[placeholder="E-mail"]').type("prueba@gmail.com");
       cy.get('input[placeholder="Contraseña"]').type(`12345678{enter}`);
 
+      cy.wait(1000);
+
       cy.get("button").contains("Iniciar sesión").click();
 
       cy.get('input[placeholder="Usuario"]').type("usuarioprueba");
@@ -34,11 +36,17 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains("Filtrar").click();
 
+      cy.wait(2000);
+
       cy.get("li").eq(2).click();
+
+      cy.wait(1000);
 
       cy.get("p").contains("Mi perfil").click();
 
       cy.scrollTo(0, 700);
+
+      cy.wait(1000);
 
       cy.get("button").contains("Agregar una cerveza").click();
 
@@ -57,11 +65,74 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains("Crear cerveza").click();
 
-      cy.scrollTo(0, 2500);
+      cy.wait(2000);
+
+      cy.scrollTo(0, 2000);
+
+      cy.scrollTo(2000, 4000);
+
+      cy.scrollTo(4000, 6000);
 
       cy.get("button").contains(">").click();
 
       cy.get("button").contains(">").click();
+
+      cy.wait(1000);
+
+      cy.get("ul").find("li:last-child").contains("cerveceria prueba").click();
+
+      cy.wait(1000);
+
+      cy.get("button").contains("Editar").click();
+
+      cy.get('input[placeholder="Nombre de la cerveza"]')
+        .clear()
+        .type("cambio cerveza prueba");
+      cy.get('input[placeholder="Fabricante"]')
+        .clear()
+        .type("cambio cerveceria prueba");
+      cy.get('select[name="style"]').select("Lager");
+      cy.get('input[placeholder="IBU"]').clear().type("50");
+      cy.get('input[placeholder="Grados"]').clear().type("10");
+      cy.get('select[name="country"]').select("España");
+      cy.get("textarea")
+        .clear()
+        .type("Descripción de cambio cerveza de prueba");
+      cy.get("input[type=file]").attachFile("cambio imagen prueba.png");
+
+      cy.get("button").contains("Editar cerveza").click();
+
+      cy.wait(2000);
+
+      cy.scrollTo(0, 2000);
+
+      cy.scrollTo(2000, 4000);
+
+      cy.scrollTo(4000, 6000);
+
+      cy.get("button").contains(">").click();
+
+      cy.get("button").contains(">").click();
+
+      cy.wait(1000);
+
+      cy.get("ul")
+        .find("li:last-child")
+        .contains("cambio cerveceria prueba")
+        .click();
+
+      cy.get("button").contains("Eliminar").click();
+
+      cy.wait(1000);
+
+      cy.get("ul")
+        .find("li:last-child")
+        .contains("cambio cerveceria prueba")
+        .should("not.exist");
+
+      cy.wait(1000);
+
+      cy.get("button").contains("Cerrar sesión").click();
     });
   });
 });
