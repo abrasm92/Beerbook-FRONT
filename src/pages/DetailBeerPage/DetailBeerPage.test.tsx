@@ -17,8 +17,15 @@ describe("Given a DetailBeerPage component", () => {
         },
         reducers: {},
       });
+      const uiMockSlice = createSlice({
+        name: "ui",
+        initialState: {
+          loading: false,
+        },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { beer: beerMockSlice.reducer },
+        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
       });
       const mockId = `${singleBeer.id}`;
       jest.mock("react-router-dom", () => ({
