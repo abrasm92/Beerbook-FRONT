@@ -20,8 +20,15 @@ describe("Given a BeerLisPage component", () => {
         initialState: { listOfBeers: [], filter: { status: false } },
         reducers: {},
       });
+      const uiMockSlice = createSlice({
+        name: "ui",
+        initialState: {
+          loading: false,
+        },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { beer: beerMockSlice.reducer },
+        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
       });
       render(
         <BrowserRouter>
@@ -43,8 +50,15 @@ describe("Given a BeerLisPage component", () => {
         initialState: { listOfBeers: groupOfBeer, filter: { status: false } },
         reducers: {},
       });
+      const uiMockSlice = createSlice({
+        name: "ui",
+        initialState: {
+          loading: false,
+        },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { beer: beerMockSlice.reducer },
+        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
       });
 
       render(

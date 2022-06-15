@@ -38,6 +38,8 @@ const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
           src={`${url}uploads/${beer.image}`}
           alt="Imagen de cerveza"
           onError={errorLocalImage}
+          width={120}
+          height={250}
         />
         <div className="beer-info">
           <img src="/images/like-off.svg" alt="favorite-icon" />

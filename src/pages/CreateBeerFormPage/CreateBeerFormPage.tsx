@@ -1,11 +1,17 @@
 import CreateEditBeerForm from "../../components/CreateEditBeerForm/CreateEditBeerForm";
+import { useAppSelector } from "../../redux/hooks";
 import CreateBeerFormPageStyles from "./CreateBeerFormPageStyles";
 
 const CreateBeerFormPage = (): JSX.Element => {
+  const { loading } = useAppSelector((state) => state.ui);
   return (
-    <CreateBeerFormPageStyles>
-      <CreateEditBeerForm beer={null} />
-    </CreateBeerFormPageStyles>
+    <>
+      {!loading && (
+        <CreateBeerFormPageStyles>
+          <CreateEditBeerForm beer={null} />
+        </CreateBeerFormPageStyles>
+      )}
+    </>
   );
 };
 

@@ -31,8 +31,9 @@ const DetailBeerStyles = styled.div`
   .beer-info {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-end;
     align-items: flex-end;
+    width: 150px;
 
     img {
       width: 50px;
@@ -89,7 +90,7 @@ const DetailBeerStyles = styled.div`
     object-fit: contain;
     overflow: hidden;
     margin-right: 20px;
-    margin-left: 30px;
+    margin-left: 5px;
   }
 
   @media screen and (min-width: 600px) {
