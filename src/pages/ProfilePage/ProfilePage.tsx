@@ -12,11 +12,7 @@ const ProfilePage = (): JSX.Element => {
   const { loading } = useAppSelector((state) => state.ui);
 
   useEffect(() => {
-    if (id !== "") {
-      dispatch(getUserByIdThunk(id));
-    } else {
-      return;
-    }
+    dispatch(getUserByIdThunk(id));
   }, [dispatch, id]);
 
   const navigate = useNavigate();
