@@ -49,4 +49,48 @@ describe("Given a DetailBeerPage component", () => {
       expect(image).toBeInTheDocument();
     });
   });
+
+  describe("When it's instantiated with wrong id on params", () => {
+    test("Then it should show an image 404", async () => {
+      const beerMockSlice = createSlice({
+        name: "beer",
+        initialState: {
+          page: 0,
+          listOfBeers: groupOfBeer,
+          singleBeer: {},
+        },
+        reducers: {},
+      });
+      const uiMockSlice = createSlice({
+        name: "ui",
+        initialState: {
+          loading: false,
+        },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
+      });
+      const mockId = `${singleBeer.id}`;
+      jest.mock("react-router-dom", () => ({
+        ...jest.requireActual("react-router-dom"),
+        useParams: () => ({
+          id: mockId,
+        }),
+      }));
+      const altText = "404";
+
+      await render(
+        <BrowserRouter>
+          <Provider store={mockStore}>
+            <DetailBeerPage />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const image = screen.getByAltText(altText);
+
+      expect(image).toBeInTheDocument();
+    });
+  });
 });
