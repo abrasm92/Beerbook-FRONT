@@ -12,7 +12,7 @@ export const singleBeer: BeerDataApi = {
     "Cerveza de color ámbar, con aromas intensos de cítricos, con final lig…",
   image: "",
   imageBackup: "",
-  owner: "",
+  owner: "admin",
 };
 
 export const groupOfBeer: BeerDataApi[] = [

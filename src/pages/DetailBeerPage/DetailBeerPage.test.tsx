@@ -24,8 +24,17 @@ describe("Given a DetailBeerPage component", () => {
         },
         reducers: {},
       });
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "admin", id: "admin", logged: true },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
+        reducer: {
+          beer: beerMockSlice.reducer,
+          ui: uiMockSlice.reducer,
+          user: userMockSlice.reducer,
+        },
       });
       const mockId = `${singleBeer.id}`;
       jest.mock("react-router-dom", () => ({
@@ -61,6 +70,11 @@ describe("Given a DetailBeerPage component", () => {
         },
         reducers: {},
       });
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "admin", id: "admin", logged: true },
+        reducers: {},
+      });
       const uiMockSlice = createSlice({
         name: "ui",
         initialState: {
@@ -69,7 +83,11 @@ describe("Given a DetailBeerPage component", () => {
         reducers: {},
       });
       const mockStore = configureStore({
-        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
+        reducer: {
+          beer: beerMockSlice.reducer,
+          ui: uiMockSlice.reducer,
+          user: userMockSlice.reducer,
+        },
       });
       const mockId = `${singleBeer.id}`;
       jest.mock("react-router-dom", () => ({

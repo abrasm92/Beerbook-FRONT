@@ -50,8 +50,17 @@ describe("Given a BeerLisPage component", () => {
         },
         reducers: {},
       });
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "admin", id: "admin", logged: true },
+        reducers: {},
+      });
       const mockStore = configureStore({
-        reducer: { beer: beerMockSlice.reducer, ui: uiMockSlice.reducer },
+        reducer: {
+          beer: beerMockSlice.reducer,
+          ui: uiMockSlice.reducer,
+          user: userMockSlice.reducer,
+        },
       });
 
       render(
