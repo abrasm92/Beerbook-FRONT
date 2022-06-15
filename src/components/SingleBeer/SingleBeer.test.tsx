@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -48,6 +48,73 @@ describe("Given a SingleBeer component", () => {
       userEvent.click(beerTag);
 
       expect(mockedUsedNavigate).toHaveBeenCalledWith(expectNavigate);
+    });
+  });
+
+  describe("When it's instantiated and it can't rendeir image but have backupImage", () => {
+    test("Then it should show change src to backup value '1234'", () => {
+      const beer = singleBeer;
+      beer.imageBackup = "1234";
+      beer.image = "wrong path";
+      const imageName = "Imagen de cerveza";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <SingleBeer beer={singleBeer} inHome={true} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const image = screen.getByAltText(imageName);
+      fireEvent.error(image);
+
+      expect(image).toHaveProperty("src", "http://localhost/1234");
+      expect(image).toHaveProperty("onerror", null);
+    });
+  });
+
+  describe("When it's instantiated and it can't rendeir image but haven't backupImage", () => {
+    test("Then it should show change src to backup value '/images/producto-sin-imagen.jpg'", () => {
+      const beer = singleBeer;
+      beer.imageBackup = "";
+      beer.image = "wrong path";
+      const imageName = "Imagen de cerveza";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <SingleBeer beer={singleBeer} inHome={true} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const image = screen.getByAltText(imageName);
+      fireEvent.error(image);
+
+      expect(image).toHaveProperty(
+        "src",
+        "http://localhost/images/producto-sin-imagen.jpg"
+      );
+      expect(image).toHaveProperty("onerror", null);
+    });
+  });
+
+  describe("When it's instantiated and user clicks on 'eliminar' button", () => {
+    test("Then it should call navigate", () => {
+      const buttonName = "Eliminar";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <SingleBeer beer={singleBeer} inHome={false} />
+          </Provider>
+        </BrowserRouter>
+      );
+      const button = screen.getByRole("button", { name: buttonName });
+      userEvent.click(button);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });
