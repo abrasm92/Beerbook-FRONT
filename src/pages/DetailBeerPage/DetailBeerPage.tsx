@@ -7,6 +7,7 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import DetailBeerPageStyles from "./DetailBeerPageStyles";
 
 const DetailBeerPage = (): JSX.Element => {
+  const { loading } = useAppSelector((state) => state.ui);
   const dispatch = useAppDispatch();
   const { id } = useParams();
   useEffect(() => {
@@ -22,7 +23,7 @@ const DetailBeerPage = (): JSX.Element => {
           <DetailBeer beer={singleBeer} />
         </DetailBeerPageStyles>
       )}
-      {singleBeer.name === "" && <NotFoundPage />}
+      {singleBeer.name === "" && !loading && <NotFoundPage />}
     </>
   );
 };
