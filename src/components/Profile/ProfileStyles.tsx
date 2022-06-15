@@ -6,19 +6,6 @@ const ProfileStyles = styled.section`
   justify-content: center;
   align-items: flex-start;
 
-  .profile--button-add-beer {
-    background-color: #0d47a1;
-    border: none;
-    border-radius: 7px;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    font-size: larger;
-    margin: 0 auto;
-    margin-top: 140px;
-    margin-bottom: 20px;
-  }
-
   .profile {
     display: flex;
     flex-direction: column;
@@ -91,10 +78,6 @@ const ProfileStyles = styled.section`
       min-width: 400px;
       width: 80%;
       max-width: 640px;
-    }
-
-    .profile--button-add-beer {
-      margin-bottom: 50px;
     }
 
     .profile--lists {

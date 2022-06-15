@@ -18,9 +18,17 @@ describe("Givwn a ProfilePage component", () => {
         },
         reducers: {},
       });
+      const uiMockSlice = createSlice({
+        name: "ui",
+        initialState: {
+          loading: false,
+        },
+        reducers: {},
+      });
       const mockStore = configureStore({
         reducer: {
           user: mockuserSlice.reducer,
+          ui: uiMockSlice.reducer,
         },
       });
 

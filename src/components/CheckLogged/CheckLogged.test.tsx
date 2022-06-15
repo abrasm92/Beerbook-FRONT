@@ -103,9 +103,20 @@ describe("Given a CheckLogged component", () => {
           }),
         },
       });
+      const uiMockSlice = createSlice({
+        name: "ui",
+        initialState: {
+          loading: false,
+        },
+        reducers: {},
+      });
 
       const mockStore = configureStore({
-        reducer: { user: userMockSlice.reducer, beer: beerMockSlice.reducer },
+        reducer: {
+          user: userMockSlice.reducer,
+          beer: beerMockSlice.reducer,
+          ui: uiMockSlice.reducer,
+        },
       });
 
       render(

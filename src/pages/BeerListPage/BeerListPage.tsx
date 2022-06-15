@@ -18,6 +18,7 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
   const { totalPages, listOfBeers, filter } = useAppSelector(
     (state) => state.beer
   );
+  const { loading } = useAppSelector((state) => state.ui);
 
   useEffect(() => {
     if (page === "0" || page === "NaN") {
@@ -46,7 +47,7 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
 
   return (
     <>
-      {listOfBeers.length !== 0 && (
+      {listOfBeers.length !== 0 && !loading && (
         <>
           <SubHeader checkInHome={false} />
           <BeerListPageStyles>
@@ -76,7 +77,7 @@ const BeerListPage = ({ currentPage }: PageList): JSX.Element => {
           </BeerListPageStyles>
         </>
       )}
-      {listOfBeers.length === 0 && <NotFoundPage />}
+      {listOfBeers.length === 0 && !loading && <NotFoundPage />}
     </>
   );
 };

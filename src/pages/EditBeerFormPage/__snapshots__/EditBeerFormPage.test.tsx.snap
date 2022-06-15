@@ -1,7 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given a EditBeerFormPage component When it's rendered Then it sould show button to editBeer 1`] = `
-<section
-  className="sc-gsnTZi eGTtUg"
-/>
+Array [
+  <section
+    className="sc-dkzDqf fJnXvb"
+  />,
+  <div
+    className="sc-gsnTZi bRxkTF"
+  >
+    <div
+      id="oopss"
+    >
+      <div
+        id="error-text"
+      >
+        <img
+          alt="404"
+          src="https://cdn.rawgit.com/ahmedhosna95/upload/1731955f/sad404.svg"
+        />
+        <p
+          className="number"
+        >
+          404
+        </p>
+        <p
+          className="text"
+        >
+          PAGINA NO ENCONTRADA
+        </p>
+        <p
+          className="p-a"
+        >
+          La página que estás buscando no se pudo encontrar
+        </p>
+      </div>
+    </div>
+  </div>,
+]
 `;

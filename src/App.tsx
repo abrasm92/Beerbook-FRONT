@@ -121,6 +121,7 @@ function App() {
         <Route path="/error-404" element={<NotFoundPage />} />
         <Route path="/*" element={<Navigate replace to="/error-404" />} />
       </Routes>
+
       <Navbar />
     </>
   );
