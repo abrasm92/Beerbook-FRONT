@@ -1,8 +1,9 @@
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { singleBeer } from "../../mocks/beerMocks";
+import { groupOfBeer, singleBeer } from "../../mocks/beerMocks";
 import { store } from "../../redux/store/store";
 import DetailBeer from "./DetailBeer";
 
@@ -19,10 +20,29 @@ describe("Given a DetailBeer component", () => {
       const beer = singleBeer;
       const buttonName = "Editar";
       const expectPath = `/editar-cerveza/${singleBeer.id}`;
-
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "admin", id: "admin", logged: true },
+        reducers: {},
+      });
+      const beerMockSlice = createSlice({
+        name: "beer",
+        initialState: {
+          page: 0,
+          listOfBeers: groupOfBeer,
+          singleBeer: {},
+        },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: {
+          user: userMockSlice.reducer,
+          beer: beerMockSlice.reducer,
+        },
+      });
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <DetailBeer beer={beer} />
           </Provider>
         </BrowserRouter>
@@ -47,9 +67,30 @@ describe("Given a DetailBeer component", () => {
         }),
       }));
 
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { name: "admin", id: "admin", logged: true },
+        reducers: {},
+      });
+      const beerMockSlice = createSlice({
+        name: "beer",
+        initialState: {
+          page: 0,
+          listOfBeers: groupOfBeer,
+          singleBeer: {},
+        },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: {
+          user: userMockSlice.reducer,
+          beer: beerMockSlice.reducer,
+        },
+      });
+
       render(
         <BrowserRouter>
-          <Provider store={store}>
+          <Provider store={mockStore}>
             <DetailBeer beer={beer} />
           </Provider>
         </BrowserRouter>
