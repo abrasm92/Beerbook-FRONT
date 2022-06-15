@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Profile componet When it's rendered Then it should show always the same as snapshot 1`] = `
+<section
+  className="sc-bczRLJ eyYaNv"
+>
+  <div
+    className="profile"
+  >
+    <div
+      className="profile--main-info"
+    >
+      <img
+        alt="imagen de perfil"
+        src="/images/default-profile-image.jpg"
+      />
+      <div
+        className="profile--main-info-text"
+      >
+        <h2>
+          admin
+        </h2>
+        <p>
+          29 años
+           
+          ·
+           
+          españa
+        </p>
+      </div>
+    </div>
+    <p
+      className="profile--edit"
+    >
+      Editar perfil
+    </p>
+    <div
+      className="profile--lists"
+    >
+      <h3>
+        Total aportaciones - 
+        10
+      </h3>
+      <button>
+        Ver aportaciones
+      </button>
+    </div>
+    <div
+      className="profile--lists"
+    >
+      <h3>
+        Mis favoritas - 
+        23
+      </h3>
+      <button>
+        Ver favoritas
+      </button>
+    </div>
+  </div>
+</section>
+`;

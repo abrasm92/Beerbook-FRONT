@@ -99,4 +99,22 @@ describe("Given a SingleBeer component", () => {
       expect(image).toHaveProperty("onerror", null);
     });
   });
+
+  describe("When it's instantiated and user clicks on 'eliminar' button", () => {
+    test("Then it should call navigate", () => {
+      const buttonName = "Eliminar";
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <SingleBeer beer={singleBeer} inHome={false} />
+          </Provider>
+        </BrowserRouter>
+      );
+      const button = screen.getByRole("button", { name: buttonName });
+      userEvent.click(button);
+
+      expect(mockedUsedNavigate).toHaveBeenCalled();
+    });
+  });
 });
