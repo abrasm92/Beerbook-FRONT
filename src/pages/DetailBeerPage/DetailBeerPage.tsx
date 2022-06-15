@@ -23,7 +23,7 @@ const DetailBeerPage = (): JSX.Element => {
           <DetailBeer beer={singleBeer} />
         </DetailBeerPageStyles>
       )}
-      {singleBeer.name === "" && !loading && <NotFoundPage />}
+      {!singleBeer.name && !loading && <NotFoundPage />}
     </>
   );
 };

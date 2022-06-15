@@ -5,13 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import { groupOfBeer } from "../../mocks/beerMocks";
 import BeerListPage from "./BeerListPage";
 
-const mockedUsedNavigate = jest.fn();
-
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockedUsedNavigate,
-}));
-
 describe("Given a BeerLisPage component", () => {
   describe("When it's instanciated without beers on state", () => {
     test("Then it should show an image 404 from 404 page", () => {

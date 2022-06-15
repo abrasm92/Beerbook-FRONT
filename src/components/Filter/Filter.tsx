@@ -47,8 +47,6 @@ const Filter = (): JSX.Element => {
           filterValue: "0",
         });
         break;
-      default:
-        return;
     }
   };
 
