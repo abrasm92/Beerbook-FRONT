@@ -11,12 +11,23 @@ type PropBeer = {
 
 const SingleBeer = ({ beer, inHome }: PropBeer): JSX.Element => {
   const { page } = useAppSelector((state) => state.beer);
+  const { id } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const detailBeer = () => {
     navigate(`/detalles-cerveza/${beer.id}`);
   };
+
+  const checkOwner = () => {
+    if (id === beer.owner) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isOwner = checkOwner();
 
   const deleteBeer = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -51,7 +62,9 @@ const SingleBeer = ({ beer, inHome }: PropBeer): JSX.Element => {
         <p>
           {beer.style} · {beer.degrees}
         </p>
-        {inHome === false && <button onClick={deleteBeer}>Eliminar</button>}
+        {inHome === false && isOwner && (
+          <button onClick={deleteBeer}>Eliminar</button>
+        )}
       </div>
     </SingleBeerStyles>
   );

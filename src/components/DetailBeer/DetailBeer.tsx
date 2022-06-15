@@ -12,6 +12,17 @@ const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { page } = useAppSelector((state) => state.beer);
+  const { id } = useAppSelector((state) => state.user);
+
+  const checkOwner = () => {
+    if (id === beer.owner) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isOwner = checkOwner();
 
   const deleteBeer = () => {
     dispatch(deleteBeerThunk(beer.id));
@@ -56,8 +67,8 @@ const DetailBeer = ({ beer }: PropBeer): JSX.Element => {
         <p>{beer.description}</p>
       </section>
       <div className="detail-beer--buttons">
-        <button onClick={deleteBeer}>Eliminar</button>
-        <button onClick={editBeer}>Editar</button>
+        {isOwner && <button onClick={deleteBeer}>Eliminar</button>}
+        {isOwner && <button onClick={editBeer}>Editar</button>}
       </div>
     </DetailBeerStyles>
   );
