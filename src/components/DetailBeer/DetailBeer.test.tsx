@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -59,6 +59,69 @@ describe("Given a DetailBeer component", () => {
       userEvent.click(button);
 
       expect(mockedUsedNavigate).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's rendered but img canT render first image", () => {
+    test("Then it should render imag with src with '1234' value", () => {
+      const beer = singleBeer;
+      beer.imageBackup = "1234";
+      beer.image = "wrong path";
+      const imageName = "Imagen de cerveza";
+      const mockId = 1;
+      jest.mock("react-router-dom", () => ({
+        ...jest.requireActual("react-router-dom"),
+        useParams: () => ({
+          page: mockId,
+        }),
+      }));
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <DetailBeer beer={beer} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const image = screen.getByAltText(imageName);
+      fireEvent.error(image);
+
+      expect(image).toHaveProperty("src", "http://localhost/1234");
+      expect(image).toHaveProperty("onerror", null);
+    });
+  });
+
+  describe("When it's rendered but img can't render first image and don't have backup", () => {
+    test("Then it should render imag with src with '/images/producto-sin-imagen.jpg' value", () => {
+      const beer = singleBeer;
+      beer.imageBackup = "";
+      beer.image = "wrong path";
+      const imageName = "Imagen de cerveza";
+      const mockId = 1;
+      jest.mock("react-router-dom", () => ({
+        ...jest.requireActual("react-router-dom"),
+        useParams: () => ({
+          page: mockId,
+        }),
+      }));
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <DetailBeer beer={beer} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const image = screen.getByAltText(imageName);
+      fireEvent.error(image);
+
+      expect(image).toHaveProperty(
+        "src",
+        "http://localhost/images/producto-sin-imagen.jpg"
+      );
+      expect(image).toHaveProperty("onerror", null);
     });
   });
 });
