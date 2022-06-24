@@ -8,6 +8,8 @@ describe("Given a beerbook app", () => {
     it("Then it can do regist, login, go to login, create beer, then serach by country, then go to detail, edit this beer, see changes and delete this one", () => {
       cy.visit(url);
 
+      cy.wait(1000);
+
       cy.get("p").contains(
         "Descubre todo sobre las mejores cervezas del mundo"
       );
@@ -21,12 +23,14 @@ describe("Given a beerbook app", () => {
       cy.get('input[placeholder="E-mail"]').type("prueba@gmail.com");
       cy.get('input[placeholder="Contraseña"]').type(`12345678{enter}`);
 
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("button").contains("Iniciar sesión").click();
 
       cy.get('input[placeholder="Usuario"]').type("usuarioprueba");
       cy.get('input[placeholder="Contraseña"]').type("12345678{enter}");
+
+      cy.wait(1000);
 
       cy.get('[alt="icono de filtro"]').click();
 
@@ -36,17 +40,17 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains("Filtrar").click();
 
-      //cy.wait(2000);
+      cy.wait(2000);
 
       cy.get("li").eq(2).click();
 
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("p").contains("Mi perfil").click();
 
       cy.scrollTo(0, 700);
 
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("button").contains("Agregar una cerveza").click();
 
@@ -65,7 +69,17 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains("Crear cerveza").click();
 
-      //cy.wait(2000);
+      cy.wait(1000);
+
+      cy.scrollTo(0, 2000);
+
+      cy.scrollTo(2000, 4000);
+
+      cy.scrollTo(4000, 6000);
+
+      cy.wait(1000);
+
+      cy.get("button").contains(">").click();
 
       cy.scrollTo(0, 2000);
 
@@ -75,13 +89,11 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains(">").click();
 
-      cy.get("button").contains(">").click();
-
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("ul").find("li:last-child").contains("cerveceria prueba").click();
 
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("button").contains("Editar").click();
 
@@ -102,7 +114,7 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains("Editar cerveza").click();
 
-      //cy.wait(2000);
+      cy.wait(2000);
 
       cy.scrollTo(0, 2000);
 
@@ -110,11 +122,21 @@ describe("Given a beerbook app", () => {
 
       cy.scrollTo(4000, 6000);
 
-      cy.get("button").contains(">").click();
+      cy.wait(1000);
 
       cy.get("button").contains(">").click();
 
-      //cy.wait(1000);
+      cy.scrollTo(0, 2000);
+
+      cy.scrollTo(2000, 4000);
+
+      cy.scrollTo(4000, 6000);
+
+      cy.wait(1000);
+
+      cy.get("button").contains(">").click();
+
+      cy.wait(1000);
 
       cy.get("ul")
         .find("li:last-child")
@@ -123,14 +145,14 @@ describe("Given a beerbook app", () => {
 
       cy.get("button").contains("Eliminar").click();
 
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("ul")
         .find("li:last-child")
         .contains("cambio cerveceria prueba")
         .should("not.exist");
 
-      //cy.wait(1000);
+      cy.wait(1000);
 
       cy.get("button").contains("Cerrar sesión").click();
     });
